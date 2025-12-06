@@ -1,0 +1,225 @@
+.topBar {
+  background: var(--accent);
+  color: white;
+  padding: 0.5rem 0;
+  font-size: 0.875rem;
+}
+
+.topBarContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topBarContact {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.topBarContact a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  transition: color 0.2s;
+}
+
+.topBarContact a:hover {
+  color: var(--primary-light);
+}
+
+.topBarActions {
+  display: flex;
+  gap: 1rem;
+}
+
+.topBarLink {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s;
+}
+
+.topBarLink:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--background);
+  transition: all 0.3s ease;
+}
+
+.header.scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logoIcon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  font-weight: 800;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+}
+
+.logoMain {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.logoSub {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.navLink {
+  padding: 0.625rem 1rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  border-radius: var(--radius);
+  transition: all 0.2s;
+}
+
+.navLink:hover {
+  color: var(--primary);
+  background: rgba(220, 38, 38, 0.05);
+}
+
+.headerActions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.mobileToggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.mobileMenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--background);
+  box-shadow: var(--shadow-lg);
+  padding: 1rem;
+  transform: translateY(-10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobileMenu.open {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobileNavLink {
+  padding: 0.875rem 1rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  border-radius: var(--radius);
+  transition: all 0.2s;
+}
+
+.mobileNavLink:hover {
+  background: var(--background-secondary);
+  color: var(--primary);
+}
+
+.mobileActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 1024px) {
+  .nav {
+    display: none;
+  }
+
+  .headerActions {
+    display: none;
+  }
+
+  .mobileToggle {
+    display: block;
+  }
+
+  .mobileMenu {
+    display: block;
+  }
+}
+
+@media (max-width: 640px) {
+  .topBarContent {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .topBarContact {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .topBarActions {
+    justify-content: center;
+  }
+
+  .logoText {
+    display: none;
+  }
+}

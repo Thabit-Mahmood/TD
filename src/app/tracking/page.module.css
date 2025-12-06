@@ -1,0 +1,339 @@
+.trackingPage {
+  min-height: 100vh;
+  background: var(--background-secondary);
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.hero p {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.content {
+  padding: 3rem 0 5rem;
+}
+
+/* Search Card */
+.searchCard {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  background: white;
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.searchForm {
+  display: flex;
+  gap: 1rem;
+}
+
+.inputWrapper {
+  flex: 1;
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 1.25rem;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  padding-right: 3rem;
+  font-family: 'Cairo', sans-serif;
+  font-size: 1rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--background-secondary);
+  color: var(--text-primary);
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
+}
+
+.searchInput::placeholder {
+  color: var(--text-muted);
+  text-align: right;
+}
+
+.searchButton {
+  padding: 1rem 2rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-lg);
+  font-family: 'Cairo', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.searchButton:hover:not(:disabled) {
+  background: var(--primary-dark);
+}
+
+.searchButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.875rem 1rem;
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--error);
+  border-radius: var(--radius);
+  font-size: 0.9375rem;
+}
+
+/* Results */
+.results {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Status Card */
+.statusCard {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.statusIcon {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.statusIcon.success {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+}
+
+.statusIcon.warning {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+}
+
+.statusIcon.info {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--info);
+}
+
+.statusIcon.default {
+  background: var(--background-tertiary);
+  color: var(--text-muted);
+}
+
+.statusInfo {
+  flex: 1;
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 9999px;
+}
+
+.statusBadge.success {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+}
+
+.statusBadge.warning {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+}
+
+.statusBadge.info {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--info);
+}
+
+.statusBadge.default {
+  background: var(--background-tertiary);
+  color: var(--text-secondary);
+}
+
+.trackingId {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  direction: ltr;
+  text-align: right;
+}
+
+/* Destination Card */
+.destinationCard {
+  background: white;
+  padding: 1.5rem;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.destinationIcon {
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+
+.destinationCard h3 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.destinationCard p {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Timeline Card */
+.timelineCard {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+}
+
+.timelineCard h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.timelineItem {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  position: relative;
+}
+
+.timelineItem:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  right: 7px;
+  top: 2.25rem;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+
+.timelineDot {
+  width: 16px;
+  height: 16px;
+  background: var(--border);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.timelineDot.active {
+  background: var(--primary);
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.2);
+}
+
+.timelineContent {
+  flex: 1;
+}
+
+.timelineEvent {
+  font-size: 1rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin-bottom: 0.375rem;
+}
+
+.timelineMeta {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 3rem 0;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .searchCard {
+    padding: 1.5rem;
+  }
+
+  .searchForm {
+    flex-direction: column;
+  }
+
+  .searchButton {
+    width: 100%;
+  }
+
+  .statusCard {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .trackingId {
+    text-align: center;
+  }
+}
