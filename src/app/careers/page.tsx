@@ -1,119 +1,234 @@
-import Link from 'next/link';
-import { FiMapPin, FiBriefcase, FiClock, FiArrowLeft, FiUsers, FiTrendingUp, FiHeart, FiAward } from 'react-icons/fi';
+'use client';
+
+import { useState } from 'react';
+import { FiBriefcase, FiMapPin, FiClock, FiSend, FiCheckCircle, FiUser, FiMail, FiPhone, FiFileText } from 'react-icons/fi';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 import styles from './page.module.css';
 
-const benefits = [
-  { icon: FiTrendingUp, title: 'فرص النمو', description: 'مسار وظيفي واضح وفرص للتطور المهني' },
-  { icon: FiHeart, title: 'بيئة عمل محفزة', description: 'فريق متعاون وبيئة عمل إيجابية' },
-  { icon: FiAward, title: 'مكافآت تنافسية', description: 'رواتب ومزايا تنافسية في السوق' },
-  { icon: FiUsers, title: 'تدريب مستمر', description: 'برامج تدريبية لتطوير مهاراتك' },
-];
-
-const jobs = [
-  {
-    id: 1,
-    title: 'مندوب توصيل',
-    department: 'العمليات',
-    location: 'الرياض',
-    type: 'دوام كامل',
-    description: 'نبحث عن مندوبي توصيل متميزين للانضمام لفريقنا في الرياض.',
-  },
-  {
-    id: 2,
-    title: 'مسؤول خدمة عملاء',
-    department: 'خدمة العملاء',
-    location: 'الرياض',
-    type: 'دوام كامل',
-    description: 'انضم لفريق خدمة العملاء وساعد عملائنا في الحصول على أفضل تجربة.',
-  },
-  {
-    id: 3,
-    title: 'مدير مستودع',
-    department: 'العمليات',
-    location: 'جدة',
-    type: 'دوام كامل',
-    description: 'نبحث عن مدير مستودع ذو خبرة لإدارة عمليات المستودع في جدة.',
-  },
-  {
-    id: 4,
-    title: 'مطور برمجيات',
-    department: 'التقنية',
-    location: 'الرياض',
-    type: 'دوام كامل',
-    description: 'انضم لفريقنا التقني وساهم في تطوير أنظمتنا اللوجستية.',
-  },
-];
-
 export default function CareersPage() {
+  const { t, language } = useLanguage();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    position: '',
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setError('');
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!formData.name || !formData.email || !formData.phone || !formData.position) {
+      setError(t('careers.form.fillRequired'));
+      return;
+    }
+
+    setIsSubmitting(true);
+    setError('');
+
+    try {
+      const response = await fetch('/api/careers', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, language }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || t('careers.form.error'));
+      }
+
+      setIsSuccess(true);
+      setFormData({ name: '', email: '', phone: '', position: '', message: '' });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : t('careers.form.error'));
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const positions = [
+    { id: 'driver', label: t('careers.positions.driver') },
+    { id: 'customerService', label: t('careers.positions.customerService') },
+    { id: 'warehouse', label: t('careers.positions.warehouse') },
+    { id: 'operations', label: t('careers.positions.operations') },
+    { id: 'sales', label: t('careers.positions.sales') },
+    { id: 'it', label: t('careers.positions.it') },
+    { id: 'other', label: t('careers.positions.other') },
+  ];
+
+  if (isSuccess) {
+    return (
+      <div className={styles.careersPage}>
+        <section className={styles.hero}>
+          <div className="container">
+            <h1>{t('careers.title')}</h1>
+            <p>{t('careers.subtitle')}</p>
+          </div>
+        </section>
+        <section className={styles.content}>
+          <div className="container">
+            <div className={styles.successCard}>
+              <FiCheckCircle className={styles.successIcon} />
+              <h2>{t('careers.form.successTitle')}</h2>
+              <p>{t('careers.form.successDesc')}</p>
+              <button onClick={() => setIsSuccess(false)} className={styles.submitBtn}>
+                {t('careers.form.sendAnother')}
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.careersPage}>
       {/* Hero */}
       <section className={styles.hero}>
         <div className="container">
-          <h1>انضم لفريقنا</h1>
-          <p>كن جزءاً من فريق تي دي وساهم في تشكيل مستقبل الخدمات اللوجستية في المملكة</p>
+          <h1>{t('careers.title')}</h1>
+          <p>{t('careers.subtitle')}</p>
         </div>
       </section>
 
-      {/* Benefits */}
-      <section className={styles.benefits}>
+      <section className={styles.content}>
         <div className="container">
-          <h2 className={styles.sectionTitle}>لماذا تعمل معنا؟</h2>
-          <div className={styles.benefitsGrid}>
-            {benefits.map((benefit, index) => (
-              <div key={index} className={styles.benefitCard}>
-                <div className={styles.benefitIcon}>
-                  <benefit.icon />
+          <div className={styles.grid}>
+            {/* Why Join Us */}
+            <div className={styles.infoSection}>
+              <h2>{t('careers.whyJoin.title')}</h2>
+              <p className={styles.infoDesc}>{t('careers.whyJoin.description')}</p>
+              
+              <div className={styles.benefits}>
+                <div className={styles.benefitItem}>
+                  <FiBriefcase className={styles.benefitIcon} />
+                  <div>
+                    <h3>{t('careers.whyJoin.growth')}</h3>
+                    <p>{t('careers.whyJoin.growthDesc')}</p>
+                  </div>
                 </div>
-                <h3>{benefit.title}</h3>
-                <p>{benefit.description}</p>
+                <div className={styles.benefitItem}>
+                  <FiMapPin className={styles.benefitIcon} />
+                  <div>
+                    <h3>{t('careers.whyJoin.locations')}</h3>
+                    <p>{t('careers.whyJoin.locationsDesc')}</p>
+                  </div>
+                </div>
+                <div className={styles.benefitItem}>
+                  <FiClock className={styles.benefitIcon} />
+                  <div>
+                    <h3>{t('careers.whyJoin.flexibility')}</h3>
+                    <p>{t('careers.whyJoin.flexibilityDesc')}</p>
+                  </div>
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
 
-      {/* Job Listings */}
-      <section className={styles.jobs}>
-        <div className="container">
-          <h2 className={styles.sectionTitle}>الوظائف المتاحة</h2>
-          <div className={styles.jobsList}>
-            {jobs.map((job) => (
-              <div key={job.id} className={styles.jobCard}>
-                <div className={styles.jobHeader}>
-                  <h3 className={styles.jobTitle}>{job.title}</h3>
-                  <span className={styles.jobDepartment}>{job.department}</span>
+            {/* Application Form */}
+            <div className={styles.formSection}>
+              <h2>{t('careers.form.title')}</h2>
+              <form onSubmit={handleSubmit} className={styles.form}>
+                <div className={styles.formGroup}>
+                  <label htmlFor="name">
+                    <FiUser /> {t('careers.form.name')} <span>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder={t('careers.form.namePlaceholder')}
+                    required
+                  />
                 </div>
-                <p className={styles.jobDescription}>{job.description}</p>
-                <div className={styles.jobMeta}>
-                  <span className={styles.jobMetaItem}>
-                    <FiMapPin />
-                    {job.location}
-                  </span>
-                  <span className={styles.jobMetaItem}>
-                    <FiBriefcase />
-                    {job.type}
-                  </span>
-                </div>
-                <Link href={`/careers/${job.id}`} className={styles.jobLink}>
-                  عرض التفاصيل
-                  <FiArrowLeft />
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* CTA */}
-      <section className={styles.cta}>
-        <div className="container">
-          <div className={styles.ctaContent}>
-            <h2>لم تجد الوظيفة المناسبة؟</h2>
-            <p>أرسل سيرتك الذاتية وسنتواصل معك عند توفر فرصة مناسبة</p>
-            <Link href="/contact" className="btn btn-primary btn-lg">
-              تواصل معنا
-            </Link>
+                <div className={styles.formGroup}>
+                  <label htmlFor="email">
+                    <FiMail /> {t('careers.form.email')} <span>*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder={t('careers.form.emailPlaceholder')}
+                    required
+                  />
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label htmlFor="phone">
+                    <FiPhone /> {t('careers.form.phone')} <span>*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder={t('careers.form.phonePlaceholder')}
+                    dir="ltr"
+                    required
+                  />
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label htmlFor="position">
+                    <FiBriefcase /> {t('careers.form.position')} <span>*</span>
+                  </label>
+                  <select
+                    id="position"
+                    name="position"
+                    value={formData.position}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">{t('careers.form.selectPosition')}</option>
+                    {positions.map((pos) => (
+                      <option key={pos.id} value={pos.id}>{pos.label}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label htmlFor="message">
+                    <FiFileText /> {t('careers.form.message')}
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder={t('careers.form.messagePlaceholder')}
+                    rows={4}
+                  />
+                </div>
+
+                {error && <div className={styles.error}>{error}</div>}
+
+                <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <span className="spinner"></span>
+                  ) : (
+                    <>
+                      <FiSend /> {t('careers.form.submit')}
+                    </>
+                  )}
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </section>

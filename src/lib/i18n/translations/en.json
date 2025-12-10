@@ -1,0 +1,1199 @@
+{
+  "seo": {
+    "home": {
+      "title": "TD Logistics | Your Trusted Partner in Shipping & Delivery",
+      "description": "Integrated logistics services in Saudi Arabia. Fast delivery, real-time tracking, cash on delivery. 99.2% on-time delivery rate."
+    },
+    "about": {
+      "title": "About Us | TD Logistics",
+      "description": "Learn about our story and vision for the future of logistics in Saudi Arabia."
+    },
+    "services": {
+      "title": "Our Services | TD Logistics",
+      "description": "Integrated logistics solutions - Express delivery, storage, fulfillment, cash on delivery, and returns management."
+    },
+    "tracking": {
+      "title": "Track Shipment | TD Logistics",
+      "description": "Track your shipment in real-time. Enter your tracking number to get the latest updates."
+    },
+    "contact": {
+      "title": "Contact Us | TD Logistics",
+      "description": "Contact us for the best shipping and delivery services in Saudi Arabia."
+    },
+    "careers": {
+      "title": "Careers | TD Logistics",
+      "description": "Join TD Logistics team and help shape the future of logistics in the Kingdom."
+    },
+    "partners": {
+      "title": "Sales & Partnerships | TD Logistics",
+      "description": "Partner with the best logistics provider in Saudi Arabia. Custom solutions for your business growth."
+    },
+    "blog": {
+      "title": "Blog | TD Logistics",
+      "description": "Latest news and articles about logistics and shipping in Saudi Arabia."
+    },
+    "quote": {
+      "title": "Get a Quote | TD Logistics",
+      "description": "Get a customized quote for your business needs. Our team will contact you within 24 hours."
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "all": "All",
+    "yes": "Yes",
+    "no": "No",
+    "required": "Required",
+    "optional": "Optional",
+    "close": "Close",
+    "learnMore": "Learn More"
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "partners": "Sales & Partnerships",
+    "blog": "Blog",
+    "support": "Support",
+    "contact": "Contact Us",
+    "about": "About Us",
+    "tracking": "Track Shipment",
+    "login": "Login",
+    "getQuote": "Get a Quote",
+    "careers": "Careers"
+  },
+  "header": {
+    "phone": "9200 15499",
+    "email": "info@tdlogistics.co",
+    "logoMain": "TD",
+    "logoSub": "Logistics"
+  },
+  "footer": {
+    "description": "Your trusted partner in shipping and delivery. We provide integrated logistics services with the highest standards of quality and safety.",
+    "quickLinks": "Quick Links",
+    "services": "Our Services",
+    "contactUs": "Contact Us",
+    "newsletter": "Newsletter",
+    "newsletterDesc": "Subscribe to get the latest news and offers",
+    "subscribe": "Subscribe",
+    "emailPlaceholder": "Your email",
+    "copyright": "All rights reserved",
+    "address": "Riyadh, Saudi Arabia",
+    "workingHours": "Sun - Thu: 8 AM - 6 PM",
+    "privacyPolicy": "Privacy Policy",
+    "terms": "Terms & Conditions"
+  },
+  "home": {
+    "hero": {
+      "title": "Your Trusted Partner in Shipping & Delivery",
+      "titlePart1": "Your Trusted Partner in",
+      "titlePart2": "Shipping & Delivery",
+      "subtitle": "We provide integrated logistics services with the highest standards of quality and safety. Track your shipment easily and get instant updates.",
+      "cta": "Get a Quote",
+      "trackShipment": "Track Your Shipment"
+    },
+    "stats": {
+      "deliveries": "Shipments Delivered",
+      "cities": "Cities Covered",
+      "onTime": "On-Time Delivery Rate",
+      "clients": "Satisfied Clients"
+    },
+    "services": {
+      "title": "Our Premium Services",
+      "subtitle": "We offer a comprehensive range of logistics services designed to meet your business needs",
+      "lastMile": "Last Mile Delivery",
+      "lastMileDesc": "Fast and secure package delivery to your doorstep",
+      "ecommerce": "E-commerce Shipping",
+      "ecommerceDesc": "Integrated shipping solutions for online stores",
+      "cod": "Cash on Delivery",
+      "codDesc": "Payment collection service upon delivery",
+      "returns": "Returns Management",
+      "returnsDesc": "Comprehensive returns management system",
+      "storage": "Storage & Warehousing",
+      "storageDesc": "Secure warehouses equipped with latest technology",
+      "tracking": "Live Tracking",
+      "trackingDesc": "Track your shipments in real-time",
+      "items": {
+        "lastMile": {
+          "title": "Last Mile Delivery",
+          "description": "Fast and reliable delivery to your customers' doorstep across the Kingdom with real-time tracking and flexible delivery options."
+        },
+        "ecommerce": {
+          "title": "E-commerce Solutions",
+          "description": "Full cash on delivery collection, returns management, and e-commerce integration to streamline your online store operations."
+        },
+        "customized": {
+          "title": "Customized Delivery",
+          "description": "Logistics solutions tailored specifically to your business needs, from storage to specialized handling requirements."
+        },
+        "technology": {
+          "title": "Technology Features",
+          "description": "Advanced tracking systems, API integration, and real-time analytics to give you complete visibility and control over your shipments."
+        }
+      }
+    },
+    "whyUs": {
+      "title": "Why Choose TD Logistics?",
+      "subtitle": "Built specifically for the Saudi market with deep understanding of local business needs and customer expectations.",
+      "speed": "Fast Delivery",
+      "speedDesc": "Same-day or next-day delivery",
+      "coverage": "Full Coverage",
+      "coverageDesc": "We cover all regions of the Kingdom",
+      "support": "24/7 Support",
+      "supportDesc": "Support team available around the clock",
+      "technology": "Advanced Technology",
+      "technologyDesc": "Modern tracking and management systems",
+      "features": {
+        "onTime": {
+          "title": "99.2% On-Time Delivery Rate",
+          "description": "Reliable delivery performance across all major cities in Saudi Arabia with real-time tracking and proactive communication."
+        },
+        "secure": {
+          "title": "Safe & Secure",
+          "description": "Full insurance coverage and secure handling protocols to protect your valuable shipments throughout the delivery process."
+        },
+        "support": {
+          "title": "24/7 Customer Support",
+          "description": "Dedicated support team available around the clock in Arabic and English to assist with any delivery issues."
+        }
+      }
+    },
+    "clientLogos": {
+      "title": "Compatible with Top E-Commerce Platforms"
+    },
+    "testimonials": {
+      "title": "What Our Clients Say",
+      "subtitle": "Trusted by businesses across Saudi Arabia for reliable logistics solutions"
+    },
+    "cta": {
+      "title": "Ready to Grow Your Business?",
+      "subtitle": "Join thousands of customers who trust us to deliver their shipments. Get a customized quote for your needs today.",
+      "button": "Contact Us",
+      "getQuote": "Get a Quote",
+      "callNow": "Call Us Now"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We're here to help. Reach out to us and we'll respond as soon as possible.",
+    "info": {
+      "title": "Contact Information",
+      "description": "You can reach us through any of the following channels or fill out the form and we'll get back to you.",
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "email": "Email",
+      "address": "Address",
+      "workingHours": "Working Hours"
+    },
+    "form": {
+      "title": "Send a Message",
+      "name": "Name",
+      "namePlaceholder": "Enter your name",
+      "email": "Email",
+      "emailPlaceholder": "example@email.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+966 5X XXX XXXX",
+      "company": "Company Name",
+      "companyPlaceholder": "Your company name (optional)",
+      "type": "Inquiry Type",
+      "subject": "Subject",
+      "subjectPlaceholder": "Message subject",
+      "message": "Message",
+      "messagePlaceholder": "Write your message here...",
+      "submit": "Send Message",
+      "success": "Your message has been sent successfully!",
+      "successDesc": "Thank you for contacting us. We'll respond as soon as possible.",
+      "sendAnother": "Send Another Message",
+      "error": "An error occurred while sending the message. Please try again."
+    },
+    "types": {
+      "general": "General Inquiry",
+      "sales": "Sales",
+      "support": "Technical Support",
+      "partnership": "Partnerships"
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "About Us",
+      "subtitle": "Your trusted partner in shipping and delivery across Saudi Arabia"
+    },
+    "story": {
+      "title": "Our Story",
+      "paragraph1": "TD Logistics was founded with the goal of providing integrated logistics solutions that meet the needs of the growing Saudi market. We believe that reliable logistics services are the backbone of successful e-commerce and business operations.",
+      "paragraph2": "Since our launch, we have successfully built an extensive network covering more than 50 cities across the Kingdom, with a steadfast commitment to delivering high-quality services and exceptional customer experience. We continuously invest in technology and infrastructure to ensure the best possible service.",
+      "paragraph3": "Today, we are proud to serve over 1,000 clients and successfully deliver more than 500,000 shipments, with an on-time delivery rate of 99.2%. We are committed to continued growth and innovation to be the first choice for logistics services in the Kingdom."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "To provide exceptional logistics services that contribute to our clients' success through reliability, speed, and innovation, while maintaining the highest standards of quality and safety."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To be the first and most reliable logistics partner in Saudi Arabia, and contribute to the development of the e-commerce and logistics sector in the region."
+    },
+    "values": {
+      "title": "Our Values",
+      "subtitle": "The principles we believe in and that guide our daily work",
+      "reliability": {
+        "title": "Reliability",
+        "description": "We keep our promises and ensure your shipments are delivered on time with the highest standards of safety and quality."
+      },
+      "quality": {
+        "title": "Quality",
+        "description": "We always strive to provide the best possible service through continuous improvement and attention to the finest details."
+      },
+      "customer": {
+        "title": "Customer First",
+        "description": "Our customers' satisfaction is our top priority, and we work hard to exceed their expectations every time."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "We invest in the latest technologies and innovative solutions to improve our services and customer experience."
+      }
+    }
+  },
+  "quote": {
+    "title": "Get a Quote",
+    "subtitle": "Get a customized quote for your business needs. Our team will contact you within 24 hours.",
+    "serviceType": "Select Service Type",
+    "contactInfo": "Contact Information",
+    "shippingDetails": "Shipping Details",
+    "services": {
+      "delivery": "Express Delivery",
+      "storage": "Storage & Warehousing",
+      "fulfillment": "Fulfillment Services",
+      "returns": "Returns Management"
+    },
+    "form": {
+      "name": "Full Name",
+      "namePlaceholder": "Enter your name",
+      "company": "Company Name",
+      "companyPlaceholder": "Your company name (optional)",
+      "email": "Email",
+      "emailPlaceholder": "example@email.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+966 5X XXX XXXX",
+      "originCity": "Origin City",
+      "originCityPlaceholder": "e.g., Riyadh",
+      "destinationCity": "Destination City",
+      "destinationCityPlaceholder": "e.g., Jeddah",
+      "volume": "Expected Shipment Volume",
+      "volumePlaceholder": "Select expected volume",
+      "additionalDetails": "Additional Details",
+      "additionalDetailsPlaceholder": "Any additional details you'd like to share...",
+      "submit": "Submit Request"
+    },
+    "volumes": {
+      "1-50": "1-50 shipments/month",
+      "51-200": "51-200 shipments/month",
+      "201-500": "201-500 shipments/month",
+      "501-1000": "501-1000 shipments/month",
+      "1000+": "More than 1000 shipments/month"
+    },
+    "success": {
+      "title": "Your request has been submitted successfully!",
+      "description": "Thank you for your interest in our services. A sales representative will contact you within 24 hours.",
+      "sendAnother": "Submit Another Request"
+    },
+    "error": "An error occurred while submitting the request. Please try again."
+  },
+  "partners": {
+    "hero": {
+      "title1": "Partner with the Best",
+      "highlight": "Logistics Provider",
+      "title2": "in Saudi Arabia",
+      "subtitle": "Transform your e-commerce operations with TD's comprehensive solutions. From last-mile delivery to COD collection, we handle the complexity while you focus on growing your business.",
+      "features": {
+        "onTime": "99.2% On-Time Delivery Rate",
+        "support": "24/7 Customer Support in Arabic & English",
+        "cod": "Full COD Collection & Returns Management"
+      },
+      "cta": "Request Partnership Quote",
+      "viewServices": "View Our Services"
+    },
+    "stats": {
+      "onTime": "On-Time Delivery Rate",
+      "support": "Customer Support in Arabic & English",
+      "partners": "Active Business Partners",
+      "cities": "Cities Covered"
+    },
+    "benefits": {
+      "title": "Why Partner with TD Logistics?",
+      "subtitle": "Join hundreds of successful businesses that have transformed their logistics operations and accelerated their growth with our comprehensive partnership program.",
+      "items": {
+        "growth": {
+          "title": "Scalable Growth Solutions",
+          "description": "Flexible logistics infrastructure that grows with your business. From startups to enterprises, we adapt to your evolving needs."
+        },
+        "cod": {
+          "title": "Full COD Management",
+          "description": "Comprehensive cash collection, secure transfer, and detailed financial reporting for your e-commerce operations."
+        },
+        "api": {
+          "title": "API Integration",
+          "description": "Seamless integration with your e-commerce platform, ERP systems, and existing workflows for automated operations."
+        },
+        "returns": {
+          "title": "Returns Management",
+          "description": "Streamlined reverse logistics with quality inspection, refurbishment coordination, and inventory management."
+        },
+        "account": {
+          "title": "Dedicated Account Management",
+          "description": "Personal account manager, priority support, and regular business reviews to optimize your logistics performance."
+        },
+        "insurance": {
+          "title": "Comprehensive Insurance",
+          "description": "Full shipment protection, damage coverage, and liability insurance to protect your business and customers."
+        }
+      }
+    },
+    "quote": {
+      "title": "Get a Custom Partnership Quote",
+      "subtitle": "Share your business requirements with us and get a customized logistics solution within 24 hours. No obligation required.",
+      "features": {
+        "fast": {
+          "title": "Fast Response",
+          "description": "We respond to all inquiries within 24 hours"
+        },
+        "custom": {
+          "title": "Custom Solutions",
+          "description": "Quotes tailored specifically to your business needs"
+        },
+        "noObligation": {
+          "title": "No Obligation",
+          "description": "No fees or commitments to get a quote"
+        }
+      },
+      "formTitle": "Get Started",
+      "formSubtitle": "Fill out the form and our team will contact you soon",
+      "formButton": "Go to Quote Request Form"
+    },
+    "cta": {
+      "title": "Ready to Transform Your Logistics Operations?",
+      "subtitle": "Join hundreds of businesses that trust TD Logistics for their delivery needs. Get a customized quote tailored specifically to your requirements.",
+      "getQuote": "Get a Custom Quote",
+      "contactSales": "Contact Sales"
+    }
+  },
+  "validation": {
+    "nameRequired": "Name is required",
+    "nameMinLength": "Name must be at least 2 characters",
+    "emailRequired": "Email is required",
+    "emailInvalid": "Invalid email address",
+    "phoneRequired": "Phone number is required",
+    "phoneInvalid": "Invalid phone number",
+    "subjectRequired": "Subject is required",
+    "messageRequired": "Message is required",
+    "messageMinLength": "Message must be at least 10 characters",
+    "serviceRequired": "Please select a service type"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Latest news and articles about logistics and shipping",
+    "readMore": "Read More",
+    "backToBlog": "Back to Blog",
+    "author": "TD Team",
+    "views": "views",
+    "article": "Article",
+    "gallery": "Article Gallery",
+    "notFound": "Article not found"
+  },
+  "tracking": {
+    "title": "Track Your Shipment",
+    "subtitle": "Enter your tracking number to get the latest updates",
+    "placeholder": "Enter tracking number (e.g., TDL100378632203)",
+    "button": "Track",
+    "trackingNumber": "Tracking Number",
+    "viewDetails": "View Full Details",
+    "complete": "Complete",
+    "expectedDelivery": "Expected Delivery",
+    "destination": "Destination",
+    "receiver": "Receiver",
+    "shipmentDetails": "Shipment Details",
+    "shipmentInfo": "Shipment Information",
+    "createdDate": "Created Date",
+    "deliveryDate": "Delivery Date",
+    "currentStatus": "Current Status",
+    "detailedTimeline": "Detailed Tracking History",
+    "showLess": "Show Less",
+    "showAll": "Show All",
+    "milestones": {
+      "received": "Received",
+      "processing": "Processing",
+      "outForDelivery": "Out for Delivery",
+      "delivered": "Delivered",
+      "returned": "Returned",
+      "failed": "Delivery Failed"
+    },
+    "errors": {
+      "enterNumber": "Please enter a tracking number",
+      "invalidNumber": "Invalid tracking number",
+      "searchError": "An error occurred while searching"
+    },
+    "status": {
+      "pending": "Pending",
+      "picked": "Picked Up",
+      "inTransit": "In Transit",
+      "outForDelivery": "Out for Delivery",
+      "delivered": "Delivered",
+      "returned": "Returned"
+    }
+  },
+  "unsubscribe": {
+    "title": "Unsubscribe from Newsletter",
+    "success": "You have been unsubscribed successfully",
+    "successDesc": "You will no longer receive emails from us.",
+    "error": "An error occurred",
+    "noEmail": "No email specified",
+    "backHome": "Back to Home"
+  },
+  "services": {
+    "pageTitle": "Our Services",
+    "pageSubtitle": "Integrated logistics solutions designed to meet all your business needs",
+    "requestService": "Request This Service",
+    "getQuote": "Get a Quote",
+    "talkToSales": "Talk to Sales Team",
+    "requestQuoteNow": "Request Quote Now",
+    "viewAllServices": "View All Services",
+    "keyFeatures": "Key Features",
+    "ourServices": "Our Services",
+    "customCta": {
+      "title": "Need a Custom Service?",
+      "subtitle": "Contact us and we'll design a solution that fits your specific needs",
+      "button": "Contact Us"
+    },
+    "lastMile": {
+      "title": "Last Mile Delivery",
+      "description": "Fast and reliable delivery to your customers' doorstep across Saudi Arabia with real-time tracking and flexible delivery options.",
+      "whyChoose": "Why Choose TD Last Mile Delivery?",
+      "whyChooseDesc": "Our last mile delivery service is specifically designed for the Saudi market, with deep understanding of local challenges and customer expectations.",
+      "ctaTitle": "Ready to improve your customers' delivery experience?",
+      "ctaDesc": "Get a customized quote for last mile delivery service designed specifically for your business needs.",
+      "features": {
+        "sameDay": {
+          "title": "Same-Day and Next-Day Delivery Options",
+          "description": "Fast delivery to meet your customers' urgent needs"
+        },
+        "gpsTracking": {
+          "title": "Real-Time GPS Tracking and Notifications",
+          "description": "Complete transparency with live shipment location updates"
+        },
+        "flexibleSlots": {
+          "title": "Flexible Delivery Time Slots",
+          "description": "Choose the convenient time for shipment receipt"
+        },
+        "professionalTeam": {
+          "title": "Professional Uniformed Delivery Team",
+          "description": "Trained drivers representing your brand professionally"
+        }
+      },
+      "benefits": [
+        "Comprehensive coverage of all major cities in Saudi Arabia",
+        "99.2% successful delivery rate",
+        "Automatic customer notifications via SMS and email",
+        "Multiple delivery attempts with proactive communication",
+        "Easy rescheduling options for customers",
+        "Delivery confirmation with digital signature"
+      ],
+      "faq": {
+        "q1": "What is last mile delivery?",
+        "a1": "Last mile delivery is the final stage of the delivery process where the shipment is transported from the distribution center to the end customer's doorstep. We ensure fast and reliable delivery with real-time tracking.",
+        "q2": "Do you offer same-day delivery?",
+        "a2": "Yes, we offer same-day and next-day delivery in major cities. The service depends on pickup and delivery location and order time.",
+        "q3": "How can I track my shipment?",
+        "a3": "We provide real-time GPS tracking for all shipments. You can track your shipment through our website or mobile app, and you'll receive automatic notifications via SMS and email.",
+        "q4": "What happens if the customer is not available during delivery?",
+        "a4": "We make multiple delivery attempts with proactive customer communication. We also provide easy rescheduling options for customers to choose a convenient delivery time."
+      }
+    },
+    "ecommerce": {
+      "title": "E-commerce Solutions",
+      "description": "Full cash on delivery collection, returns management, and e-commerce integration to streamline your online store operations.",
+      "whyChoose": "Why Choose TD E-commerce Solutions?",
+      "whyChooseDesc": "Our e-commerce solutions are specifically designed to meet the unique needs of online stores in Saudi Arabia.",
+      "ctaTitle": "Ready to streamline your e-commerce operations?",
+      "ctaDesc": "Get a customized quote for e-commerce solutions designed specifically for your online store.",
+      "features": {
+        "cod": {
+          "title": "Cash on Delivery Collection Service",
+          "description": "Secure cash collection with fast fund transfer and comprehensive financial reports"
+        },
+        "returns": {
+          "title": "Automatic Returns and Exchanges Processing",
+          "description": "Streamlined returns management system with quality inspection and refurbishment coordination"
+        },
+        "api": {
+          "title": "API Integration with Major Platforms",
+          "description": "Seamless connection with Shopify, WooCommerce, Magento, and more"
+        },
+        "analytics": {
+          "title": "Detailed Analytics and Reports",
+          "description": "Real-time insights on delivery performance and financial metrics"
+        }
+      },
+      "benefits": [
+        "Secure COD processing with transfer within 48 hours",
+        "Comprehensive reverse logistics for returns management",
+        "API integration with major e-commerce platforms",
+        "Detailed financial reports and payment tracking",
+        "Quality inspection for returns and inventory management",
+        "Dedicated support for e-commerce partners"
+      ],
+      "faq": {
+        "q1": "How does the cash on delivery service work?",
+        "a1": "We collect the cash amount from the customer upon delivery, then transfer the funds to your account within 48 business hours with comprehensive financial reports.",
+        "q2": "Can I integrate with my e-commerce platform?",
+        "a2": "Yes, we provide API integration with all major e-commerce platforms like Shopify, WooCommerce, Magento, and Zid. Integration is easy and straightforward with complete documentation.",
+        "q3": "How are returns processed?",
+        "a3": "We have a comprehensive reverse logistics system that includes picking up returns from customers, quality inspection, refurbishment coordination, and inventory management. We make the returns process smooth and easy.",
+        "q4": "What are the COD service fees?",
+        "a4": "Service fees depend on your business volume and specific requirements. We offer competitive pricing with discounts for large volumes. Request a customized quote for pricing details."
+      }
+    },
+    "customized": {
+      "title": "Customized Delivery",
+      "description": "Logistics solutions tailored specifically to your business needs, from storage to specialized handling requirements.",
+      "whyChoose": "Why Choose TD Customized Delivery?",
+      "whyChooseDesc": "We understand that every business has unique needs. Our customized solutions are designed to meet your specific requirements.",
+      "ctaTitle": "Ready for a logistics solution designed specifically for your business?",
+      "ctaDesc": "Let's discuss your specific needs and design the perfect solution for your business.",
+      "features": {
+        "temperature": {
+          "title": "Temperature-Controlled Delivery Options",
+          "description": "Specialized solutions for temperature-sensitive products"
+        },
+        "fragile": {
+          "title": "Fragile and Valuable Items Handling",
+          "description": "Special care and security protocols for valuable shipments"
+        },
+        "bulk": {
+          "title": "Bulk and B2B Delivery Solutions",
+          "description": "Logistics services designed for large commercial shipments"
+        },
+        "account": {
+          "title": "Dedicated Account Management",
+          "description": "Personal account manager and priority support"
+        }
+      },
+      "benefits": [
+        "Customized solutions designed for your specific industry requirements",
+        "Specialized equipment for handling and transportation",
+        "Dedicated account managers and priority support",
+        "Flexible storage options and inventory management",
+        "Customized pricing based on your needs",
+        "Customized Service Level Agreements (SLA)"
+      ],
+      "faq": {
+        "q1": "What types of customized solutions do you offer?",
+        "a1": "We offer a wide range of customized solutions including temperature-controlled delivery, fragile items handling, B2B solutions, customized storage, and any logistics requirements specific to your industry.",
+        "q2": "How is pricing determined for customized solutions?",
+        "a2": "Pricing depends on your specific requirements, operations volume, and required services. We provide customized quotes after understanding your needs in detail.",
+        "q3": "Can I get a dedicated account manager?",
+        "a3": "Yes, all customized solutions customers get a personal account manager, priority support, and regular business reviews to ensure your needs are met.",
+        "q4": "Do you provide storage services?",
+        "a4": "Yes, we provide flexible storage options with advanced inventory management, including temperature-controlled storage for sensitive products."
+      }
+    },
+    "technology": {
+      "title": "Technology Features",
+      "description": "Advanced tracking systems, API integration, and real-time analytics to give you complete visibility and control over your shipments.",
+      "whyChoose": "Why Choose TD Technology?",
+      "whyChooseDesc": "Our advanced technology platform gives you the tools you need to manage your logistics operations efficiently.",
+      "ctaTitle": "Ready to upgrade your logistics operations with technology?",
+      "ctaDesc": "Discover how our technology platform can transform your logistics operations.",
+      "features": {
+        "gps": {
+          "title": "Real-Time GPS Tracking and Updates",
+          "description": "Live tracking for all your shipments with automatic updates"
+        },
+        "api": {
+          "title": "RESTful API for Seamless Integration",
+          "description": "Easy connection with your existing systems"
+        },
+        "notifications": {
+          "title": "Automatic SMS and Email Notifications",
+          "description": "Keep your customers informed at every step"
+        },
+        "analytics": {
+          "title": "Business Intelligence and Reporting Tools",
+          "description": "Actionable insights to improve your operations"
+        }
+      },
+      "benefits": [
+        "Real-time tracking for all shipments with GPS updates",
+        "Comprehensive API integration with complete documentation",
+        "Automatic customer notifications via multiple channels",
+        "Customized dashboards and reporting tools",
+        "Advanced analytics for performance improvement",
+        "Mobile app for drivers and customers"
+      ],
+      "faq": {
+        "q1": "How does the real-time tracking system work?",
+        "a1": "We use advanced GPS technology to track all shipments in real-time. You can see your shipment's exact location, delivery status, and expected arrival time through the dashboard or API.",
+        "q2": "Do you provide API documentation?",
+        "a2": "Yes, we provide comprehensive API documentation with code examples, integration guide, and dedicated technical support to help you integrate with your systems.",
+        "q3": "What type of reports can I get?",
+        "a3": "We provide comprehensive reports including delivery performance, financial analytics, COD reports, success rates, and customized analytics based on your needs.",
+        "q4": "Can I send customized notifications to my customers?",
+        "a4": "Yes, you can customize the notifications your customers receive via SMS and email, including branding and customized messages."
+      }
+    },
+    "list": {
+      "delivery": {
+        "title": "Express Delivery",
+        "description": "Fast and reliable delivery service across Saudi Arabia.",
+        "features": [
+          "Delivery within 24-48 hours",
+          "Real-time shipment tracking",
+          "Instant customer notifications",
+          "Coverage across all regions",
+          "Flexible delivery options"
+        ]
+      },
+      "storage": {
+        "title": "Storage & Warehousing",
+        "description": "Modern warehouses equipped with the latest technology to store your products safely.",
+        "features": [
+          "Climate-controlled and secure warehouses",
+          "Advanced inventory management system",
+          "24/7 monitoring",
+          "Regular inventory reports",
+          "Strategic locations"
+        ]
+      },
+      "fulfillment": {
+        "title": "Fulfillment Services",
+        "description": "Complete inventory management, packaging, and shipping for your e-commerce business.",
+        "features": [
+          "Product receiving and storage",
+          "Professional packaging",
+          "Fast order processing",
+          "E-commerce platform integration",
+          "Returns management"
+        ]
+      },
+      "cod": {
+        "title": "Cash on Delivery",
+        "description": "Cash collection service upon delivery with fast profit transfer.",
+        "features": [
+          "Secure cash collection",
+          "Fast profit transfer",
+          "Detailed financial reports",
+          "Integrated accounting system",
+          "Multi-currency support"
+        ]
+      },
+      "returns": {
+        "title": "Returns Management",
+        "description": "Comprehensive returns management system with high efficiency and low cost.",
+        "features": [
+          "Customer returns pickup",
+          "Product inspection and classification",
+          "Re-storage or return",
+          "Detailed returns reports",
+          "Competitive pricing"
+        ]
+      },
+      "insurance": {
+        "title": "Shipment Insurance",
+        "description": "Comprehensive protection for your shipments against damage or loss with fast compensation.",
+        "features": [
+          "Comprehensive shipment coverage",
+          "Fast and fair compensation",
+          "Easy claims process",
+          "Competitive rates",
+          "Protection for valuable shipments"
+        ]
+      }
+    }
+  },
+  "floatingContact": {
+    "call": "Call Us",
+    "email": "Email",
+    "contactUs": "Contact Us"
+  },
+  "login": {
+    "title": "Login",
+    "subtitle": "Welcome back! Sign in to access your account",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "submit": "Sign In",
+    "noAccount": "Don't have an account?",
+    "createAccount": "Create a new account",
+    "fillAllFields": "Please fill in all fields",
+    "error": "An error occurred during login",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: December 2024",
+    "intro": {
+      "title": "Introduction",
+      "content": "At TD Logistics, we are committed to protecting your privacy and personal data. This policy explains how we collect, use, and protect your information when using our website and services."
+    },
+    "dataCollection": {
+      "title": "Information We Collect",
+      "content": "We collect the following information:",
+      "items": [
+        "Contact information: Name, email, phone number",
+        "Shipping information: Addresses, package details",
+        "Account information: Login credentials",
+        "Technical information: IP address, browser type, device used"
+      ]
+    },
+    "dataUsage": {
+      "title": "How We Use Your Information",
+      "content": "We use the collected information for the following purposes:",
+      "items": [
+        "Providing shipping and delivery services",
+        "Communicating with you about your shipments",
+        "Improving our services and user experience",
+        "Sending updates and offers (with your consent)",
+        "Complying with legal requirements"
+      ]
+    },
+    "dataProtection": {
+      "title": "Data Protection",
+      "content": "We take strict security measures to protect your data, including:",
+      "items": [
+        "Data encryption during transfer and storage",
+        "Advanced protection systems against hacking",
+        "Restricting data access to authorized employees only",
+        "Regular security reviews"
+      ]
+    },
+    "dataSharing": {
+      "title": "Data Sharing",
+      "content": "We do not sell or rent your personal data to third parties. We may share your data with:",
+      "items": [
+        "Delivery partners to complete shipping operations",
+        "Technical service providers",
+        "Government authorities upon legal request"
+      ]
+    },
+    "rights": {
+      "title": "Your Rights",
+      "content": "You have the right to:",
+      "items": [
+        "Access your personal data",
+        "Correct inaccurate data",
+        "Request deletion of your data",
+        "Object to processing of your data",
+        "Withdraw your consent at any time"
+      ]
+    },
+    "cookies": {
+      "title": "Cookies",
+      "content": "We use cookies to improve your experience on our website. You can control cookie settings through your browser."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "content": "For any inquiries about the privacy policy, please contact us via:",
+      "email": "Email: info@tdlogistics.co",
+      "phone": "Phone: 9200 15499"
+    }
+  },
+  "terms": {
+    "title": "Terms & Conditions",
+    "lastUpdated": "Last updated: December 2024",
+    "intro": {
+      "title": "Introduction",
+      "content": "Welcome to TD Logistics. By using our website and services, you agree to comply with these terms and conditions. Please read them carefully."
+    },
+    "definitions": {
+      "title": "Definitions",
+      "items": [
+        "\"Company\" or \"We\": TD Logistics",
+        "\"Customer\" or \"You\": User of the website or services",
+        "\"Services\": All shipping, delivery, and storage services provided",
+        "\"Shipment\": Any package or goods shipped through our services"
+      ]
+    },
+    "serviceTerms": {
+      "title": "Service Terms",
+      "content": "By accepting these terms, you agree to:",
+      "items": [
+        "Provide accurate and correct information when using our services",
+        "Not ship prohibited or dangerous materials",
+        "Comply with local and international shipping regulations",
+        "Pay all due fees on time"
+      ]
+    },
+    "prohibited": {
+      "title": "Prohibited Materials",
+      "content": "The following materials are prohibited from shipping:",
+      "items": [
+        "Explosive and flammable materials",
+        "Narcotics and legally prohibited substances",
+        "Weapons and ammunition",
+        "Toxic and hazardous materials",
+        "Cash and precious jewelry (without special insurance)",
+        "Any materials violating local regulations"
+      ]
+    },
+    "liability": {
+      "title": "Liability and Compensation",
+      "content": "We are committed to compensating the customer in case of loss or damage to the shipment according to the following conditions:",
+      "items": [
+        "Any damage must be reported within 48 hours of receipt",
+        "Compensation is based on the declared shipment value or the maximum limit",
+        "We are not responsible for delays due to force majeure",
+        "Additional insurance is available for high-value shipments"
+      ]
+    },
+    "payment": {
+      "title": "Payment and Pricing",
+      "items": [
+        "Prices are subject to change without prior notice",
+        "Fees are calculated based on weight or volume (whichever is greater)",
+        "Additional fees may apply to remote areas",
+        "Payment is due upon order or as agreed"
+      ]
+    },
+    "cancellation": {
+      "title": "Service Cancellation",
+      "content": "The customer has the right to cancel the shipment before it is picked up by the courier. After pickup, cancellation fees may apply."
+    },
+    "disputes": {
+      "title": "Dispute Resolution",
+      "content": "In case of any dispute, it will be resolved amicably first. If that fails, the dispute will be referred to the competent judicial authorities in Saudi Arabia."
+    },
+    "modifications": {
+      "title": "Modifications",
+      "content": "We reserve the right to modify these terms at any time. You will be notified of any significant changes via email or the website."
+    },
+    "contact": {
+      "title": "Contact",
+      "content": "For any inquiries about the terms and conditions:",
+      "email": "Email: info@tdlogistics.co",
+      "phone": "Phone: 9200 15499"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Manage website content and customer reviews",
+    "settings": "Settings",
+    "refresh": "Refresh",
+    "blogPosts": "Blog Posts",
+    "customerReviews": "Customer Reviews",
+    "newPost": "New Post",
+    "newReview": "New Review",
+    "edit": "Edit",
+    "viewAll": "View All",
+    "viewAllPosts": "View All Posts",
+    "viewAllReviews": "View All Reviews",
+    "loading": "Loading...",
+    "noPosts": "No posts yet",
+    "noReviews": "No reviews yet",
+    "blogViews": "Blog Views",
+    "newsletterSubscribers": "Newsletter Subscribers",
+    "status": {
+      "draft": "Draft",
+      "published": "Published",
+      "archived": "Archived",
+      "pending": "Pending Review",
+      "rejected": "Rejected"
+    },
+    "backToDashboard": "Back to Dashboard",
+    "backToBlog": "Back to Blog",
+    "backToReviews": "Back to Reviews",
+    "blogManagement": "Blog Management",
+    "reviewsManagement": "Customer Reviews Management",
+    "subscribersManagement": "Newsletter Subscribers",
+    "createNewPost": "Create New Post",
+    "addNewReview": "Add New Review",
+    "editPost": "Edit Post",
+    "editReview": "Edit Review",
+    "deletePost": "Delete Post",
+    "deleteReview": "Delete Review",
+    "confirmDeletePost": "Are you sure you want to delete this post?",
+    "confirmDeleteReview": "Are you sure you want to delete this review?",
+    "confirmDeleteSubscriber": "Are you sure you want to delete this subscriber?",
+    "postNotFound": "Post not found",
+    "reviewNotFound": "Review not found",
+    "errorOccurred": "An error occurred",
+    "errorDeleting": "An error occurred while deleting",
+    "titleRequired": "Title and content are required",
+    "reviewRequired": "Customer name and review text are required",
+    "saveChanges": "Save Changes",
+    "saveDraft": "Save as Draft",
+    "publishNow": "Publish Now",
+    "delete": "Delete",
+    "blog": {
+      "title": "Title",
+      "titlePlaceholder": "Post title",
+      "excerpt": "Excerpt",
+      "excerptPlaceholder": "Short description (appears in post list)",
+      "excerptPlaceholderEdit": "Short description",
+      "content": "Content",
+      "contentPlaceholder": "Full post content...",
+      "status": "Status",
+      "seoTitle": "SEO Title",
+      "seoTitlePlaceholder": "Search engine title (optional)",
+      "seoTitlePlaceholderEdit": "Search engine title",
+      "seoDescription": "SEO Description",
+      "seoDescriptionPlaceholder": "Search engine description (optional)",
+      "seoDescriptionPlaceholderEdit": "Search engine description",
+      "images": "Post images (first image is the featured image)",
+      "tableTitle": "Title",
+      "tableStatus": "Status",
+      "tableViews": "Views",
+      "tableDate": "Date",
+      "tableActions": "Actions",
+      "filterAll": "All",
+      "filterPublished": "Published",
+      "filterDraft": "Draft"
+    },
+    "reviews": {
+      "customerName": "Customer Name",
+      "customerNamePlaceholder": "Customer name",
+      "companyName": "Company Name",
+      "companyNamePlaceholder": "Company name (optional)",
+      "companyNamePlaceholderEdit": "Company name",
+      "position": "Position",
+      "positionPlaceholder": "Job position (optional)",
+      "positionPlaceholderEdit": "Job position",
+      "rating": "Rating",
+      "reviewText": "Review Text",
+      "reviewTextPlaceholder": "Customer review...",
+      "customerImage": "Customer Image",
+      "status": "Status",
+      "statusPending": "Pending Review",
+      "statusPublished": "Published",
+      "statusRejected": "Rejected",
+      "tableCustomer": "Customer",
+      "tableCompany": "Company",
+      "tableRating": "Rating",
+      "tableStatus": "Status",
+      "tableDate": "Date",
+      "tableActions": "Actions",
+      "filterAll": "All",
+      "filterPublished": "Published",
+      "filterPending": "Pending"
+    },
+    "subscribers": {
+      "totalSubscribers": "Total Subscribers",
+      "activeSubscribers": "Active Subscribers",
+      "unsubscribed": "Unsubscribed",
+      "tableEmail": "Email",
+      "tableName": "Name",
+      "tableSource": "Source",
+      "tableStatus": "Status",
+      "tableDate": "Subscription Date",
+      "tableActions": "Actions",
+      "filterAll": "All",
+      "filterActive": "Active",
+      "filterInactive": "Inactive",
+      "statusActive": "Active",
+      "statusInactive": "Inactive",
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "noSubscribers": "No subscribers",
+      "sourceContact": "Contact Form",
+      "sourceQuote": "Quote Request",
+      "sourceManual": "Manual Entry",
+      "sourceBlog": "Blog"
+    },
+    "clients": {
+      "title": "Clients Management",
+      "addNew": "Add Client",
+      "edit": "Edit Client",
+      "add": "Add",
+      "name": "Client Name",
+      "namePlaceholder": "Enter client name",
+      "logoUrl": "Logo URL",
+      "logoUrlPlaceholder": "https://example.com/logo.png",
+      "logo": "Logo",
+      "uploadLogo": "Click to upload logo",
+      "status": "Status",
+      "actions": "Actions",
+      "active": "Active",
+      "inactive": "Inactive",
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "confirmDelete": "Are you sure you want to delete this client?",
+      "noClients": "No clients",
+      "nameRequired": "Client name is required"
+    },
+    "brands": {
+      "title": "Platforms & Brands Management",
+      "subtitle": "Compatible E-commerce Platforms",
+      "addNew": "Add Platform",
+      "edit": "Edit Platform",
+      "add": "Add",
+      "name": "Platform Name",
+      "namePlaceholder": "Enter platform name",
+      "logoUrl": "Logo URL",
+      "logoUrlPlaceholder": "https://example.com/logo.png",
+      "logo": "Logo",
+      "uploadLogo": "Click to upload logo",
+      "type": "Type",
+      "typePlatform": "E-commerce Platform",
+      "typePartner": "Partner",
+      "status": "Status",
+      "actions": "Actions",
+      "active": "Active",
+      "inactive": "Inactive",
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "confirmDelete": "Are you sure you want to delete this platform?",
+      "noBrands": "No platforms",
+      "nameRequired": "Platform name is required"
+    },
+    "settings": {
+      "title": "Settings",
+      "backToDashboard": "Back to Dashboard",
+      "changePassword": "Change Password",
+      "requestOtpDesc": "A verification code will be sent to the following email:",
+      "sendOtp": "Send Verification Code",
+      "sending": "Sending...",
+      "otpSent": "Verification code sent to your email",
+      "enterOtp": "Enter the verification code sent to your email",
+      "otpCode": "Verification Code (OTP)",
+      "verify": "Verify",
+      "verifying": "Verifying...",
+      "otpVerified": "Verified successfully. Enter your new password",
+      "enterNewPassword": "Enter your new password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm Password",
+      "changePasswordBtn": "Change Password",
+      "changing": "Changing...",
+      "passwordChanged": "Password changed successfully!",
+      "passwordMinLength": "Password must be at least 6 characters",
+      "passwordMismatch": "Passwords do not match",
+      "error": "An error occurred"
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "description": "Answers to the most common questions about our logistics services",
+    "items": {
+      "coverage": {
+        "question": "What areas do your services cover?",
+        "answer": "We cover more than 50 cities across Saudi Arabia, including Riyadh, Jeddah, Dammam, Mecca, Medina, and all major cities and remote areas."
+      },
+      "tracking": {
+        "question": "How can I track my shipment?",
+        "answer": "You can track your shipment in real-time through our website using the tracking number. We also provide automatic notifications via SMS and email to keep you updated on your shipment status."
+      },
+      "cod": {
+        "question": "Do you offer cash on delivery service?",
+        "answer": "Yes, we offer full cash on delivery collection service with secure fund transfer within 48 business hours and comprehensive financial reports."
+      },
+      "onTime": {
+        "question": "What is your on-time delivery rate?",
+        "answer": "We maintain an on-time delivery rate of 99.2%, which is one of the highest rates in the logistics industry in Saudi Arabia."
+      },
+      "quote": {
+        "question": "How can I get a quote?",
+        "answer": "You can request a customized quote through our website or by contacting our sales team. We respond to all requests within 24 business hours."
+      },
+      "integration": {
+        "question": "Can I integrate with my online store?",
+        "answer": "Yes, we offer comprehensive API integration with all major e-commerce platforms such as Shopify, WooCommerce, Magento, and Zid."
+      }
+    }
+  },
+  "careers": {
+    "title": "Join Our Team",
+    "subtitle": "Be part of TD Logistics team and help shape the future of logistics in the Kingdom",
+    "whyJoin": {
+      "title": "Why Join Us?",
+      "description": "We believe our employees are the foundation of our success. Join a dynamic and growing team that offers opportunities for professional development.",
+      "growth": "Growth Opportunities",
+      "growthDesc": "Clear career path with opportunities for advancement and professional development",
+      "locations": "Multiple Locations",
+      "locationsDesc": "Job opportunities across Saudi Arabia",
+      "flexibility": "Flexible Work Environment",
+      "flexibilityDesc": "We provide a supportive and flexible work environment for our employees"
+    },
+    "positions": {
+      "driver": "Delivery Driver",
+      "customerService": "Customer Service",
+      "warehouse": "Warehouse Operations",
+      "operations": "Operations",
+      "sales": "Sales",
+      "it": "IT",
+      "other": "Other"
+    },
+    "form": {
+      "title": "Apply Now",
+      "name": "Full Name",
+      "namePlaceholder": "Enter your full name",
+      "email": "Email",
+      "emailPlaceholder": "example@email.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+966 5X XXX XXXX",
+      "position": "Desired Position",
+      "selectPosition": "Select position",
+      "message": "Additional Message",
+      "messagePlaceholder": "Tell us more about yourself and your experience...",
+      "submit": "Submit Application",
+      "fillRequired": "Please fill all required fields",
+      "error": "An error occurred while submitting. Please try again.",
+      "successTitle": "Your application has been submitted!",
+      "successDesc": "Thank you for your interest in joining our team. Our HR team will review your application and contact you soon.",
+      "sendAnother": "Submit Another Application"
+    }
+  },
+  "floatingContact": {
+    "call": "Call Us",
+    "email": "Email",
+    "contactUs": "Contact Us",
+    "tracking": "Track Shipment"
+  },
+  "qaseem": {
+    "title": "Specialists in Qassim Region",
+    "subtitle": "Comprehensive coverage of all cities and governorates in Qassim region",
+    "description": "We are proud to provide excellent delivery services in Qassim region, with comprehensive coverage of all cities and governorates including Buraidah, Unaizah, Ar Rass, Al Mithnab and more.",
+    "coverage": "Full Coverage",
+    "fastDelivery": "Fast Delivery",
+    "localTeam": "Local Team"
+  },
+  "clients": {
+    "title": "Our Clients",
+    "subtitle": "We are proud to serve a diverse range of clients across various sectors"
+  },
+  "forgotPassword": {
+    "title": "Reset Password",
+    "subtitle": "Enter your email to reset your password",
+    "email": "Email",
+    "enterEmail": "Enter your registered email to receive a verification code",
+    "sendOtp": "Send Verification Code",
+    "sending": "Sending...",
+    "otpSent": "Verification code sent to your email",
+    "enterOtp": "Enter the verification code sent to your email",
+    "otpCode": "Verification Code (OTP)",
+    "verify": "Verify",
+    "verifying": "Verifying...",
+    "otpVerified": "Verified successfully. Enter your new password",
+    "enterNewPassword": "Enter your new password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "changePassword": "Change Password",
+    "changing": "Changing...",
+    "successTitle": "Password Changed Successfully!",
+    "successDesc": "You can now login with your new password",
+    "goToLogin": "Go to Login",
+    "backToLogin": "Back to Login",
+    "emailRequired": "Email is required",
+    "emailNotFound": "Email not registered",
+    "otpRequired": "Verification code is required",
+    "passwordMinLength": "Password must be at least 6 characters",
+    "passwordMismatch": "Passwords do not match",
+    "error": "An error occurred"
+  }
+}

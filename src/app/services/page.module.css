@@ -45,12 +45,22 @@
   border-bottom: none;
 }
 
-.serviceItem.reversed {
+/* RTL: reversed items flip to LTR */
+:global([dir="rtl"]) .serviceItem.reversed {
   direction: ltr;
 }
 
-.serviceItem.reversed .serviceContent {
+:global([dir="rtl"]) .serviceItem.reversed .serviceContent {
   direction: rtl;
+}
+
+/* LTR: reversed items flip to RTL */
+:global([dir="ltr"]) .serviceItem.reversed {
+  direction: rtl;
+}
+
+:global([dir="ltr"]) .serviceItem.reversed .serviceContent {
+  direction: ltr;
 }
 
 .serviceIcon {

@@ -2,12 +2,15 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { FiMail, FiLock, FiEye, FiEyeOff, FiLogIn } from 'react-icons/fi';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 import styles from './page.module.css';
 
 export default function LoginPage() {
   const router = useRouter();
+  const { language, t } = useLanguage();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -26,7 +29,7 @@ export default function LoginPage() {
     e.preventDefault();
     
     if (!formData.email || !formData.password) {
-      setError('يرجى ملء جميع الحقول');
+      setError(t('login.fillAllFields'));
       return;
     }
 
@@ -43,13 +46,13 @@ export default function LoginPage() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'حدث خطأ أثناء تسجيل الدخول');
+        throw new Error(data.error || t('login.error'));
       }
 
       // Redirect to dashboard
       router.push('/dashboard');
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'حدث خطأ أثناء تسجيل الدخول');
+      setError(err instanceof Error ? err.message : t('login.error'));
     } finally {
       setIsSubmitting(false);
     }
@@ -61,16 +64,15 @@ export default function LoginPage() {
         <div className={styles.authCard}>
           {/* Logo */}
           <Link href="/" className={styles.logo}>
-            <div className={styles.logoIcon}>TD</div>
-            <span>تي دي للخدمات اللوجستية</span>
+            <Image src="/logo.png" alt="TD Logistics" width={150} height={75} className={styles.logoImage} />
           </Link>
 
-          <h1>تسجيل الدخول</h1>
-          <p className={styles.subtitle}>مرحباً بعودتك! سجل دخولك للوصول لحسابك</p>
+          <h1>{t('login.title')}</h1>
+          <p className={styles.subtitle}>{t('login.subtitle')}</p>
 
           <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.inputGroup}>
-              <label>البريد الإلكتروني</label>
+              <label>{t('login.email')}</label>
               <div className={styles.inputWrapper}>
                 <FiMail className={styles.inputIcon} />
                 <input
@@ -87,7 +89,7 @@ export default function LoginPage() {
             </div>
 
             <div className={styles.inputGroup}>
-              <label>كلمة المرور</label>
+              <label>{t('login.password')}</label>
               <div className={styles.inputWrapper}>
                 <FiLock className={styles.inputIcon} />
                 <input
@@ -104,7 +106,7 @@ export default function LoginPage() {
                   type="button"
                   className={styles.togglePassword}
                   onClick={() => setShowPassword(!showPassword)}
-                  aria-label={showPassword ? 'إخفاء كلمة المرور' : 'إظهار كلمة المرور'}
+                  aria-label={showPassword ? t('login.hidePassword') : t('login.showPassword')}
                 >
                   {showPassword ? <FiEyeOff /> : <FiEye />}
                 </button>
@@ -112,7 +114,7 @@ export default function LoginPage() {
             </div>
 
             <div className={styles.forgotPassword}>
-              <Link href="/forgot-password">نسيت كلمة المرور؟</Link>
+              <Link href="/forgot-password">{t('login.forgotPassword')}</Link>
             </div>
 
             {error && <div className={styles.error}>{error}</div>}
@@ -127,16 +129,13 @@ export default function LoginPage() {
               ) : (
                 <>
                   <FiLogIn />
-                  تسجيل الدخول
+                  {t('login.submit')}
                 </>
               )}
             </button>
           </form>
 
-          <p className={styles.switchAuth}>
-            ليس لديك حساب؟{' '}
-            <Link href="/register">إنشاء حساب جديد</Link>
-          </p>
+{/* Registration disabled - admin only access */}
         </div>
       </div>
     </div>

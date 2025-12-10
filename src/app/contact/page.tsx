@@ -2,50 +2,46 @@
 
 import { useState } from 'react';
 import { FiPhone, FiMail, FiMapPin, FiClock, FiSend, FiCheck } from 'react-icons/fi';
-import { FaWhatsapp } from 'react-icons/fa';
+import { useLanguage } from '@/lib/i18n';
 import styles from './page.module.css';
 
-const contactInfo = [
-  {
-    icon: FiPhone,
-    title: 'الهاتف',
-    value: '+966 50 000 0000',
-    href: 'tel:+966500000000',
-  },
-  {
-    icon: FaWhatsapp,
-    title: 'واتساب',
-    value: '+966 50 000 0000',
-    href: 'https://wa.me/966500000000',
-  },
-  {
-    icon: FiMail,
-    title: 'البريد الإلكتروني',
-    value: 'info@tdlogistics.sa',
-    href: 'mailto:info@tdlogistics.sa',
-  },
-  {
-    icon: FiMapPin,
-    title: 'العنوان',
-    value: 'الرياض، المملكة العربية السعودية',
-    href: '#',
-  },
-  {
-    icon: FiClock,
-    title: 'ساعات العمل',
-    value: 'الأحد - الخميس: 8 ص - 6 م',
-    href: '#',
-  },
-];
-
-const contactTypes = [
-  { value: 'general', label: 'استفسار عام' },
-  { value: 'sales', label: 'المبيعات' },
-  { value: 'support', label: 'الدعم الفني' },
-  { value: 'partnership', label: 'الشراكات' },
-];
-
 export default function ContactPage() {
+  const { t, language } = useLanguage();
+  
+  const contactInfo = [
+    {
+      icon: FiPhone,
+      title: t('contact.info.phone'),
+      value: '9200 15499',
+      href: 'tel:920015499',
+    },
+    {
+      icon: FiMail,
+      title: t('contact.info.email'),
+      value: 'info@tdlogistics.co',
+      href: 'mailto:info@tdlogistics.co',
+    },
+    {
+      icon: FiMapPin,
+      title: t('contact.info.address'),
+      value: t('footer.address'),
+      href: '#',
+    },
+    {
+      icon: FiClock,
+      title: t('contact.info.workingHours'),
+      value: t('footer.workingHours'),
+      href: '#',
+    },
+  ];
+
+  const contactTypes = [
+    { value: 'general', label: t('contact.types.general') },
+    { value: 'sales', label: t('contact.types.sales') },
+    { value: 'support', label: t('contact.types.support') },
+    { value: 'partnership', label: t('contact.types.partnership') },
+  ];
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -70,15 +66,15 @@ export default function ContactPage() {
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
     
-    if (!formData.name.trim()) newErrors.name = 'الاسم مطلوب';
-    if (!formData.email.trim()) newErrors.email = 'البريد الإلكتروني مطلوب';
+    if (!formData.name.trim()) newErrors.name = t('validation.nameRequired');
+    if (!formData.email.trim()) newErrors.email = t('validation.emailRequired');
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'البريد الإلكتروني غير صالح';
+      newErrors.email = t('validation.emailInvalid');
     }
-    if (!formData.subject.trim()) newErrors.subject = 'الموضوع مطلوب';
-    if (!formData.message.trim()) newErrors.message = 'الرسالة مطلوبة';
+    if (!formData.subject.trim()) newErrors.subject = t('validation.subjectRequired');
+    if (!formData.message.trim()) newErrors.message = t('validation.messageRequired');
     else if (formData.message.length < 10) {
-      newErrors.message = 'الرسالة يجب أن تكون 10 أحرف على الأقل';
+      newErrors.message = t('validation.messageMinLength');
     }
 
     setErrors(newErrors);
@@ -97,12 +93,12 @@ export default function ContactPage() {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, language }),
       });
 
       if (!response.ok) {
         const data = await response.json();
-        throw new Error(data.error || 'حدث خطأ');
+        throw new Error(data.error || t('common.error'));
       }
 
       setSubmitStatus('success');
@@ -127,8 +123,8 @@ export default function ContactPage() {
       {/* Hero */}
       <section className={styles.hero}>
         <div className="container">
-          <h1>اتصل بنا</h1>
-          <p>نحن هنا لمساعدتك. تواصل معنا وسنرد عليك في أقرب وقت.</p>
+          <h1>{t('contact.title')}</h1>
+          <p>{t('contact.subtitle')}</p>
         </div>
       </section>
 
@@ -137,9 +133,9 @@ export default function ContactPage() {
           <div className={styles.grid}>
             {/* Contact Info */}
             <div className={styles.infoSection}>
-              <h2>معلومات التواصل</h2>
+              <h2>{t('contact.info.title')}</h2>
               <p className={styles.infoDesc}>
-                يمكنك التواصل معنا عبر أي من القنوات التالية أو ملء النموذج وسنتواصل معك.
+                {t('contact.info.description')}
               </p>
 
               <div className={styles.infoList}>
@@ -165,45 +161,45 @@ export default function ContactPage() {
 
             {/* Contact Form */}
             <div className={styles.formSection}>
-              <h2>أرسل رسالة</h2>
+              <h2>{t('contact.form.title')}</h2>
               
               {submitStatus === 'success' ? (
                 <div className={styles.successMessage}>
                   <FiCheck className={styles.successIcon} />
-                  <h3>تم إرسال رسالتك بنجاح!</h3>
-                  <p>شكراً لتواصلك معنا. سنرد عليك في أقرب وقت ممكن.</p>
+                  <h3>{t('contact.form.success')}</h3>
+                  <p>{t('contact.form.successDesc')}</p>
                   <button 
                     className="btn btn-primary"
                     onClick={() => setSubmitStatus('idle')}
                   >
-                    إرسال رسالة أخرى
+                    {t('contact.form.sendAnother')}
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className={styles.form}>
                   <div className={styles.formRow}>
                     <div className="input-group">
-                      <label className="input-label">الاسم *</label>
+                      <label className="input-label">{t('contact.form.name')} *</label>
                       <input
                         type="text"
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
                         className={`input ${errors.name ? 'input-error' : ''}`}
-                        placeholder="أدخل اسمك"
+                        placeholder={t('contact.form.namePlaceholder')}
                         maxLength={100}
                       />
                       {errors.name && <span className="error-message">{errors.name}</span>}
                     </div>
                     <div className="input-group">
-                      <label className="input-label">البريد الإلكتروني *</label>
+                      <label className="input-label">{t('contact.form.email')} *</label>
                       <input
                         type="email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
                         className={`input ${errors.email ? 'input-error' : ''}`}
-                        placeholder="example@email.com"
+                        placeholder={t('contact.form.emailPlaceholder')}
                         maxLength={255}
                         dir="ltr"
                       />
@@ -213,27 +209,27 @@ export default function ContactPage() {
 
                   <div className={styles.formRow}>
                     <div className="input-group">
-                      <label className="input-label">رقم الهاتف</label>
+                      <label className="input-label">{t('contact.form.phone')}</label>
                       <input
                         type="tel"
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
                         className="input"
-                        placeholder="+966 5X XXX XXXX"
+                        placeholder={t('contact.form.phonePlaceholder')}
                         maxLength={15}
                         dir="ltr"
                       />
                     </div>
                     <div className="input-group">
-                      <label className="input-label">اسم الشركة</label>
+                      <label className="input-label">{t('contact.form.company')}</label>
                       <input
                         type="text"
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
                         className="input"
-                        placeholder="اسم شركتك (اختياري)"
+                        placeholder={t('contact.form.companyPlaceholder')}
                         maxLength={200}
                       />
                     </div>
@@ -241,7 +237,7 @@ export default function ContactPage() {
 
                   <div className={styles.formRow}>
                     <div className="input-group">
-                      <label className="input-label">نوع الاستفسار</label>
+                      <label className="input-label">{t('contact.form.type')}</label>
                       <select
                         name="type"
                         value={formData.type}
@@ -256,14 +252,14 @@ export default function ContactPage() {
                       </select>
                     </div>
                     <div className="input-group">
-                      <label className="input-label">الموضوع *</label>
+                      <label className="input-label">{t('contact.form.subject')} *</label>
                       <input
                         type="text"
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
                         className={`input ${errors.subject ? 'input-error' : ''}`}
-                        placeholder="موضوع الرسالة"
+                        placeholder={t('contact.form.subjectPlaceholder')}
                         maxLength={200}
                       />
                       {errors.subject && <span className="error-message">{errors.subject}</span>}
@@ -271,13 +267,13 @@ export default function ContactPage() {
                   </div>
 
                   <div className="input-group">
-                    <label className="input-label">الرسالة *</label>
+                    <label className="input-label">{t('contact.form.message')} *</label>
                     <textarea
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
                       className={`input ${errors.message ? 'input-error' : ''}`}
-                      placeholder="اكتب رسالتك هنا..."
+                      placeholder={t('contact.form.messagePlaceholder')}
                       rows={5}
                       maxLength={5000}
                     />
@@ -286,7 +282,7 @@ export default function ContactPage() {
 
                   {submitStatus === 'error' && (
                     <div className={styles.errorAlert}>
-                      حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى.
+                      {t('contact.form.error')}
                     </div>
                   )}
 
@@ -300,7 +296,7 @@ export default function ContactPage() {
                     ) : (
                       <>
                         <FiSend />
-                        إرسال الرسالة
+                        {t('contact.form.submit')}
                       </>
                     )}
                   </button>

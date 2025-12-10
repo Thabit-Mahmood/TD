@@ -1,55 +1,54 @@
-import { FiTarget, FiEye, FiHeart, FiAward, FiUsers, FiTruck, FiPackage, FiGlobe } from 'react-icons/fi';
+'use client';
+
+import { useLanguage } from '@/lib/i18n/LanguageContext';
+import { FiTruck, FiTarget, FiAward, FiUsers, FiCheckCircle } from 'react-icons/fi';
 import styles from './page.module.css';
 
-const values = [
-  { icon: FiHeart, title: 'الالتزام', description: 'نلتزم بتقديم أفضل خدمة لعملائنا في كل شحنة' },
-  { icon: FiAward, title: 'الجودة', description: 'نسعى للتميز في كل ما نقدمه من خدمات' },
-  { icon: FiUsers, title: 'العمل الجماعي', description: 'نؤمن بقوة الفريق الواحد لتحقيق النجاح' },
-  { icon: FiTarget, title: 'الابتكار', description: 'نبحث دائماً عن حلول مبتكرة لتحسين خدماتنا' },
-];
-
-const stats = [
-  { icon: FiPackage, number: '+500K', label: 'شحنة تم توصيلها' },
-  { icon: FiUsers, number: '+1000', label: 'عميل راضٍ' },
-  { icon: FiGlobe, number: '+50', label: 'مدينة نغطيها' },
-  { icon: FiTruck, number: '+200', label: 'مركبة في أسطولنا' },
-];
-
 export default function AboutPage() {
+  const { t } = useLanguage();
+
+  const values = [
+    {
+      icon: <FiCheckCircle />,
+      title: t('about.values.reliability.title'),
+      description: t('about.values.reliability.description'),
+    },
+    {
+      icon: <FiAward />,
+      title: t('about.values.quality.title'),
+      description: t('about.values.quality.description'),
+    },
+    {
+      icon: <FiUsers />,
+      title: t('about.values.customer.title'),
+      description: t('about.values.customer.description'),
+    },
+    {
+      icon: <FiTruck />,
+      title: t('about.values.innovation.title'),
+      description: t('about.values.innovation.description'),
+    },
+  ];
+
   return (
     <div className={styles.aboutPage}>
-      {/* Hero */}
+      {/* Hero Section */}
       <section className={styles.hero}>
         <div className="container">
-          <h1>من نحن</h1>
-          <p>شريكك الموثوق في الشحن والتوصيل منذ أكثر من 10 سنوات</p>
+          <h1>{t('about.hero.title')}</h1>
+          <p>{t('about.hero.subtitle')}</p>
         </div>
       </section>
 
-      {/* Story */}
-      <section className={styles.story}>
+      {/* Story Section */}
+      <section className={styles.section}>
         <div className="container">
-          <div className={styles.storyGrid}>
-            <div className={styles.storyContent}>
-              <h2>قصتنا</h2>
-              <p>
-                بدأت تي دي للخدمات اللوجستية رحلتها في عام 2014 برؤية واضحة: 
-                تقديم خدمات شحن وتوصيل استثنائية تلبي احتياجات السوق السعودي المتنامي.
-              </p>
-              <p>
-                على مدار السنوات، نمت الشركة من فريق صغير إلى واحدة من أكبر شركات 
-                الخدمات اللوجستية في المملكة، مع تغطية تشمل أكثر من 50 مدينة ومنطقة.
-              </p>
-              <p>
-                اليوم، نفخر بخدمة آلاف العملاء من الأفراد والشركات، ونواصل التزامنا 
-                بتقديم خدمات عالية الجودة بأسعار تنافسية.
-              </p>
-            </div>
-            <div className={styles.storyImage}>
-              <div className={styles.imagePlaceholder}>
-                <FiTruck className={styles.placeholderIcon} />
-                <span>صورة فريق العمل</span>
-              </div>
+          <div className={styles.content}>
+            <div className={styles.textContent}>
+              <h2>{t('about.story.title')}</h2>
+              <p>{t('about.story.paragraph1')}</p>
+              <p>{t('about.story.paragraph2')}</p>
+              <p>{t('about.story.paragraph3')}</p>
             </div>
           </div>
         </div>
@@ -63,36 +62,31 @@ export default function AboutPage() {
               <div className={styles.mvIcon}>
                 <FiTarget />
               </div>
-              <h3>رسالتنا</h3>
-              <p>
-                تقديم خدمات لوجستية متكاملة وموثوقة تساعد عملائنا على النمو 
-                وتحقيق أهدافهم التجارية من خلال حلول شحن مبتكرة وفعالة.
-              </p>
+              <h3>{t('about.mission.title')}</h3>
+              <p>{t('about.mission.description')}</p>
             </div>
             <div className={styles.mvCard}>
               <div className={styles.mvIcon}>
-                <FiEye />
+                <FiTruck />
               </div>
-              <h3>رؤيتنا</h3>
-              <p>
-                أن نكون الخيار الأول للخدمات اللوجستية في المملكة العربية السعودية 
-                والمنطقة، من خلال التميز في الخدمة والابتكار المستمر.
-              </p>
+              <h3>{t('about.vision.title')}</h3>
+              <p>{t('about.vision.description')}</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Values */}
-      <section className={styles.values}>
+      <section className={styles.section}>
         <div className="container">
-          <h2 className={styles.sectionTitle}>قيمنا</h2>
+          <div className={styles.sectionHeader}>
+            <h2>{t('about.values.title')}</h2>
+            <p>{t('about.values.subtitle')}</p>
+          </div>
           <div className={styles.valuesGrid}>
             {values.map((value, index) => (
               <div key={index} className={styles.valueCard}>
-                <div className={styles.valueIcon}>
-                  <value.icon />
-                </div>
+                <div className={styles.valueIcon}>{value.icon}</div>
                 <h3>{value.title}</h3>
                 <p>{value.description}</p>
               </div>
@@ -105,13 +99,22 @@ export default function AboutPage() {
       <section className={styles.stats}>
         <div className="container">
           <div className={styles.statsGrid}>
-            {stats.map((stat, index) => (
-              <div key={index} className={styles.statCard}>
-                <stat.icon className={styles.statIcon} />
-                <span className={styles.statNumber}>{stat.number}</span>
-                <span className={styles.statLabel}>{stat.label}</span>
-              </div>
-            ))}
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>+500K</span>
+              <span className={styles.statLabel}>{t('home.stats.deliveries')}</span>
+            </div>
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>+1000</span>
+              <span className={styles.statLabel}>{t('home.stats.clients')}</span>
+            </div>
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>+50</span>
+              <span className={styles.statLabel}>{t('home.stats.cities')}</span>
+            </div>
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>99%</span>
+              <span className={styles.statLabel}>{t('home.stats.onTime')}</span>
+            </div>
           </div>
         </div>
       </section>

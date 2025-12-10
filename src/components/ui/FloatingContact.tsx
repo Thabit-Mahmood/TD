@@ -1,33 +1,30 @@
 'use client';
 
 import { useState } from 'react';
-import { FaWhatsapp, FaPhone, FaEnvelope, FaComments } from 'react-icons/fa';
-import { FiX } from 'react-icons/fi';
+import Link from 'next/link';
+import { FaPhone, FaEnvelope, FaComments } from 'react-icons/fa';
+import { FiX, FiPackage } from 'react-icons/fi';
+import { useLanguage } from '@/lib/i18n';
 import styles from './FloatingContact.module.css';
 
-const contactOptions = [
-  {
-    icon: FaWhatsapp,
-    label: 'واتساب',
-    href: 'https://wa.me/966500000000',
-    color: '#25D366',
-  },
-  {
-    icon: FaPhone,
-    label: 'اتصل بنا',
-    href: 'tel:+966500000000',
-    color: '#DC2626',
-  },
-  {
-    icon: FaEnvelope,
-    label: 'البريد الإلكتروني',
-    href: 'mailto:support@tdlogistics.sa',
-    color: '#1F2937',
-  },
-];
-
 export default function FloatingContact() {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+
+  const contactOptions = [
+    {
+      icon: FaPhone,
+      label: t('floatingContact.call'),
+      href: 'tel:920015499',
+      color: '#DC2626',
+    },
+    {
+      icon: FaEnvelope,
+      label: t('floatingContact.email'),
+      href: 'mailto:info@tdlogistics.co',
+      color: '#1F2937',
+    },
+  ];
 
   return (
     <div className={styles.container}>
@@ -35,7 +32,7 @@ export default function FloatingContact() {
       <div className={`${styles.options} ${isOpen ? styles.open : ''}`}>
         {contactOptions.map((option, index) => (
           <a
-            key={option.label}
+            key={index}
             href={option.href}
             target={option.href.startsWith('http') ? '_blank' : undefined}
             rel={option.href.startsWith('http') ? 'noopener noreferrer' : undefined}
@@ -52,14 +49,19 @@ export default function FloatingContact() {
         ))}
       </div>
 
-      {/* Main Button */}
+      {/* Main Contact Button */}
       <button
         className={`${styles.mainButton} ${isOpen ? styles.active : ''}`}
         onClick={() => setIsOpen(!isOpen)}
-        aria-label="تواصل معنا"
+        aria-label={t('floatingContact.contactUs')}
       >
         {isOpen ? <FiX /> : <FaComments />}
       </button>
+
+      {/* Tracking Button - stacked below contact */}
+      <Link href="/tracking" className={styles.trackingButton} aria-label={t('floatingContact.tracking')}>
+        <FiPackage />
+      </Link>
     </div>
   );
 }

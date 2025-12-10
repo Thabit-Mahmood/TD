@@ -67,8 +67,12 @@
   transition: transform 0.2s;
 }
 
-.ctaPrimary:hover svg {
+:global([dir="rtl"]) .ctaPrimary:hover svg {
   transform: translateX(-4px);
+}
+
+:global([dir="ltr"]) .ctaPrimary:hover svg {
+  transform: translateX(4px);
 }
 
 .ctaSecondary {

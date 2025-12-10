@@ -165,3 +165,32 @@
     font-size: 1.125rem;
   }
 }
+
+/* Loading State */
+.loading {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+}
+
+/* Blog Image with actual image */
+.blogImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* LTR Support */
+:global([dir="ltr"]) .blogContent {
+  text-align: left;
+}
+
+:global([dir="ltr"]) .blogMeta {
+  flex-direction: row;
+}
+
+:global([dir="ltr"]) .readMore {
+  flex-direction: row;
+}

@@ -1,33 +1,43 @@
+'use client';
+
 import Link from 'next/link';
+import Image from 'next/image';
 import { FiPhone, FiMail, FiMapPin, FiClock } from 'react-icons/fi';
-import { FaTwitter, FaLinkedinIn, FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import { FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import { useLanguage } from '@/lib/i18n';
 import styles from './Footer.module.css';
 
-const quickLinks = [
-  { href: '/services', label: 'خدماتنا' },
-  { href: '/about', label: 'من نحن' },
-  { href: '/tracking', label: 'تتبع الشحنة' },
-  { href: '/quote', label: 'طلب عرض سعر' },
-  { href: '/careers', label: 'الوظائف' },
-  { href: '/contact', label: 'اتصل بنا' },
-];
-
-const services = [
-  { href: '/services#delivery', label: 'التوصيل السريع' },
-  { href: '/services#storage', label: 'التخزين والمستودعات' },
-  { href: '/services#fulfillment', label: 'خدمات الفلفلمنت' },
-  { href: '/services#cod', label: 'الدفع عند الاستلام' },
-  { href: '/services#returns', label: 'إدارة المرتجعات' },
-];
-
 const socialLinks = [
-  { href: 'https://twitter.com/tdlogistics', icon: FaTwitter, label: 'تويتر' },
-  { href: 'https://linkedin.com/company/tdlogistics', icon: FaLinkedinIn, label: 'لينكدإن' },
-  { href: 'https://instagram.com/tdlogistics', icon: FaInstagram, label: 'انستغرام' },
-  { href: 'https://wa.me/966500000000', icon: FaWhatsapp, label: 'واتساب' },
+  { href: 'https://www.instagram.com/tdlogistics_sa', icon: FaInstagram, label: 'Instagram' },
+  { href: 'https://x.com/tdlogistics_sa', icon: FaTwitter, label: 'X' },
+  { href: 'https://www.linkedin.com/company/tdlogistics/', icon: FaLinkedinIn, label: 'LinkedIn' },
 ];
 
 export default function Footer() {
+  const { t, language } = useLanguage();
+
+  const quickLinks = [
+    { href: '/services', label: t('nav.services') },
+    { href: '/about', label: t('nav.about') },
+    { href: '/tracking', label: t('nav.tracking') },
+    { href: '/quote', label: t('nav.getQuote') },
+    { href: '/contact', label: t('nav.contact') },
+  ];
+
+  const services = language === 'ar' ? [
+    { href: '/services#delivery', label: 'التوصيل السريع' },
+    { href: '/services#storage', label: 'التخزين والمستودعات' },
+    { href: '/services#fulfillment', label: 'خدمات الفلفلمنت' },
+    { href: '/services#cod', label: 'الدفع عند الاستلام' },
+    { href: '/services#returns', label: 'إدارة المرتجعات' },
+  ] : [
+    { href: '/services#delivery', label: 'Express Delivery' },
+    { href: '/services#storage', label: 'Storage & Warehousing' },
+    { href: '/services#fulfillment', label: 'Fulfillment Services' },
+    { href: '/services#cod', label: 'Cash on Delivery' },
+    { href: '/services#returns', label: 'Returns Management' },
+  ];
+
   return (
     <footer className={styles.footer}>
       <div className="container">
@@ -36,14 +46,16 @@ export default function Footer() {
           {/* Company Info */}
           <div className={styles.footerSection}>
             <div className={styles.footerLogo}>
-              <div className={styles.logoIcon}>TD</div>
-              <div className={styles.logoText}>
-                <span className={styles.logoMain}>تي دي</span>
-                <span className={styles.logoSub}>للخدمات اللوجستية</span>
-              </div>
+              <Image 
+                src="/logo-white.png" 
+                alt="TD Logistics" 
+                width={140} 
+                height={70} 
+                className={styles.logoImage}
+              />
             </div>
             <p className={styles.footerDesc}>
-              شريكك الموثوق في الشحن والتوصيل. نقدم خدمات لوجستية متكاملة بأعلى معايير الجودة والأمان.
+              {t('footer.description')}
             </p>
             <div className={styles.socialLinks}>
               {socialLinks.map((social) => (
@@ -63,7 +75,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className={styles.footerSection}>
-            <h4 className={styles.footerTitle}>روابط سريعة</h4>
+            <h4 className={styles.footerTitle}>{t('footer.quickLinks')}</h4>
             <ul className={styles.footerLinks}>
               {quickLinks.map((link) => (
                 <li key={link.href}>
@@ -75,7 +87,7 @@ export default function Footer() {
 
           {/* Services */}
           <div className={styles.footerSection}>
-            <h4 className={styles.footerTitle}>خدماتنا</h4>
+            <h4 className={styles.footerTitle}>{t('footer.services')}</h4>
             <ul className={styles.footerLinks}>
               {services.map((service) => (
                 <li key={service.href}>
@@ -87,23 +99,23 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div className={styles.footerSection}>
-            <h4 className={styles.footerTitle}>تواصل معنا</h4>
+            <h4 className={styles.footerTitle}>{t('footer.contactUs')}</h4>
             <ul className={styles.contactList}>
               <li>
                 <FiMapPin />
-                <span>الرياض، المملكة العربية السعودية</span>
+                <span>{t('footer.address')}</span>
               </li>
               <li>
                 <FiPhone />
-                <a href="tel:+966500000000">+966 50 000 0000</a>
+                <a href="tel:920015499">{t('header.phone')}</a>
               </li>
               <li>
                 <FiMail />
-                <a href="mailto:info@tdlogistics.sa">info@tdlogistics.sa</a>
+                <a href="mailto:info@tdlogistics.co">{t('header.email')}</a>
               </li>
               <li>
                 <FiClock />
-                <span>الأحد - الخميس: 8 ص - 6 م</span>
+                <span>{t('footer.workingHours')}</span>
               </li>
             </ul>
           </div>
@@ -111,10 +123,10 @@ export default function Footer() {
 
         {/* Footer Bottom */}
         <div className={styles.footerBottom}>
-          <p>© {new Date().getFullYear()} تي دي للخدمات اللوجستية. جميع الحقوق محفوظة.</p>
+          <p>© {new Date().getFullYear()} {t('header.logoMain')} {t('header.logoSub')}. {t('footer.copyright')}.</p>
           <div className={styles.footerBottomLinks}>
-            <Link href="/privacy">سياسة الخصوصية</Link>
-            <Link href="/terms">الشروط والأحكام</Link>
+            <Link href="/privacy">{t('footer.privacyPolicy')}</Link>
+            <Link href="/terms">{t('footer.terms')}</Link>
           </div>
         </div>
       </div>

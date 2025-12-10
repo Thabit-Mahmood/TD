@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { quoteSchema } from '@/lib/validation/schemas';
 import { sanitizeInput, sanitizeEmail, sanitizePhone } from '@/lib/security/sanitize';
 import { checkRateLimit, getRateLimitKey, RATE_LIMITS } from '@/lib/security/rate-limit';
-import { execute } from '@/lib/db';
+import { execute, queryOne } from '@/lib/db';
+import { sendQuoteConfirmation, sendQuoteAdminNotification, sendNewsletterWelcome } from '@/lib/email';
 
 const securityHeaders = {
   'X-Content-Type-Options': 'nosniff',
@@ -93,6 +94,64 @@ export async function POST(request: NextRequest) {
         sanitizedData.additionalDetails,
       ]
     );
+
+    // Subscribe to newsletter (if not already subscribed)
+    const existingSubscriber = queryOne<{ id: number }>(
+      'SELECT id FROM newsletter_subscribers WHERE email = ?',
+      [sanitizedData.email]
+    );
+
+    let isNewSubscriber = false;
+    if (!existingSubscriber) {
+      execute(
+        `INSERT INTO newsletter_subscribers (email, name, source) VALUES (?, ?, 'quote')`,
+        [sanitizedData.email, sanitizedData.name]
+      );
+      isNewSubscriber = true;
+    }
+
+    // Get language from request body
+    const language = body.language === 'en' ? 'en' : 'ar';
+
+    // Send emails (non-blocking)
+    try {
+      // Send confirmation to customer
+      await sendQuoteConfirmation({
+        name: sanitizedData.name,
+        email: sanitizedData.email,
+        phone: sanitizedData.phone!,
+        company: sanitizedData.company || undefined,
+        serviceType: sanitizedData.serviceType,
+        originCity: sanitizedData.originCity || undefined,
+        destinationCity: sanitizedData.destinationCity || undefined,
+        estimatedVolume: sanitizedData.estimatedVolume || undefined,
+        language,
+      });
+
+      // Send notification to admin
+      await sendQuoteAdminNotification({
+        name: sanitizedData.name,
+        email: sanitizedData.email,
+        phone: sanitizedData.phone!,
+        company: sanitizedData.company || undefined,
+        serviceType: sanitizedData.serviceType,
+        originCity: sanitizedData.originCity || undefined,
+        destinationCity: sanitizedData.destinationCity || undefined,
+        estimatedVolume: sanitizedData.estimatedVolume || undefined,
+        additionalDetails: sanitizedData.additionalDetails || undefined,
+      });
+
+      // Send newsletter welcome if new subscriber
+      if (isNewSubscriber) {
+        await sendNewsletterWelcome({
+          email: sanitizedData.email,
+          name: sanitizedData.name,
+        });
+      }
+    } catch (emailError) {
+      console.error('Email sending error:', emailError);
+      // Don't fail the request if email fails
+    }
 
     return NextResponse.json(
       { success: true, message: 'تم إرسال طلبك بنجاح' },

@@ -1,94 +1,78 @@
+'use client';
+
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 import styles from '../privacy/page.module.css';
 
 export default function TermsPage() {
+  const { t, tArray } = useLanguage();
+
   return (
     <div className={styles.legalPage}>
       <section className={styles.hero}>
         <div className="container">
-          <h1>الشروط والأحكام</h1>
-          <p>آخر تحديث: ديسمبر 2024</p>
+          <h1>{t('terms.title')}</h1>
+          <p>{t('terms.lastUpdated')}</p>
         </div>
       </section>
 
       <section className={styles.content}>
         <div className="container">
           <div className={styles.contentCard}>
-            <h2>مقدمة</h2>
-            <p>
-              مرحباً بك في تي دي للخدمات اللوجستية. باستخدامك لموقعنا وخدماتنا، 
-              فإنك توافق على الالتزام بهذه الشروط والأحكام. يرجى قراءتها بعناية.
-            </p>
+            <h2>{t('terms.intro.title')}</h2>
+            <p>{t('terms.intro.content')}</p>
 
-            <h2>تعريفات</h2>
+            <h2>{t('terms.definitions.title')}</h2>
             <ul>
-              <li>&quot;الشركة&quot; أو &quot;نحن&quot;: تي دي للخدمات اللوجستية</li>
-              <li>&quot;العميل&quot; أو &quot;أنت&quot;: مستخدم الموقع أو الخدمات</li>
-              <li>&quot;الخدمات&quot;: جميع خدمات الشحن والتوصيل والتخزين المقدمة</li>
-              <li>&quot;الشحنة&quot;: أي طرد أو بضاعة يتم شحنها عبر خدماتنا</li>
+              {tArray('terms.definitions.items').map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
             </ul>
 
-            <h2>شروط الخدمة</h2>
-            <p>بقبولك لهذه الشروط، فإنك توافق على:</p>
+            <h2>{t('terms.serviceTerms.title')}</h2>
+            <p>{t('terms.serviceTerms.content')}</p>
             <ul>
-              <li>تقديم معلومات صحيحة ودقيقة عند استخدام خدماتنا</li>
-              <li>عدم شحن مواد محظورة أو خطرة</li>
-              <li>الالتزام بأنظمة الشحن المحلية والدولية</li>
-              <li>دفع جميع الرسوم المستحقة في الوقت المحدد</li>
+              {tArray('terms.serviceTerms.items').map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
             </ul>
 
-            <h2>المواد المحظورة</h2>
-            <p>يُمنع شحن المواد التالية:</p>
+            <h2>{t('terms.prohibited.title')}</h2>
+            <p>{t('terms.prohibited.content')}</p>
             <ul>
-              <li>المواد المتفجرة والقابلة للاشتعال</li>
-              <li>المواد المخدرة والممنوعة قانونياً</li>
-              <li>الأسلحة والذخيرة</li>
-              <li>المواد السامة والخطرة</li>
-              <li>النقود والمجوهرات الثمينة (بدون تأمين خاص)</li>
-              <li>أي مواد مخالفة للأنظمة المحلية</li>
+              {tArray('terms.prohibited.items').map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
             </ul>
 
-            <h2>المسؤولية والتعويض</h2>
-            <p>
-              نلتزم بتعويض العميل في حالة فقدان أو تلف الشحنة وفقاً للشروط التالية:
-            </p>
+            <h2>{t('terms.liability.title')}</h2>
+            <p>{t('terms.liability.content')}</p>
             <ul>
-              <li>يجب الإبلاغ عن أي تلف خلال 48 ساعة من الاستلام</li>
-              <li>التعويض يكون بقيمة الشحنة المعلنة أو الحد الأقصى المحدد</li>
-              <li>لا نتحمل مسؤولية التأخير الناتج عن ظروف قاهرة</li>
-              <li>التأمين الإضافي متاح للشحنات عالية القيمة</li>
+              {tArray('terms.liability.items').map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
             </ul>
 
-            <h2>الدفع والأسعار</h2>
+            <h2>{t('terms.payment.title')}</h2>
             <ul>
-              <li>الأسعار قابلة للتغيير دون إشعار مسبق</li>
-              <li>يتم احتساب الرسوم بناءً على الوزن أو الحجم (أيهما أكبر)</li>
-              <li>رسوم إضافية قد تُطبق على المناطق النائية</li>
-              <li>الدفع مستحق عند الطلب أو حسب الاتفاق</li>
+              {tArray('terms.payment.items').map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
             </ul>
 
-            <h2>إلغاء الخدمة</h2>
-            <p>
-              يحق للعميل إلغاء الشحنة قبل استلامها من قبل المندوب. 
-              بعد الاستلام، قد تُطبق رسوم إلغاء.
-            </p>
+            <h2>{t('terms.cancellation.title')}</h2>
+            <p>{t('terms.cancellation.content')}</p>
 
-            <h2>حل النزاعات</h2>
-            <p>
-              في حالة وجود أي نزاع، يتم حله ودياً أولاً. 
-              إذا تعذر ذلك، يُحال النزاع للجهات القضائية المختصة في المملكة العربية السعودية.
-            </p>
+            <h2>{t('terms.disputes.title')}</h2>
+            <p>{t('terms.disputes.content')}</p>
 
-            <h2>التعديلات</h2>
-            <p>
-              نحتفظ بحق تعديل هذه الشروط في أي وقت. 
-              سيتم إشعارك بأي تغييرات جوهرية عبر البريد الإلكتروني أو الموقع.
-            </p>
+            <h2>{t('terms.modifications.title')}</h2>
+            <p>{t('terms.modifications.content')}</p>
 
-            <h2>التواصل</h2>
-            <p>لأي استفسارات حول الشروط والأحكام:</p>
+            <h2>{t('terms.contact.title')}</h2>
+            <p>{t('terms.contact.content')}</p>
             <ul>
-              <li>البريد الإلكتروني: legal@tdlogistics.sa</li>
-              <li>الهاتف: +966 50 000 0000</li>
+              <li>{t('terms.contact.email')}</li>
+              <li>{t('terms.contact.phone')}</li>
             </ul>
           </div>
         </div>

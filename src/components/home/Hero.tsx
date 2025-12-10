@@ -1,7 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { FiSearch, FiPackage, FiTruck, FiCheckCircle, FiClock, FiAlertCircle } from 'react-icons/fi';
+import Link from 'next/link';
+import { FiSearch, FiPackage, FiTruck, FiCheckCircle, FiClock, FiAlertCircle, FiBox, FiMapPin, FiArrowLeft, FiArrowRight } from 'react-icons/fi';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 import styles from './Hero.module.css';
 
 interface TrackingEvent {
@@ -33,31 +35,54 @@ interface TrackingData {
   expectedDeliveryDate?: string;
 }
 
-const statusIcons: Record<string, React.ReactNode> = {
-  'DELIVERED_TO_RECIPIENT': <FiCheckCircle className={styles.statusIconDelivered} />,
-  'SCANNED_BY_DRIVER_AND_IN_CAR': <FiTruck className={styles.statusIconOutForDelivery} />,
-  'READY_FOR_PICKUP': <FiPackage className={styles.statusIconReady} />,
-  'default': <FiClock className={styles.statusIconPending} />,
-};
+// Milestone stages
+enum MilestoneStage {
+  RECEIVED = 1,
+  PROCESSING = 2,
+  OUT_FOR_DELIVERY = 3,
+  DELIVERED = 4,
+}
 
-const statusColors: Record<string, string> = {
-  'DELIVERED_TO_RECIPIENT': 'delivered',
-  'SCANNED_BY_DRIVER_AND_IN_CAR': 'outForDelivery',
-  'READY_FOR_PICKUP': 'ready',
+// Simplified milestones for homepage - will be translated dynamically
+const getMilestoneLabels = (t: (key: string) => string) => [
+  { stage: MilestoneStage.RECEIVED, label: t('tracking.milestones.received') || 'تم الاستلام', icon: <FiBox /> },
+  { stage: MilestoneStage.PROCESSING, label: t('tracking.milestones.processing') || 'قيد المعالجة', icon: <FiPackage /> },
+  { stage: MilestoneStage.OUT_FOR_DELIVERY, label: t('tracking.milestones.outForDelivery') || 'خارجة للتوصيل', icon: <FiTruck /> },
+  { stage: MilestoneStage.DELIVERED, label: t('tracking.milestones.delivered') || 'تم التوصيل', icon: <FiCheckCircle /> },
+];
+
+// Map API status to milestone stage
+const statusToMilestone: Record<string, MilestoneStage> = {
+  'DELIVERED_TO_RECIPIENT': MilestoneStage.DELIVERED,
+  'DELIVERED': MilestoneStage.DELIVERED,
+  'COMPLETED': MilestoneStage.DELIVERED,
+  'SCANNED_BY_DRIVER_AND_IN_CAR': MilestoneStage.OUT_FOR_DELIVERY,
+  'OUT_FOR_DELIVERY': MilestoneStage.OUT_FOR_DELIVERY,
+  'IN_TRANSIT': MilestoneStage.OUT_FOR_DELIVERY,
+  'READY_FOR_PICKUP': MilestoneStage.PROCESSING,
+  'IN_WAREHOUSE': MilestoneStage.PROCESSING,
+  'PROCESSING': MilestoneStage.PROCESSING,
+  'AT_HUB': MilestoneStage.PROCESSING,
+  'PICKED_UP': MilestoneStage.RECEIVED,
+  'RECEIVED': MilestoneStage.RECEIVED,
+  'CREATED': MilestoneStage.RECEIVED,
 };
 
 export default function Hero() {
+  const { t, language, isRTL } = useLanguage();
   const [trackingNumber, setTrackingNumber] = useState('');
   const [trackingData, setTrackingData] = useState<TrackingData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [showResults, setShowResults] = useState(false);
 
+  const milestones = getMilestoneLabels(t);
+
   const handleTrack = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!trackingNumber.trim()) {
-      setError('يرجى إدخال رقم التتبع');
+      setError(t('tracking.errors.enterNumber'));
       return;
     }
 
@@ -65,7 +90,7 @@ export default function Hero() {
     const sanitized = trackingNumber.trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
     
     if (sanitized.length < 5 || sanitized.length > 30) {
-      setError('رقم التتبع غير صالح');
+      setError(t('tracking.errors.invalidNumber'));
       return;
     }
 
@@ -78,32 +103,27 @@ export default function Hero() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'حدث خطأ أثناء البحث');
+        throw new Error(data.error || t('tracking.errors.searchError'));
       }
 
       setTrackingData(data);
       setShowResults(true);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'حدث خطأ أثناء البحث');
+      setError(err instanceof Error ? err.message : t('tracking.errors.searchError'));
     } finally {
       setIsLoading(false);
     }
   };
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat('ar-SA', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-    }).format(date);
+  // Get current milestone stage
+  const getCurrentMilestone = (status: string): MilestoneStage => {
+    return statusToMilestone[status] || MilestoneStage.RECEIVED;
   };
 
-  const getStatusClass = (status: string | null) => {
-    if (!status) return '';
-    return statusColors[status] || '';
+  // Get progress percentage
+  const getProgressPercentage = (status: string): number => {
+    const stage = getCurrentMilestone(status);
+    return Math.round((stage / 4) * 100);
   };
 
   return (
@@ -116,12 +136,11 @@ export default function Hero() {
         <div className={styles.heroContent}>
           <div className={styles.heroText}>
             <h1 className={styles.heroTitle}>
-              شريكك الموثوق في
-              <span className={styles.highlight}> الشحن والتوصيل</span>
+              {t('home.hero.titlePart1')}
+              <span className={styles.highlight}> {t('home.hero.titlePart2')}</span>
             </h1>
             <p className={styles.heroSubtitle}>
-              نقدم خدمات لوجستية متكاملة بأعلى معايير الجودة والأمان. 
-              تتبع شحنتك بسهولة واحصل على تحديثات فورية.
+              {t('home.hero.subtitle')}
             </p>
           </div>
 
@@ -129,7 +148,7 @@ export default function Hero() {
           <div className={styles.trackingBox}>
             <div className={styles.trackingHeader}>
               <FiPackage className={styles.trackingIcon} />
-              <h2>تتبع شحنتك</h2>
+              <h2>{t('tracking.title')}</h2>
             </div>
             
             <form onSubmit={handleTrack} className={styles.trackingForm}>
@@ -141,10 +160,11 @@ export default function Hero() {
                     setTrackingNumber(e.target.value);
                     setError('');
                   }}
-                  placeholder="أدخل رقم التتبع (مثال: TDL100378632203)"
+                  placeholder={t('tracking.placeholder')}
                   className={styles.trackingInput}
                   maxLength={30}
-                  aria-label="رقم التتبع"
+                  aria-label={t('tracking.title')}
+                  dir="ltr"
                 />
                 <button 
                   type="submit" 
@@ -156,7 +176,7 @@ export default function Hero() {
                   ) : (
                     <>
                       <FiSearch />
-                      <span>تتبع</span>
+                      <span>{t('tracking.button')}</span>
                     </>
                   )}
                 </button>
@@ -170,61 +190,75 @@ export default function Hero() {
               )}
             </form>
 
-            {/* Tracking Results */}
+            {/* Tracking Results - Enhanced Simplified Version */}
             {showResults && trackingData && (
               <div className={styles.trackingResults}>
                 <div className={styles.resultHeader}>
-                  <div className={styles.resultStatus}>
-                    {statusIcons[trackingData.status] || statusIcons['default']}
-                    <div>
-                      <span className={`${styles.statusBadge} ${styles[getStatusClass(trackingData.status)]}`}>
-                        {trackingData.arStatus || trackingData.enStatus}
-                      </span>
-                      <p className={styles.trackingId}>رقم التتبع: {trackingData.barcode}</p>
-                    </div>
+                  <div className={styles.resultInfo}>
+                    <h3 className={styles.resultStatus}>
+                      {language === 'ar' ? trackingData.arStatus : trackingData.enStatus}
+                    </h3>
+                    <p className={styles.trackingId}>{t('tracking.trackingNumber')}: {trackingData.barcode}</p>
+                  </div>
+                  <div className={styles.resultPercentage}>
+                    {getProgressPercentage(trackingData.status)}%
                   </div>
                   <button 
                     className={styles.closeResults}
                     onClick={() => setShowResults(false)}
-                    aria-label="إغلاق"
+                    aria-label={t('common.close')}
                   >
                     ×
                   </button>
                 </div>
 
+                {/* Simplified Progress Bar */}
+                <div className={styles.progressBar}>
+                  {milestones.map((milestone, index) => {
+                    const currentStage = getCurrentMilestone(trackingData.status);
+                    const isCompleted = milestone.stage <= currentStage;
+                    const isActive = milestone.stage === currentStage;
+                    
+                    return (
+                      <div key={milestone.stage} className={styles.milestoneWrapper}>
+                        <div className={styles.milestoneItem}>
+                          <div className={`${styles.milestoneIcon} ${isCompleted ? styles.completed : ''} ${isActive ? styles.active : ''}`}>
+                            {milestone.icon}
+                          </div>
+                          <span className={`${styles.milestoneLabel} ${isCompleted ? styles.completed : ''} ${isActive ? styles.active : ''}`}>
+                            {milestone.label}
+                          </span>
+                        </div>
+                        {index < milestones.length - 1 && (
+                          <div className={`${styles.progressLine} ${isCompleted ? styles.completed : ''}`}></div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Destination */}
                 {trackingData.destinationAddress && (
                   <div className={styles.destinationInfo}>
-                    <p>
-                      <strong>الوجهة:</strong> {trackingData.destinationAddress.arabicCityName || trackingData.destinationAddress.city}
-                      {trackingData.destinationAddress.arabicRegionName && `, ${trackingData.destinationAddress.arabicRegionName}`}
-                    </p>
+                    <FiMapPin />
+                    <span>
+                      {language === 'ar' 
+                        ? (trackingData.destinationAddress.arabicCityName || trackingData.destinationAddress.city)
+                        : trackingData.destinationAddress.city}
+                      {language === 'ar' && trackingData.destinationAddress.arabicRegionName && `, ${trackingData.destinationAddress.arabicRegionName}`}
+                      {language === 'en' && trackingData.destinationAddress.region && `, ${trackingData.destinationAddress.region}`}
+                    </span>
                   </div>
                 )}
 
-                {/* Timeline */}
-                <div className={styles.timeline}>
-                  <h4>سجل التتبع</h4>
-                  <div className={styles.timelineList}>
-                    {trackingData.deliveryRoute?.slice(0, 5).map((event, index) => (
-                      <div key={index} className={styles.timelineItem}>
-                        <div className={styles.timelineDot}></div>
-                        <div className={styles.timelineContent}>
-                          <p className={styles.timelineEvent}>
-                            {event.arabicName || event.name}
-                          </p>
-                          <span className={styles.timelineDate}>
-                            {formatDate(event.deliveryDate)}
-                          </span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  {trackingData.deliveryRoute?.length > 5 && (
-                    <p className={styles.moreEvents}>
-                      +{trackingData.deliveryRoute.length - 5} أحداث أخرى
-                    </p>
-                  )}
-                </div>
+                {/* View More Link */}
+                <Link 
+                  href={`/tracking?barcode=${trackingData.barcode}`}
+                  className={styles.viewMoreLink}
+                >
+                  <span>{t('tracking.viewDetails')}</span>
+                  {isRTL ? <FiArrowLeft /> : <FiArrowRight />}
+                </Link>
               </div>
             )}
           </div>
@@ -234,19 +268,19 @@ export default function Hero() {
         <div className={styles.stats}>
           <div className={styles.statItem}>
             <span className={styles.statNumber}>+500K</span>
-            <span className={styles.statLabel}>شحنة تم توصيلها</span>
+            <span className={styles.statLabel}>{t('home.stats.deliveries')}</span>
           </div>
           <div className={styles.statItem}>
             <span className={styles.statNumber}>+1000</span>
-            <span className={styles.statLabel}>عميل راضٍ</span>
+            <span className={styles.statLabel}>{t('home.stats.clients')}</span>
           </div>
           <div className={styles.statItem}>
             <span className={styles.statNumber}>+50</span>
-            <span className={styles.statLabel}>مدينة نغطيها</span>
+            <span className={styles.statLabel}>{t('home.stats.cities')}</span>
           </div>
           <div className={styles.statItem}>
             <span className={styles.statNumber}>99%</span>
-            <span className={styles.statLabel}>نسبة التوصيل في الوقت</span>
+            <span className={styles.statLabel}>{t('home.stats.onTime')}</span>
           </div>
         </div>
       </div>

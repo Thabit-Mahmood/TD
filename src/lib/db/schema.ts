@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS blog_posts (
   excerpt TEXT,
   content TEXT NOT NULL,
   featured_image TEXT,
+  images TEXT,
   author_id INTEGER REFERENCES users(id),
   status TEXT CHECK(status IN ('draft', 'published', 'archived')) DEFAULT 'draft',
   published_at DATETIME,
@@ -128,6 +129,32 @@ CREATE TABLE IF NOT EXISTS sessions (
   is_valid INTEGER DEFAULT 1
 );
 
+-- Newsletter subscribers table
+CREATE TABLE IF NOT EXISTS newsletter_subscribers (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  email TEXT UNIQUE NOT NULL,
+  name TEXT,
+  source TEXT CHECK(source IN ('contact', 'quote', 'manual', 'blog')) DEFAULT 'manual',
+  is_active INTEGER DEFAULT 1,
+  subscribed_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  unsubscribed_at DATETIME
+);
+
+-- Customer reviews table
+CREATE TABLE IF NOT EXISTS customer_reviews (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  customer_name TEXT NOT NULL,
+  company_name TEXT,
+  position TEXT,
+  review_text TEXT NOT NULL,
+  rating INTEGER CHECK(rating >= 1 AND rating <= 5) DEFAULT 5,
+  avatar_url TEXT,
+  status TEXT CHECK(status IN ('pending', 'published', 'rejected')) DEFAULT 'pending',
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  published_at DATETIME
+);
+
 -- Create indexes for performance
 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 CREATE INDEX IF NOT EXISTS idx_blog_posts_slug ON blog_posts(slug);
@@ -136,6 +163,8 @@ CREATE INDEX IF NOT EXISTS idx_contact_submissions_status ON contact_submissions
 CREATE INDEX IF NOT EXISTS idx_job_applications_status ON job_applications(status);
 CREATE INDEX IF NOT EXISTS idx_audit_log_user ON audit_log(user_id);
 CREATE INDEX IF NOT EXISTS idx_audit_log_created ON audit_log(created_at);
+CREATE INDEX IF NOT EXISTS idx_newsletter_email ON newsletter_subscribers(email);
+CREATE INDEX IF NOT EXISTS idx_customer_reviews_status ON customer_reviews(status);
 `;
 
 export default SCHEMA;

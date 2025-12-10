@@ -2,21 +2,26 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { FiMenu, FiX, FiPhone, FiMail, FiUser, FiUserPlus } from 'react-icons/fi';
+import Image from 'next/image';
+import { FiMenu, FiX, FiPhone, FiMail } from 'react-icons/fi';
+import { useLanguage } from '@/lib/i18n';
+import LanguageToggle from '@/components/ui/LanguageToggle';
 import styles from './Header.module.css';
 
-const navLinks = [
-  { href: '/', label: 'الرئيسية' },
-  { href: '/services', label: 'خدماتنا' },
-  { href: '/about', label: 'من نحن' },
-  { href: '/blog', label: 'المدونة' },
-  { href: '/careers', label: 'الوظائف' },
-  { href: '/contact', label: 'اتصل بنا' },
-];
-
 export default function Header() {
+  const { t, isRTL } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const navLinks = [
+    { href: '/', label: t('nav.home') },
+    { href: '/about', label: t('nav.about') },
+    { href: '/services', label: t('nav.services') },
+    { href: '/partners', label: t('nav.partners') },
+    { href: '/blog', label: t('nav.blog') },
+    { href: '/careers', label: t('nav.careers') },
+    { href: '/contact', label: t('nav.support') },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +31,18 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <>
       {/* Top Bar */}
@@ -33,19 +50,16 @@ export default function Header() {
         <div className="container">
           <div className={styles.topBarContent}>
             <div className={styles.topBarContact}>
-              <a href="tel:+966500000000">
-                <FiPhone /> +966 50 000 0000
+              <a href="tel:920015499">
+                <FiPhone /> {t('header.phone')}
               </a>
-              <a href="mailto:info@tdlogistics.sa">
-                <FiMail /> info@tdlogistics.sa
+              <a href="mailto:info@tdlogistics.co">
+                <FiMail /> {t('header.email')}
               </a>
             </div>
             <div className={styles.topBarActions}>
-              <Link href="/login" className={styles.topBarLink}>
-                <FiUser /> تسجيل الدخول
-              </Link>
-              <Link href="/register" className={styles.topBarLink}>
-                <FiUserPlus /> انضم إلينا
+              <Link href="/tracking" className={styles.topBarLink}>
+                {t('nav.tracking')}
               </Link>
             </div>
           </div>
@@ -58,11 +72,14 @@ export default function Header() {
           <div className={styles.headerContent}>
             {/* Logo */}
             <Link href="/" className={styles.logo}>
-              <div className={styles.logoIcon}>TD</div>
-              <div className={styles.logoText}>
-                <span className={styles.logoMain}>تي دي</span>
-                <span className={styles.logoSub}>للخدمات اللوجستية</span>
-              </div>
+              <Image 
+                src="/logo.png" 
+                alt="TD Logistics" 
+                width={120} 
+                height={60} 
+                className={styles.logoImage}
+                priority
+              />
             </Link>
 
             {/* Desktop Navigation */}
@@ -74,10 +91,13 @@ export default function Header() {
               ))}
             </nav>
 
-            {/* CTA Button */}
+            {/* CTA Button & Language Toggle */}
             <div className={styles.headerActions}>
+              <div className={styles.desktopLangToggle}>
+                <LanguageToggle />
+              </div>
               <Link href="/quote" className="btn btn-primary">
-                اطلب عرض سعر
+                {t('nav.getQuote')}
               </Link>
             </div>
 
@@ -85,7 +105,7 @@ export default function Header() {
             <button
               className={styles.mobileToggle}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="القائمة"
+              aria-label={isRTL ? 'القائمة' : 'Menu'}
             >
               {isMobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
             </button>
@@ -94,6 +114,24 @@ export default function Header() {
 
         {/* Mobile Menu */}
         <div className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.open : ''}`}>
+          <div className={styles.mobileMenuHeader}>
+            <Link href="/" className={styles.logo} onClick={() => setIsMobileMenuOpen(false)}>
+              <Image 
+                src="/logo.png" 
+                alt="TD Logistics" 
+                width={100} 
+                height={50} 
+                className={styles.logoImage}
+              />
+            </Link>
+            <button
+              className={styles.mobileCloseBtn}
+              onClick={() => setIsMobileMenuOpen(false)}
+              aria-label={isRTL ? 'إغلاق' : 'Close'}
+            >
+              <FiX size={24} />
+            </button>
+          </div>
           <nav className={styles.mobileNav}>
             {navLinks.map((link) => (
               <Link
@@ -106,11 +144,14 @@ export default function Header() {
               </Link>
             ))}
             <div className={styles.mobileActions}>
-              <Link href="/login" className="btn btn-outline" onClick={() => setIsMobileMenuOpen(false)}>
-                تسجيل الدخول
+              <div className={styles.mobileLangToggle}>
+                <LanguageToggle />
+              </div>
+              <Link href="/tracking" className="btn btn-secondary" onClick={() => setIsMobileMenuOpen(false)}>
+                {t('nav.tracking')}
               </Link>
               <Link href="/quote" className="btn btn-primary" onClick={() => setIsMobileMenuOpen(false)}>
-                اطلب عرض سعر
+                {t('nav.getQuote')}
               </Link>
             </div>
           </nav>

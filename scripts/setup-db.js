@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS blog_posts (
   excerpt TEXT,
   content TEXT NOT NULL,
   featured_image TEXT,
+  images TEXT,
   author_id INTEGER REFERENCES users(id),
   status TEXT CHECK(status IN ('draft', 'published', 'archived')) DEFAULT 'draft',
   published_at DATETIME,
@@ -121,6 +122,32 @@ CREATE TABLE IF NOT EXISTS quote_requests (
   assigned_to INTEGER REFERENCES users(id)
 );
 
+-- Customer reviews table
+CREATE TABLE IF NOT EXISTS customer_reviews (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  customer_name TEXT NOT NULL,
+  company_name TEXT,
+  position TEXT,
+  review_text TEXT NOT NULL,
+  rating INTEGER CHECK(rating >= 1 AND rating <= 5) DEFAULT 5,
+  avatar_url TEXT,
+  status TEXT CHECK(status IN ('pending', 'published', 'rejected')) DEFAULT 'pending',
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  published_at DATETIME
+);
+
+-- Newsletter subscribers table
+CREATE TABLE IF NOT EXISTS newsletter_subscribers (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  email TEXT UNIQUE NOT NULL,
+  name TEXT,
+  source TEXT CHECK(source IN ('contact', 'quote', 'manual', 'blog')) DEFAULT 'manual',
+  is_active INTEGER DEFAULT 1,
+  subscribed_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  unsubscribed_at DATETIME
+);
+
 -- Audit log table
 CREATE TABLE IF NOT EXISTS audit_log (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -146,12 +173,48 @@ CREATE TABLE IF NOT EXISTS sessions (
   is_valid INTEGER DEFAULT 1
 );
 
+-- Clients table (for client logos section)
+CREATE TABLE IF NOT EXISTS clients (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  logo_url TEXT,
+  website_url TEXT,
+  sort_order INTEGER DEFAULT 0,
+  is_active INTEGER DEFAULT 1,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Brands/Platforms table (for e-commerce platforms section)
+CREATE TABLE IF NOT EXISTS brands (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  logo_url TEXT,
+  type TEXT CHECK(type IN ('platform', 'partner')) DEFAULT 'platform',
+  sort_order INTEGER DEFAULT 0,
+  is_active INTEGER DEFAULT 1,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Admin users table (for password management)
+CREATE TABLE IF NOT EXISTS admin_users (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  email TEXT UNIQUE NOT NULL,
+  password_hash TEXT NOT NULL,
+  name TEXT NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Create indexes
 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 CREATE INDEX IF NOT EXISTS idx_blog_posts_slug ON blog_posts(slug);
 CREATE INDEX IF NOT EXISTS idx_blog_posts_status ON blog_posts(status);
 CREATE INDEX IF NOT EXISTS idx_contact_submissions_status ON contact_submissions(status);
 CREATE INDEX IF NOT EXISTS idx_job_applications_status ON job_applications(status);
+CREATE INDEX IF NOT EXISTS idx_customer_reviews_status ON customer_reviews(status);
+CREATE INDEX IF NOT EXISTS idx_newsletter_email ON newsletter_subscribers(email);
 CREATE INDEX IF NOT EXISTS idx_audit_log_user ON audit_log(user_id);
 CREATE INDEX IF NOT EXISTS idx_audit_log_created ON audit_log(created_at);
 `;
@@ -208,6 +271,55 @@ if (existingJobs.count === 0) {
   }
   
   console.log('✅ Sample job listings created');
+}
+
+// Insert sample customer reviews
+const existingReviews = db.prepare('SELECT COUNT(*) as count FROM customer_reviews').get();
+if (existingReviews.count === 0) {
+  const reviews = [
+    {
+      customer_name: 'أحمد الراشد',
+      position: 'المدير التنفيذي',
+      company_name: 'ديزرت إلكترونيكس',
+      review_text: 'تي دي للخدمات اللوجستية حولت عمليات التجارة الإلكترونية لدينا. خدمة الدفع عند الاستلام لديهم لا تشوبها شائبة، ورضا العملاء ارتفع بشكل كبير منذ أن بدأنا العمل معهم.',
+      rating: 5,
+      status: 'published'
+    },
+    {
+      customer_name: 'فاطمة الزهراء',
+      position: 'مديرة العمليات',
+      company_name: 'رياض فاشن',
+      review_text: 'التتبع في الوقت الفعلي والتعامل الاحترافي مع المرتجعات وفر لنا ساعات لا تحصى. تي دي للخدمات اللوجستية تفهم متطلبات صناعة الأزياء الفريدة بشكل مثالي.',
+      rating: 5,
+      status: 'published'
+    },
+    {
+      customer_name: 'عمر بن سلطان',
+      position: 'المؤسس',
+      company_name: 'تك جادجتس السعودية',
+      review_text: 'كشركة ناشئة متنامية، كنا بحاجة إلى شريك لوجستي يمكنه التوسع معنا. تي دي للخدمات اللوجستية كانت مرنة بشكل لا يصدق وتكامل التكنولوجيا لديهم سلس.',
+      rating: 5,
+      status: 'published'
+    }
+  ];
+
+  const insertReview = db.prepare(`
+    INSERT INTO customer_reviews (customer_name, position, company_name, review_text, rating, status, published_at)
+    VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+  `);
+
+  for (const review of reviews) {
+    insertReview.run(
+      review.customer_name,
+      review.position,
+      review.company_name,
+      review.review_text,
+      review.rating,
+      review.status
+    );
+  }
+  
+  console.log('✅ Sample customer reviews created');
 }
 
 db.close();

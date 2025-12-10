@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { contactSchema } from '@/lib/validation/schemas';
 import { sanitizeInput, sanitizeEmail, sanitizePhone } from '@/lib/security/sanitize';
 import { checkRateLimit, getRateLimitKey, RATE_LIMITS } from '@/lib/security/rate-limit';
-import { execute } from '@/lib/db';
+import { execute, queryOne } from '@/lib/db';
+import { sendContactConfirmation, sendContactAdminNotification, sendNewsletterWelcome } from '@/lib/email';
 
 const securityHeaders = {
   'X-Content-Type-Options': 'nosniff',
@@ -97,6 +98,59 @@ export async function POST(request: NextRequest) {
         userAgent.slice(0, 500), // Limit user agent length
       ]
     );
+
+    // Subscribe to newsletter (if not already subscribed)
+    const existingSubscriber = queryOne<{ id: number }>(
+      'SELECT id FROM newsletter_subscribers WHERE email = ?',
+      [sanitizedData.email]
+    );
+
+    let isNewSubscriber = false;
+    if (!existingSubscriber) {
+      execute(
+        `INSERT INTO newsletter_subscribers (email, name, source) VALUES (?, ?, 'contact')`,
+        [sanitizedData.email, sanitizedData.name]
+      );
+      isNewSubscriber = true;
+    }
+
+    // Get language from request body
+    const language = body.language === 'en' ? 'en' : 'ar';
+
+    // Send emails (non-blocking)
+    try {
+      // Send confirmation to customer
+      await sendContactConfirmation({
+        name: sanitizedData.name,
+        email: sanitizedData.email,
+        subject: sanitizedData.subject,
+        message: sanitizedData.message,
+        type: sanitizedData.type || 'general',
+        language,
+      });
+
+      // Send notification to admin
+      await sendContactAdminNotification({
+        name: sanitizedData.name,
+        email: sanitizedData.email,
+        phone: sanitizedData.phone || undefined,
+        company: sanitizedData.company || undefined,
+        subject: sanitizedData.subject,
+        message: sanitizedData.message,
+        type: sanitizedData.type || 'general',
+      });
+
+      // Send newsletter welcome if new subscriber
+      if (isNewSubscriber) {
+        await sendNewsletterWelcome({
+          email: sanitizedData.email,
+          name: sanitizedData.name,
+        });
+      }
+    } catch (emailError) {
+      console.error('Email sending error:', emailError);
+      // Don't fail the request if email fails
+    }
 
     return NextResponse.json(
       { success: true, message: 'تم إرسال رسالتك بنجاح' },

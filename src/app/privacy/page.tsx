@@ -1,87 +1,74 @@
+'use client';
+
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 import styles from './page.module.css';
 
 export default function PrivacyPage() {
+  const { t, tArray } = useLanguage();
+
   return (
     <div className={styles.legalPage}>
       <section className={styles.hero}>
         <div className="container">
-          <h1>سياسة الخصوصية</h1>
-          <p>آخر تحديث: ديسمبر 2024</p>
+          <h1>{t('privacy.title')}</h1>
+          <p>{t('privacy.lastUpdated')}</p>
         </div>
       </section>
 
       <section className={styles.content}>
         <div className="container">
           <div className={styles.contentCard}>
-            <h2>مقدمة</h2>
-            <p>
-              نحن في تي دي للخدمات اللوجستية نلتزم بحماية خصوصيتك وبياناتك الشخصية. 
-              توضح هذه السياسة كيفية جمع واستخدام وحماية معلوماتك عند استخدام موقعنا وخدماتنا.
-            </p>
+            <h2>{t('privacy.intro.title')}</h2>
+            <p>{t('privacy.intro.content')}</p>
 
-            <h2>المعلومات التي نجمعها</h2>
-            <p>نقوم بجمع المعلومات التالية:</p>
+            <h2>{t('privacy.dataCollection.title')}</h2>
+            <p>{t('privacy.dataCollection.content')}</p>
             <ul>
-              <li>معلومات التواصل: الاسم، البريد الإلكتروني، رقم الهاتف</li>
-              <li>معلومات الشحن: العناوين، تفاصيل الطرود</li>
-              <li>معلومات الحساب: بيانات تسجيل الدخول</li>
-              <li>معلومات تقنية: عنوان IP، نوع المتصفح، الجهاز المستخدم</li>
+              {tArray('privacy.dataCollection.items').map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
             </ul>
 
-            <h2>كيف نستخدم معلوماتك</h2>
-            <p>نستخدم المعلومات المجمعة للأغراض التالية:</p>
+            <h2>{t('privacy.dataUsage.title')}</h2>
+            <p>{t('privacy.dataUsage.content')}</p>
             <ul>
-              <li>تقديم خدمات الشحن والتوصيل</li>
-              <li>التواصل معك بخصوص شحناتك</li>
-              <li>تحسين خدماتنا وتجربة المستخدم</li>
-              <li>إرسال تحديثات وعروض (بموافقتك)</li>
-              <li>الامتثال للمتطلبات القانونية</li>
+              {tArray('privacy.dataUsage.items').map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
             </ul>
 
-            <h2>حماية البيانات</h2>
-            <p>
-              نتخذ إجراءات أمنية صارمة لحماية بياناتك، تشمل:
-            </p>
+            <h2>{t('privacy.dataProtection.title')}</h2>
+            <p>{t('privacy.dataProtection.content')}</p>
             <ul>
-              <li>تشفير البيانات أثناء النقل والتخزين</li>
-              <li>أنظمة حماية متقدمة ضد الاختراق</li>
-              <li>تقييد الوصول للبيانات للموظفين المخولين فقط</li>
-              <li>مراجعات أمنية دورية</li>
+              {tArray('privacy.dataProtection.items').map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
             </ul>
 
-            <h2>مشاركة البيانات</h2>
-            <p>
-              لا نبيع أو نؤجر بياناتك الشخصية لأطراف ثالثة. قد نشارك بياناتك مع:
-            </p>
+            <h2>{t('privacy.dataSharing.title')}</h2>
+            <p>{t('privacy.dataSharing.content')}</p>
             <ul>
-              <li>شركاء التوصيل لإتمام عمليات الشحن</li>
-              <li>مزودي الخدمات التقنية</li>
-              <li>الجهات الحكومية عند الطلب القانوني</li>
+              {tArray('privacy.dataSharing.items').map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
             </ul>
 
-            <h2>حقوقك</h2>
-            <p>لديك الحق في:</p>
+            <h2>{t('privacy.rights.title')}</h2>
+            <p>{t('privacy.rights.content')}</p>
             <ul>
-              <li>الوصول إلى بياناتك الشخصية</li>
-              <li>تصحيح البيانات غير الدقيقة</li>
-              <li>طلب حذف بياناتك</li>
-              <li>الاعتراض على معالجة بياناتك</li>
-              <li>سحب موافقتك في أي وقت</li>
+              {tArray('privacy.rights.items').map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
             </ul>
 
-            <h2>ملفات تعريف الارتباط (Cookies)</h2>
-            <p>
-              نستخدم ملفات تعريف الارتباط لتحسين تجربتك على موقعنا. 
-              يمكنك التحكم في إعدادات الكوكيز من خلال متصفحك.
-            </p>
+            <h2>{t('privacy.cookies.title')}</h2>
+            <p>{t('privacy.cookies.content')}</p>
 
-            <h2>التواصل معنا</h2>
-            <p>
-              لأي استفسارات حول سياسة الخصوصية، يرجى التواصل معنا عبر:
-            </p>
+            <h2>{t('privacy.contact.title')}</h2>
+            <p>{t('privacy.contact.content')}</p>
             <ul>
-              <li>البريد الإلكتروني: privacy@tdlogistics.sa</li>
-              <li>الهاتف: +966 50 000 0000</li>
+              <li>{t('privacy.contact.email')}</li>
+              <li>{t('privacy.contact.phone')}</li>
             </ul>
           </div>
         </div>
