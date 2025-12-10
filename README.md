@@ -45,7 +45,8 @@ cp .env.example .env.local
 
 بعد تشغيل `npm run db:setup`:
 
-- **البريد:** admin@tdlogistics.sa
+- **اسم المستخدم:** admin
+- **البريد:** info@tdlogistics.co
 - **كلمة المرور:** Admin@123456
 
 ⚠️ **غيّر كلمة المرور فوراً في بيئة الإنتاج!**

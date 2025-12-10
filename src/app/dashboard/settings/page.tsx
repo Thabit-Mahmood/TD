@@ -6,7 +6,7 @@ import { FiArrowRight, FiArrowLeft, FiLock, FiCheck, FiAlertCircle } from 'react
 import { useLanguage } from '@/lib/i18n/LanguageContext';
 import styles from '../page.module.css';
 
-const ADMIN_EMAIL = 'thabit252@gmail.com';
+const ADMIN_EMAIL = 'info@tdlogistics.co';
 
 export default function SettingsPage() {
   const { t, language } = useLanguage();

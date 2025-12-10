@@ -3,6 +3,7 @@ import ClientLogos from '@/components/home/ClientLogos';
 import Services from '@/components/home/Services';
 import WhyUs from '@/components/home/WhyUs';
 import QaseemSection from '@/components/home/QaseemSection';
+import CoverageSection from '@/components/home/CoverageSection';
 import Testimonials from '@/components/home/Testimonials';
 import ClientsSection from '@/components/home/ClientsSection';
 import HomeFAQ from '@/components/home/HomeFAQ';
@@ -208,12 +209,13 @@ export default function Home() {
       />
 
       <Hero />
-      <ClientLogos />
+      <ClientsSection />
       <Services />
       <WhyUs />
+      <ClientLogos />
       <QaseemSection />
+      <CoverageSection />
       <Testimonials />
-      <ClientsSection />
       <HomeFAQ />
       <CTA />
     </>

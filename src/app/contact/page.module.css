@@ -187,3 +187,89 @@
     grid-template-columns: 1fr;
   }
 }
+
+
+/* Location Section */
+.locationSection {
+  padding: 0;
+  overflow: hidden;
+}
+
+.locationGrid {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  gap: 0;
+  height: 500px;
+}
+
+.mapWrapper {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.imageWrapper {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  text-align: center;
+}
+
+.addressText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
+.addressText strong {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.addressText span {
+  opacity: 0.95;
+}
+
+@media (max-width: 768px) {
+  .locationSection h2 {
+    font-size: 1.75rem;
+    padding: 2rem 0 1.5rem;
+  }
+
+  .locationGrid {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .mapWrapper {
+    height: 350px;
+  }
+
+  .imageWrapper {
+    height: 250px;
+  }
+
+  .addressText {
+    font-size: 0.875rem;
+  }
+
+  .addressText strong {
+    font-size: 1.125rem;
+  }
+}

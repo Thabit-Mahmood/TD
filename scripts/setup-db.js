@@ -223,7 +223,7 @@ CREATE INDEX IF NOT EXISTS idx_audit_log_created ON audit_log(created_at);
 db.exec(schema);
 
 // Create admin user if not exists
-const adminEmail = 'admin@tdlogistics.sa';
+const adminEmail = 'info@tdlogistics.co';
 const existingAdmin = db.prepare('SELECT id FROM users WHERE email = ?').get(adminEmail);
 
 if (!existingAdmin) {
@@ -231,10 +231,11 @@ if (!existingAdmin) {
   db.prepare(`
     INSERT INTO users (email, password_hash, name, role, is_active)
     VALUES (?, ?, ?, 'admin', 1)
-  `).run(adminEmail, passwordHash, 'مدير النظام');
+  `).run(adminEmail, passwordHash, 'Admin');
   
   console.log('✅ Admin user created');
-  console.log('   Email: admin@tdlogistics.sa');
+  console.log('   Username: admin');
+  console.log('   Email: info@tdlogistics.co');
   console.log('   Password: Admin@123456');
   console.log('   ⚠️  Please change this password immediately!');
 }

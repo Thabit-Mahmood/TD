@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
                'unknown';
     
     // Rate limiting
-    const rateLimitKey = getRateLimitKey(ip, 'contact');
+    const rateLimitKey = getRateLimitKey(ip, 'quote');
     const rateLimit = checkRateLimit(rateLimitKey, RATE_LIMITS.contact);
     
     if (!rateLimit.allowed) {

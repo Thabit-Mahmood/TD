@@ -70,7 +70,8 @@
     "tracking": "Track Shipment",
     "login": "Login",
     "getQuote": "Get a Quote",
-    "careers": "Careers"
+    "careers": "Careers",
+    "faq": "FAQ"
   },
   "header": {
     "phone": "9200 15499",
@@ -88,7 +89,7 @@
     "subscribe": "Subscribe",
     "emailPlaceholder": "Your email",
     "copyright": "All rights reserved",
-    "address": "Riyadh, Saudi Arabia",
+    "address": "3400 Al Thoumamah Rd, Riyadh 13422, Saudi Arabia",
     "workingHours": "Sun - Thu: 8 AM - 6 PM",
     "privacyPolicy": "Privacy Policy",
     "terms": "Terms & Conditions"
@@ -221,6 +222,11 @@
       "sales": "Sales",
       "support": "Technical Support",
       "partnership": "Partnerships"
+    },
+    "location": {
+      "title": "Our Location",
+      "riyadh": "Riyadh, Saudi Arabia",
+      "saudiArabia": "Saudi Arabia"
     }
   },
   "about": {
@@ -261,6 +267,12 @@
         "title": "Innovation",
         "description": "We invest in the latest technologies and innovative solutions to improve our services and customer experience."
       }
+    },
+    "cta": {
+      "title": "Ready to Grow Your Business?",
+      "subtitle": "Join over 1,000 satisfied clients and experience the best logistics services in the Kingdom",
+      "getQuote": "Get a Quote",
+      "contactUs": "Contact Us"
     }
   },
   "quote": {
@@ -412,8 +424,8 @@
   "tracking": {
     "title": "Track Your Shipment",
     "subtitle": "Enter your tracking number to get the latest updates",
-    "placeholder": "Enter tracking number (e.g., TDL100378632203)",
     "button": "Track",
+    "placeholder": "Enter tracking number (e.g., TDL100378632203)",
     "trackingNumber": "Tracking Number",
     "viewDetails": "View Full Details",
     "complete": "Complete",
@@ -1156,12 +1168,30 @@
     "tracking": "Track Shipment"
   },
   "qaseem": {
-    "title": "Specialists in Qassim Region",
-    "subtitle": "Comprehensive coverage of all cities and governorates in Qassim region",
-    "description": "We are proud to provide excellent delivery services in Qassim region, with comprehensive coverage of all cities and governorates including Buraidah, Unaizah, Ar Rass, Al Mithnab and more.",
-    "coverage": "Full Coverage",
-    "fastDelivery": "Fast Delivery",
-    "localTeam": "Local Team"
+    "title": "Optimal Coverage for AL-Qaseem",
+    "subtitle": "Expand your business to Qaseem province with us",
+    "description": "We are the only trusted & reliable logistics in Qaseem",
+    "feature1": "Daily trips to Qaseem 24/7 coverage",
+    "feature2": "Full Coverage of all Qaseem cities",
+    "feature3": "Same Day Delivery & Express Delivery",
+    "weAre": "We are the",
+    "inclusivePartner": "Inclusive Partner",
+    "inQaseemRegion": "in Qaseem Region",
+    "cities": {
+      "buraidah": "Buraidah",
+      "unaizah": "Unaizah",
+      "alRass": "Al-Rass",
+      "alBukayriyah": "Al-Bukayriyah",
+      "alBadaya": "Al-Badaya",
+      "riyadhAlKhabra": "Riyadh Al-Khabra"
+    }
+  },
+  "coverage": {
+    "title": "Full Coverage in all Cities in Saudi",
+    "subtitle": "Daily trips to meet your business needs",
+    "clients": "clients",
+    "successDelivery": "Success Delivery",
+    "cities": "Cities"
   },
   "clients": {
     "title": "Our Clients",

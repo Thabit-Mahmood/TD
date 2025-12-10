@@ -7,7 +7,7 @@ import { FiMail, FiLock, FiEye, FiEyeOff, FiCheck, FiAlertCircle, FiArrowRight, 
 import { useLanguage } from '@/lib/i18n/LanguageContext';
 import styles from './page.module.css';
 
-const ADMIN_EMAIL = 'thabit252@gmail.com';
+const ADMIN_EMAIL = 'info@tdlogistics.co';
 
 export default function ForgotPasswordPage() {
   const { language, t } = useLanguage();

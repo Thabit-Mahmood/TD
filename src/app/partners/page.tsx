@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { FiCheckCircle, FiTrendingUp, FiCreditCard, FiSettings, FiRotateCcw, FiHeadphones, FiShield } from 'react-icons/fi';
 import FAQ from '@/components/ui/FAQ';
+import Testimonials from '@/components/home/Testimonials';
+import ClientLogos from '@/components/home/ClientLogos';
 import { useLanguage } from '@/lib/i18n';
 import styles from './page.module.css';
 
@@ -247,6 +249,12 @@ export default function PartnersPage() {
           </div>
         </div>
       </section>
+
+      {/* E-Commerce Platforms Section */}
+      <ClientLogos />
+
+      {/* Testimonials Section */}
+      <Testimonials />
 
       {/* FAQ Section */}
       <FAQ 

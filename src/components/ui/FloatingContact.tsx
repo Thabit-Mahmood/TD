@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { FaPhone, FaEnvelope, FaComments } from 'react-icons/fa';
+import { FaPhone, FaEnvelope, FaComments, FaWhatsapp } from 'react-icons/fa';
 import { FiX, FiPackage } from 'react-icons/fi';
 import { useLanguage } from '@/lib/i18n';
 import styles from './FloatingContact.module.css';
@@ -17,6 +17,12 @@ export default function FloatingContact() {
       label: t('floatingContact.call'),
       href: 'tel:920015499',
       color: '#DC2626',
+    },
+    {
+      icon: FaWhatsapp,
+      label: 'WhatsApp',
+      href: 'https://wa.me/966920015499',
+      color: '#25D366',
     },
     {
       icon: FaEnvelope,

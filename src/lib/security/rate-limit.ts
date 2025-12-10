@@ -25,7 +25,7 @@ export const RATE_LIMITS = {
   api: { windowMs: 60000, maxRequests: 100 },
   auth: { windowMs: 900000, maxRequests: 5 },  // 15 min, 5 attempts
   tracking: { windowMs: 60000, maxRequests: 30 },
-  contact: { windowMs: 300000, maxRequests: 3 },  // 5 min, 3 submissions
+  contact: { windowMs: 3600000, maxRequests: 10 },  // 1 hour, 10 submissions
 } as const;
 
 export function checkRateLimit(

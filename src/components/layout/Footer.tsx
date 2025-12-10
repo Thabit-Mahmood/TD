@@ -21,6 +21,7 @@ export default function Footer() {
     { href: '/about', label: t('nav.about') },
     { href: '/tracking', label: t('nav.tracking') },
     { href: '/quote', label: t('nav.getQuote') },
+    { href: '/faq', label: t('nav.faq') },
     { href: '/contact', label: t('nav.contact') },
   ];
 

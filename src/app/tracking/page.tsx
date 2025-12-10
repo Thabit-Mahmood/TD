@@ -8,7 +8,6 @@ import {
   FiUser, FiPhone, FiInfo
 } from 'react-icons/fi';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
-import QaseemSection from '@/components/home/QaseemSection';
 import styles from './page.module.css';
 
 interface TrackingEvent {
@@ -633,9 +632,6 @@ export default function TrackingPage() {
           )}
         </div>
       </section>
-
-      {/* Qaseem Section */}
-      <QaseemSection />
     </div>
   );
 }

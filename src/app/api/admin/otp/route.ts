@@ -105,7 +105,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Hardcoded admin email
-    const ADMIN_EMAIL = 'thabit252@gmail.com';
+    const ADMIN_EMAIL = 'info@tdlogistics.co';
     
     // Only allow the hardcoded admin email
     if (email !== ADMIN_EMAIL) {

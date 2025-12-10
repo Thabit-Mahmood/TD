@@ -2,7 +2,9 @@
 
 import { useState } from 'react';
 import { FiPhone, FiMail, FiMapPin, FiClock, FiSend, FiCheck } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 import { useLanguage } from '@/lib/i18n';
+import CTA from '@/components/home/CTA';
 import styles from './page.module.css';
 
 export default function ContactPage() {
@@ -14,6 +16,12 @@ export default function ContactPage() {
       title: t('contact.info.phone'),
       value: '9200 15499',
       href: 'tel:920015499',
+    },
+    {
+      icon: FaWhatsapp,
+      title: t('contact.info.whatsapp'),
+      value: '9200 15499',
+      href: 'https://wa.me/966920015499',
     },
     {
       icon: FiMail,
@@ -306,6 +314,41 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      {/* Location Section */}
+      <section className={styles.locationSection}>
+        <div className={styles.locationGrid}>
+          {/* Map - 70% width */}
+          <div className={styles.mapWrapper}>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.8!2d46.7660758!3d24.8499463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2eff6e849a1517%3A0xd6d8e8d1761a6350!2sTD%20Logistics%20%7C%20%D8%AA%D9%8A%20%D8%AF%D9%8A%20%D9%84%D9%84%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D9%84%D9%88%D8%AC%D8%B3%D8%AA%D9%8A%D8%A9!5e0!3m2!1sen!2ssa!4v1234567890!5m2!1sen!2ssa"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="TD Logistics - 3400 Al Thoumamah Rd, RUMB3400, Riyadh 13422"
+            ></iframe>
+          </div>
+          {/* Image - 30% width */}
+          <div className={styles.imageWrapper}>
+            <div className={styles.imagePlaceholder}>
+              <FiMapPin size={48} />
+              <div className={styles.addressText}>
+                <strong>TD Logistics</strong>
+                <span>3400 Al Thoumamah Rd</span>
+                <span>RUMB3400</span>
+                <span>Riyadh 13422</span>
+                <span>{t('contact.location.saudiArabia')}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <CTA />
     </div>
   );
 }

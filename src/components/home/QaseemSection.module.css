@@ -1,18 +1,8 @@
 .qaseemSection {
   padding: 5rem 0;
-  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+  background: white;
   position: relative;
   overflow: hidden;
-}
-
-.qaseemSection::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23b23028' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
 .content {
@@ -24,134 +14,144 @@
   z-index: 1;
 }
 
+.imageContent {
+  position: relative;
+}
+
+.imageWrapper {
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  height: 450px;
+  position: relative;
+  background: #f8f9fa;
+}
+
 .textContent {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  color: white;
-  border-radius: 50px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  width: fit-content;
-}
-
 .textContent h2 {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   font-weight: 800;
   color: var(--text-primary);
   line-height: 1.3;
 }
 
 .subtitle {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   color: var(--text-secondary);
-  font-weight: 600;
+  line-height: 1.6;
 }
 
 .description {
-  font-size: 1.0625rem;
+  font-size: 1rem;
   color: var(--text-secondary);
-  line-height: 1.8;
-}
-
-.features {
-  display: flex;
-  gap: 2rem;
-  margin-top: 1rem;
-}
-
-.feature {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.featureIcon {
-  color: var(--primary);
-  font-size: 1.25rem;
-}
-
-/* Map Content */
-.mapContent {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.mapPlaceholder {
-  width: 100%;
-  max-width: 400px;
-  aspect-ratio: 1;
-  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
-  border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 
-    0 25px 60px rgba(178, 48, 40, 0.15),
-    0 10px 30px rgba(0, 0, 0, 0.08),
-    inset 0 -5px 20px rgba(178, 48, 40, 0.05);
-  position: relative;
-  border: 3px solid rgba(178, 48, 40, 0.1);
-}
-
-.mapPlaceholder::before {
-  content: '';
-  position: absolute;
-  top: -8px;
-  left: -8px;
-  right: -8px;
-  bottom: -8px;
-  border-radius: 50%;
-  border: 2px dashed rgba(178, 48, 40, 0.2);
-  animation: rotate 30s linear infinite;
-}
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.mapIcon {
-  font-size: 4rem;
-  color: var(--primary);
-  margin-bottom: 1.5rem;
-  filter: drop-shadow(0 4px 8px rgba(178, 48, 40, 0.3));
+  line-height: 1.7;
 }
 
 .cities {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 0.75rem;
-  padding: 0 2rem;
+  margin-top: 0.5rem;
 }
 
-.city {
+.cityTag {
   padding: 0.5rem 1rem;
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   color: white;
-  border-radius: 50px;
+  border-radius: 20px;
   font-size: 0.875rem;
   font-weight: 600;
-  box-shadow: 0 4px 12px rgba(178, 48, 40, 0.25);
-  transition: all 0.3s ease;
+  transition: transform 0.2s ease;
 }
 
-.city:hover {
+.cityTag:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(178, 48, 40, 0.35);
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.checkIcon {
+  color: #2E7D32;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.amazonBadge {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 1.5rem;
+  background: var(--background-secondary);
+  border-radius: 0.75rem;
+}
+
+.amazonLogo {
+  flex-shrink: 0;
+}
+
+.amazonText {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #232F3E;
+  font-family: Arial, sans-serif;
+  position: relative;
+}
+
+.amazonText::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #FF9900;
+  border-radius: 2px;
+}
+
+.partnerText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.weAre {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-style: italic;
+}
+
+.inclusive {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--primary);
+  font-style: italic;
+}
+
+.region {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-style: italic;
 }
 
 @media (max-width: 1024px) {
@@ -160,19 +160,8 @@
     gap: 3rem;
   }
 
-  .mapContent {
+  .imageContent {
     order: -1;
-  }
-
-  .mapPlaceholder {
-    max-width: 300px;
-  }
-
-  .mapPlaceholder::before {
-    top: -6px;
-    left: -6px;
-    right: -6px;
-    bottom: -6px;
   }
 }
 
@@ -186,35 +175,28 @@
   }
 
   .subtitle {
-    font-size: 1.125rem;
+    font-size: 1rem;
   }
 
-  .features {
+  .description {
+    font-size: 0.9375rem;
+  }
+
+  .imageWrapper {
+    height: 350px;
+  }
+
+  .amazonBadge {
     flex-direction: column;
-    gap: 1rem;
+    align-items: flex-start;
+    padding: 1rem;
   }
 
-  .mapPlaceholder {
-    max-width: 250px;
+  .amazonText {
+    font-size: 1.5rem;
   }
 
-  .mapPlaceholder::before {
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-  }
-
-  .mapIcon {
-    font-size: 3rem;
-  }
-
-  .cities {
-    gap: 0.5rem;
-  }
-
-  .city {
-    font-size: 0.75rem;
-    padding: 0.375rem 0.75rem;
+  .inclusive {
+    font-size: 1rem;
   }
 }

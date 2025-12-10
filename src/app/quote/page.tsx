@@ -3,6 +3,10 @@
 import { useState } from 'react';
 import { FiSend, FiCheck, FiPackage, FiTruck, FiBox, FiRefreshCw } from 'react-icons/fi';
 import { useLanguage } from '@/lib/i18n';
+import WhyUs from '@/components/home/WhyUs';
+import ClientLogos from '@/components/home/ClientLogos';
+import Testimonials from '@/components/home/Testimonials';
+import CTA from '@/components/home/CTA';
 import styles from './page.module.css';
 
 export default function QuotePage() {
@@ -168,6 +172,18 @@ export default function QuotePage() {
           )}
         </div>
       </section>
+
+      {/* Why Choose TD Section */}
+      <WhyUs />
+
+      {/* E-Commerce Platforms Section */}
+      <ClientLogos />
+
+      {/* Testimonials Section */}
+      <Testimonials />
+
+      {/* CTA Section */}
+      <CTA />
     </div>
   );
 }

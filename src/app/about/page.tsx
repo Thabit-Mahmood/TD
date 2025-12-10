@@ -2,6 +2,9 @@
 
 import { useLanguage } from '@/lib/i18n/LanguageContext';
 import { FiTruck, FiTarget, FiAward, FiUsers, FiCheckCircle } from 'react-icons/fi';
+import Image from 'next/image';
+import Testimonials from '@/components/home/Testimonials';
+import CTA from '@/components/home/CTA';
 import styles from './page.module.css';
 
 export default function AboutPage() {
@@ -76,6 +79,30 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Image Divider - 3 images in a row */}
+      <section className={styles.imageDivider}>
+        <div className={styles.imageGrid}>
+          <div className={styles.imageItem}>
+            <div className={styles.imagePlaceholder}>
+              <FiTruck size={48} />
+              <span>Operations</span>
+            </div>
+          </div>
+          <div className={styles.imageItem}>
+            <div className={styles.imagePlaceholder}>
+              <FiUsers size={48} />
+              <span>Our Team</span>
+            </div>
+          </div>
+          <div className={styles.imageItem}>
+            <div className={styles.imagePlaceholder}>
+              <FiCheckCircle size={48} />
+              <span>Delivery Excellence</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Values */}
       <section className={styles.section}>
         <div className="container">
@@ -94,6 +121,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <Testimonials />
 
       {/* Stats */}
       <section className={styles.stats}>
@@ -118,6 +148,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* CTA Section */}
+      <CTA />
     </div>
   );
 }
