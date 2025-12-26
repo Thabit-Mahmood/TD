@@ -12,6 +12,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "better-sqlite3": "^9.2.2",
+    "critters": "^0.0.23",
     "csrf-csrf": "^3.0.3",
     "dompurify": "^3.0.6",
     "framer-motion": "^10.17.4",
@@ -43,7 +44,6 @@
     "@types/sanitize-html": "^2.9.5",
     "@types/uuid": "^9.0.7",
     "@types/validator": "^13.11.7",
-    "critters": "^0.0.23",
     "eslint": "^8.56.0",
     "eslint-config-next": "14.0.4",
     "typescript": "^5.3.3"
