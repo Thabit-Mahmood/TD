@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://tdlogistics.sa/</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tdlogistics.sa/" />
+  </url>
+
+  <!-- Partners Page -->
+  <url>
+    <loc>https://tdlogistics.sa/partners</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tdlogistics.sa/partners" />
+  </url>
+
+  <!-- Services Pages -->
+  <url>
+    <loc>https://tdlogistics.sa/services</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tdlogistics.sa/services" />
+  </url>
+
+  <url>
+    <loc>https://tdlogistics.sa/services/last-mile</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tdlogistics.sa/services/last-mile" />
+  </url>
+
+  <url>
+    <loc>https://tdlogistics.sa/services/ecommerce</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tdlogistics.sa/services/ecommerce" />
+  </url>
+
+  <url>
+    <loc>https://tdlogistics.sa/services/customized</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tdlogistics.sa/services/customized" />
+  </url>
+
+  <url>
+    <loc>https://tdlogistics.sa/services/technology</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tdlogistics.sa/services/technology" />
+  </url>
+
+  <!-- Other Pages -->
+  <url>
+    <loc>https://tdlogistics.sa/about</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tdlogistics.sa/about" />
+  </url>
+
+  <url>
+    <loc>https://tdlogistics.sa/blog</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tdlogistics.sa/blog" />
+  </url>
+
+  <url>
+    <loc>https://tdlogistics.sa/contact</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tdlogistics.sa/contact" />
+  </url>
+
+  <url>
+    <loc>https://tdlogistics.sa/tracking</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tdlogistics.sa/tracking" />
+  </url>
+
+  <url>
+    <loc>https://tdlogistics.sa/quote</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tdlogistics.sa/quote" />
+  </url>
+
+  <url>
+    <loc>https://tdlogistics.sa/careers</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tdlogistics.sa/careers" />
+  </url>
+
+  <url>
+    <loc>https://tdlogistics.sa/privacy</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tdlogistics.sa/privacy" />
+  </url>
+
+  <url>
+    <loc>https://tdlogistics.sa/terms</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tdlogistics.sa/terms" />
+  </url>
+
+</urlset>

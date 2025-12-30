@@ -1,5 +1,4 @@
-import { createClient } from '@libsql/client';
-import type { Client, ResultSet, InValue } from '@libsql/client';
+import { createClient, type Client, type ResultSet, type InValue } from '@libsql/client/web';
 import SCHEMA from './schema';
 
 // Type for database parameters - accepts common types
@@ -10,37 +9,34 @@ let db: Client | null = null;
 
 export function getDb(): Client {
   if (!db) {
-    // Check if we're using Turso (production/Cloudflare)
     const tursoUrl = process.env.TURSO_DATABASE_URL;
     const tursoToken = process.env.TURSO_AUTH_TOKEN;
     
-    if (tursoUrl && tursoToken) {
-      // Use Turso for production
-      db = createClient({
-        url: tursoUrl,
-        authToken: tursoToken,
-      });
-    } else {
-      // Use local SQLite for development
-      const dbPath = process.env.DATABASE_PATH || './data/td_logistics.db';
-      db = createClient({
-        url: `file:${dbPath}`,
-      });
+    if (!tursoUrl || !tursoToken) {
+      throw new Error('TURSO_DATABASE_URL and TURSO_AUTH_TOKEN must be set');
     }
     
-    // Initialize schema
-    initSchema();
+    // Use HTTP-only client for Cloudflare compatibility
+    db = createClient({
+      url: tursoUrl,
+      authToken: tursoToken,
+    });
   }
   
   return db;
 }
 
-// Initialize database schema
-async function initSchema() {
-  if (!db) return;
-  
+// Initialize database schema (call once on startup)
+export async function initSchema() {
+  const db = getDb();
   try {
-    await db.execute(SCHEMA);
+    // Split schema into individual statements
+    const statements = SCHEMA.split(';').filter(s => s.trim());
+    for (const stmt of statements) {
+      if (stmt.trim()) {
+        await db.execute(stmt);
+      }
+    }
   } catch (error) {
     console.error('Error initializing schema:', error);
   }
