@@ -22,7 +22,7 @@ const securityHeaders = {
 };
 
 // Edge-compatible: emails are logged, data is saved to DB
-const sendCareerEmails = async (data: { name: string; email: string; phone: string; position: string; message: string | null }, isArabic: boolean) => {
+const sendCareerEmails = async (data: { name: string; email: string | null; phone: string | null; position: string; message: string | null }, isArabic: boolean) => {
   console.log('[Edge Email] Career application confirmation would be sent to:', data.email);
   console.log('[Edge Email] Career admin notification for:', data.name, '-', data.position);
 };
