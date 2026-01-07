@@ -14,7 +14,6 @@
     "db:turso:init": "node scripts/init-turso-db.js"
   },
   "dependencies": {
-    "@libsql/client": "^0.15.15",
     "@opennextjs/cloudflare": "^1.14.8",
     "bcryptjs": "^2.4.3",
     "critters": "^0.0.23",

@@ -85,15 +85,18 @@ export async function POST(request: NextRequest) {
 
     const publishedAt = status === 'published' ? new Date().toISOString() : null;
 
-    const result = await execute(
+    const result = await query<{ id: number }>(
       `INSERT INTO customer_reviews (customer_name, company_name, position, review_text, rating, avatar_url, status, published_at)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+       RETURNING id`,
       [customer_name, company_name || null, position || null, review_text, rating || 5, avatar_url || null, status || 'pending', publishedAt]
     );
 
+    const insertedId = result[0]?.id;
+
     return NextResponse.json({
       success: true,
-      id: Number(result.lastInsertRowid),
+      id: insertedId,
       message: 'تم إضافة الرأي بنجاح',
     }, { status: 201, headers: securityHeaders });
   } catch (error) {

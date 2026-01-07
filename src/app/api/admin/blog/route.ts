@@ -94,11 +94,14 @@ export async function POST(request: NextRequest) {
 
     const publishedAt = status === 'published' ? new Date().toISOString() : null;
 
-    const result = await execute(
+    const result = await query<{ id: number }>(
       `INSERT INTO blog_posts (title, slug, excerpt, content, featured_image, images, status, published_at, meta_title, meta_description)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+       RETURNING id`,
       [title, slug, excerpt || null, content, featured_image || null, images || null, status || 'draft', publishedAt, meta_title || null, meta_description || null]
     );
+
+    const insertedId = result[0]?.id;
 
     // If published, send newsletter notification
     if (status === 'published') {
@@ -120,7 +123,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      id: Number(result.lastInsertRowid),
+      id: insertedId,
       slug,
       message: 'تم إنشاء المقال بنجاح',
     }, { status: 201, headers: securityHeaders });
