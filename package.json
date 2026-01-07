@@ -7,11 +7,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
     "db:setup": "node scripts/setup-db.js",
     "db:turso:init": "node scripts/init-turso-db.js"
   },
   "dependencies": {
     "@libsql/client": "^0.15.15",
+    "@opennextjs/cloudflare": "^1.14.8",
     "bcryptjs": "^2.4.3",
     "critters": "^0.0.23",
     "csrf-csrf": "^3.0.3",
@@ -49,6 +53,7 @@
     "better-sqlite3": "^12.5.0",
     "eslint": "^8.56.0",
     "eslint-config-next": "^15.0.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "wrangler": "^4.54.0"
   }
 }

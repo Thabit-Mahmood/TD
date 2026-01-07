@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { queryOne, execute } from '@/lib/db';
 
-export const runtime = 'edge';
+
 
 const securityHeaders = {
   'X-Content-Type-Options': 'nosniff',

@@ -3,9 +3,9 @@ import { contactSchema } from '@/lib/validation/schemas';
 import { sanitizeInput, sanitizeEmail, sanitizePhone } from '@/lib/security/sanitize';
 import { checkRateLimit, getRateLimitKey, RATE_LIMITS } from '@/lib/security/rate-limit';
 import { execute, queryOne } from '@/lib/db';
-import { sendContactConfirmation, sendContactAdminNotification, sendNewsletterWelcome } from '@/lib/email/edge';
+import { sendContactConfirmation, sendContactAdminNotification, sendNewsletterWelcome } from '@/lib/email';
 
-export const runtime = 'edge';
+
 
 const securityHeaders = {
   'X-Content-Type-Options': 'nosniff',

@@ -5,7 +5,7 @@ import { checkRateLimit, getRateLimitKey, RATE_LIMITS } from '@/lib/security/rat
 import { verifyPassword, generateToken, setAuthCookie } from '@/lib/security/auth';
 import { queryOne, execute } from '@/lib/db';
 
-export const runtime = 'edge';
+
 
 const securityHeaders = {
   'X-Content-Type-Options': 'nosniff',

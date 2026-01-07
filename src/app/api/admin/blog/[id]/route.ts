@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { queryOne, execute, query } from '@/lib/db';
-import { sendNewBlogPostNotification } from '@/lib/email/edge';
-
-export const runtime = 'edge';
+import { sendNewBlogPostNotification } from '@/lib/email';
 
 const securityHeaders = {
   'X-Content-Type-Options': 'nosniff',

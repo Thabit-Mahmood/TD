@@ -1,8 +1,8 @@
-import { createClient, type Client, type ResultSet, type InValue } from '@libsql/client/web';
+import { createClient, type Client, type ResultSet } from '@libsql/client';
 import SCHEMA from './schema';
 
-// Type for database parameters - accepts common types
-type DbParam = string | number | boolean | null | undefined | bigint | ArrayBuffer | Uint8Array;
+// Type for database parameters
+type DbParam = string | number | boolean | null | undefined;
 
 // Singleton database instance
 let db: Client | null = null;
@@ -16,7 +16,6 @@ export function getDb(): Client {
       throw new Error('TURSO_DATABASE_URL and TURSO_AUTH_TOKEN must be set');
     }
     
-    // Use HTTP-only client for Cloudflare compatibility
     db = createClient({
       url: tursoUrl,
       authToken: tursoToken,
@@ -26,11 +25,10 @@ export function getDb(): Client {
   return db;
 }
 
-// Initialize database schema (call once on startup)
+// Initialize database schema
 export async function initSchema() {
   const db = getDb();
   try {
-    // Split schema into individual statements
     const statements = SCHEMA.split(';').filter(s => s.trim());
     for (const stmt of statements) {
       if (stmt.trim()) {
@@ -42,24 +40,24 @@ export async function initSchema() {
   }
 }
 
-// Safe query execution with parameterized queries
+// Safe query execution
 export async function query<T>(sql: string, params: DbParam[] = []): Promise<T[]> {
   const db = getDb();
-  const result = await db.execute({ sql, args: params as InValue[] });
+  const result = await db.execute({ sql, args: params });
   return result.rows as T[];
 }
 
 // Safe single row query
 export async function queryOne<T>(sql: string, params: DbParam[] = []): Promise<T | undefined> {
   const db = getDb();
-  const result = await db.execute({ sql, args: params as InValue[] });
+  const result = await db.execute({ sql, args: params });
   return result.rows[0] as T | undefined;
 }
 
 // Safe insert/update/delete
 export async function execute(sql: string, params: DbParam[] = []): Promise<ResultSet> {
   const db = getDb();
-  return await db.execute({ sql, args: params as InValue[] });
+  return await db.execute({ sql, args: params });
 }
 
 // Transaction wrapper
