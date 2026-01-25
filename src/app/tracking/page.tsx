@@ -544,14 +544,6 @@ export default function TrackingPage() {
                     );
                   })}
                 </div>
-
-                {/* Estimated Delivery */}
-                {trackingData.expectedDeliveryDate && getCurrentMilestone(trackingData.status) < MilestoneStage.DELIVERED && (
-                  <div className={styles.estimatedDelivery}>
-                    <FiClock />
-                    <span>{t('tracking.expectedDelivery')}: {getRelativeTime(trackingData.expectedDeliveryDate)}</span>
-                  </div>
-                )}
               </div>
 
               {/* Destination & Receiver Info */}
