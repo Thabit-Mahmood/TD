@@ -16,7 +16,7 @@ type Language = 'ar' | 'en';
 const emailTranslations = {
   ar: {
     companyName: 'تي دي للخدمات اللوجستية',
-    tagline: 'شريكك الموثوق في الشحن والتوصيل',
+    tagline: 'شريكك الموثوق في الخدمات اللوجستية',
     contactUs: 'تواصل معنا على مدار الساعة',
     copyright: 'جميع الحقوق محفوظة',
     received: 'تم الاستلام',
@@ -40,8 +40,6 @@ const emailTranslations = {
     requestReceived: 'تم استلام طلبك',
     thankYouQuote: 'شكراً لاهتمامك بخدماتنا! لقد استلمنا طلب عرض السعر الخاص بك وسيتواصل معك أحد ممثلي المبيعات قريباً.',
     serviceType: 'نوع الخدمة',
-    originCity: 'مدينة الشحن',
-    destinationCity: 'مدينة التوصيل',
     expectedVolume: 'الحجم المتوقع',
     willContactYou: 'سنتواصل معك خلال',
     toDiscussNeeds: 'لمناقشة احتياجاتك وتقديم أفضل عرض سعر.',
@@ -75,7 +73,7 @@ const emailTranslations = {
     services: {
       'last-mile': 'توصيل الميل الأخير',
       ecommerce: 'شحن التجارة الإلكترونية',
-      technology: 'الحلول التقنية',
+      fulfillment: 'خدمة إدارة المخزون والشحن',
       customized: 'حلول مخصصة',
     },
   },
@@ -105,8 +103,6 @@ const emailTranslations = {
     requestReceived: 'Request Received',
     thankYouQuote: 'Thank you for your interest in our services! We have received your quote request and a sales representative will contact you soon.',
     serviceType: 'Service Type',
-    originCity: 'Origin City',
-    destinationCity: 'Destination City',
     expectedVolume: 'Expected Volume',
     willContactYou: 'We will contact you within',
     toDiscussNeeds: 'to discuss your needs and provide the best quote.',
@@ -140,7 +136,7 @@ const emailTranslations = {
     services: {
       'last-mile': 'Last Mile Delivery',
       ecommerce: 'E-commerce Shipping',
-      technology: 'Technology Solutions',
+      fulfillment: 'Fulfillment Services',
       customized: 'Customized Solutions',
     },
   },
@@ -381,8 +377,6 @@ export const sendQuoteConfirmation = async (data: {
   phone: string;
   company?: string;
   serviceType: string;
-  originCity?: string;
-  destinationCity?: string;
   estimatedVolume?: string;
   language?: Language;
 }) => {
@@ -417,8 +411,6 @@ export const sendQuoteConfirmation = async (data: {
             <td style="padding: 20px;">
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
                 ${createInfoRow(`${t.serviceType}:`, t.services[data.serviceType as keyof typeof t.services] || data.serviceType, false, lang)}
-                ${data.originCity ? createInfoRow(`${t.originCity}:`, data.originCity, false, lang) : ''}
-                ${data.destinationCity ? createInfoRow(`${t.destinationCity}:`, data.destinationCity, false, lang) : ''}
                 ${data.estimatedVolume ? createInfoRow(`${t.expectedVolume}:`, data.estimatedVolume, true, lang) : ''}
               </table>
             </td>
@@ -457,16 +449,17 @@ export const sendQuoteAdminNotification = async (data: {
   phone: string;
   company?: string;
   serviceType: string;
-  originCity?: string;
-  destinationCity?: string;
   estimatedVolume?: string;
   additionalDetails?: string;
 }) => {
   const serviceLabels: Record<string, string> = {
     'last-mile': 'توصيل الميل الأخير',
+    delivery: 'التوصيل السريع',
     ecommerce: 'شحن التجارة الإلكترونية',
-    technology: 'الحلول التقنية',
+    fulfillment: 'خدمة إدارة المخزون والشحن',
+    storage: 'خدمة إدارة المخزون والشحن',
     customized: 'حلول مخصصة',
+    returns: 'إدارة المرتجعات',
   };
 
   const content = `
@@ -512,8 +505,6 @@ export const sendQuoteAdminNotification = async (data: {
                     <span style="color: #b23028; font-weight: 600; display: block;">${serviceLabels[data.serviceType] || data.serviceType}</span>
                   </td>
                 </tr>
-                ${data.originCity ? createInfoRow('مدينة الشحن:', data.originCity) : ''}
-                ${data.destinationCity ? createInfoRow('مدينة التوصيل:', data.destinationCity) : ''}
                 ${data.estimatedVolume ? createInfoRow('الحجم المتوقع:', data.estimatedVolume, true) : ''}
               </table>
             </td>

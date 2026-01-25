@@ -8,23 +8,24 @@ import styles from './CoverageSection.module.css';
 export default function CoverageSection() {
   const { t } = useLanguage();
 
-  const stats = [
-    {
-      icon: FiUsers,
-      value: '+150,000',
-      label: t('coverage.clients'),
-    },
-    {
-      icon: FiCheckCircle,
-      value: '99%',
-      label: t('coverage.successDelivery'),
-    },
-    {
-      icon: FiMapPin,
-      value: '+150',
-      label: t('coverage.cities'),
-    },
-  ];
+  // Statistics temporarily hidden - will be restored once client finalizes the numbers
+  // const stats = [
+  //   {
+  //     icon: FiUsers,
+  //     value: '+150,000',
+  //     label: t('coverage.clients'),
+  //   },
+  //   {
+  //     icon: FiCheckCircle,
+  //     value: '99%',
+  //     label: t('coverage.successDelivery'),
+  //   },
+  //   {
+  //     icon: FiMapPin,
+  //     value: '+150',
+  //     label: t('coverage.cities'),
+  //   },
+  // ];
 
   return (
     <section className={styles.coverageSection}>
@@ -34,7 +35,8 @@ export default function CoverageSection() {
             <h2>{t('coverage.title')}</h2>
             <p className={styles.subtitle}>{t('coverage.subtitle')}</p>
 
-            <div className={styles.statsGrid}>
+            {/* Statistics temporarily hidden - will be restored once client finalizes the numbers */}
+            {/* <div className={styles.statsGrid}>
               {stats.map((stat, index) => (
                 <div key={index} className={styles.statCard}>
                   <stat.icon className={styles.statIcon} />
@@ -42,7 +44,7 @@ export default function CoverageSection() {
                   <div className={styles.statLabel}>{stat.label}</div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
 
           <div className={styles.mapContent}>

@@ -5,11 +5,12 @@ import { FiTruck, FiPackage, FiSettings, FiCreditCard, FiArrowLeft, FiArrowRight
 import { useLanguage } from '@/lib/i18n/LanguageContext';
 import styles from './Services.module.css';
 
+// Updated order: Package Delivery, Fulfillment Services, E-commerce Solutions, Customized Delivery
 const serviceKeys = [
   { icon: FiTruck, key: 'lastMile', link: '/services/last-mile' },
+  { icon: FiPackage, key: 'fulfillment', link: '/services/fulfillment' },
   { icon: FiCreditCard, key: 'ecommerce', link: '/services/ecommerce' },
   { icon: FiSettings, key: 'customized', link: '/services/customized' },
-  { icon: FiPackage, key: 'technology', link: '/services/technology' },
 ];
 
 export default function Services() {

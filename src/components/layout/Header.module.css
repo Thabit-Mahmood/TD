@@ -3,6 +3,11 @@
   color: white;
   padding: 0.5rem 0;
   font-size: 0.875rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
 }
 
 .topBarContent {
@@ -49,15 +54,39 @@
 }
 
 .header {
-  position: sticky;
-  top: 0;
+  position: fixed;
+  top: 44px; /* Height of topBar */
+  left: 0;
+  right: 0;
   z-index: 1000;
   background: var(--background);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
 }
 
 .header.scrolled {
   box-shadow: var(--shadow-md);
+}
+
+.header.hidden {
+  transform: translateY(-100%);
+}
+
+/* Add spacing for fixed header */
+.headerSpacer {
+  height: 120px; /* topBar height + header height */
+}
+
+.phoneLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  direction: ltr !important;
+  unicode-bidi: embed;
+}
+
+.phoneLink span {
+  direction: ltr !important;
+  unicode-bidi: embed;
 }
 
 .headerContent {
@@ -121,11 +150,29 @@
   font-weight: 500;
   border-radius: var(--radius);
   transition: all 0.2s;
+  position: relative;
 }
 
 .navLink:hover {
   color: var(--primary);
   background: rgba(220, 38, 38, 0.05);
+}
+
+.navLink.active {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.navLink.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 3px 3px 0 0;
 }
 
 .headerActions {
@@ -209,6 +256,18 @@
   color: var(--primary);
 }
 
+.mobileNavLink.active {
+  color: var(--primary);
+  background: rgba(220, 38, 38, 0.08);
+  font-weight: 600;
+  border-right: 3px solid var(--primary);
+}
+
+:global([dir="ltr"]) .mobileNavLink.active {
+  border-right: none;
+  border-left: 3px solid var(--primary);
+}
+
 .mobileActions {
   display: flex;
   flex-direction: column;
@@ -258,6 +317,14 @@
 
   .logoText {
     display: none;
+  }
+
+  .header {
+    top: 60px; /* Increased height for mobile topBar */
+  }
+
+  .headerSpacer {
+    height: 140px; /* Adjusted for mobile */
   }
 }
 

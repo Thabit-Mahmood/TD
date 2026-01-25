@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { FiCheck, FiHeadphones, FiShield } from 'react-icons/fi';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
 import styles from './WhyUs.module.css';
@@ -38,7 +39,7 @@ export default function WhyUs() {
         <div className={styles.content}>
           <div className={styles.imageContent}>
             <div className={styles.imageWrapper}>
-              <img src="/why_choose_td.webp" alt="Why Choose TD Logistics" className={styles.whyUsImg} />
+              <Image src="/why_choose_td.webp" alt="Why Choose TD Logistics" className={styles.whyUsImg} width={600} height={400} priority />
             </div>
           </div>
 
@@ -49,7 +50,7 @@ export default function WhyUs() {
                   <feature.icon />
                 </div>
                 <div className={styles.featureText}>
-                  <h4>{feature.title}</h4>
+                  <h3>{feature.title}</h3>
                   <p>{feature.description}</p>
                 </div>
               </div>

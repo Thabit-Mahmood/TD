@@ -17,6 +17,8 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 3rem;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .gridHidden {
@@ -33,11 +35,13 @@
 .slider {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 3rem;
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
   scroll-behavior: smooth;
+  width: 100%;
 }
 
 .slider::-webkit-scrollbar {

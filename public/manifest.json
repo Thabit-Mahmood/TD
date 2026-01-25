@@ -1,7 +1,7 @@
 {
   "name": "تي دي للخدمات اللوجستية",
   "short_name": "تي دي",
-  "description": "شريكك الموثوق في الشحن والتوصيل",
+  "description": "شريكك الموثوق في الخدمات اللوجستية",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -9,12 +9,17 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/icons/icon-192x192.png",
+      "src": "/tabicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/tabicon.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/icons/icon-512x512.png",
+      "src": "/tabicon.png",
       "sizes": "512x512",
       "type": "image/png"
     }

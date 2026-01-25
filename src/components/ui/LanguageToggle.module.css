@@ -1,35 +1,108 @@
-.toggle {
+.toggleContainer {
   display: flex;
   align-items: center;
-  gap: 0.375rem;
-  padding: 0.5rem 0.75rem;
-  background: transparent;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+}
+
+.toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 80px;
+  height: 40px;
+  padding: 4px;
+  background: var(--background-secondary);
+  border: 2px solid var(--border);
+  border-radius: 22px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: border-color 0.3s ease;
   font-family: inherit;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--text-secondary);
 }
 
 .toggle:hover {
-  background: var(--background-secondary);
   border-color: var(--primary);
-  color: var(--primary);
 }
 
-.flag {
-  font-size: 1rem;
-  line-height: 1;
+.toggle:disabled {
+  cursor: default;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 32px;
+  border-radius: 16px;
+  z-index: 1;
+  transition: color 0.4s ease;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: rgba(17, 24, 39, 0.7); /* Darker color for better contrast */
+}
+
+.option.active {
+  color: white;
+}
+
+.arOption {
+  order: 1;
+}
+
+.enOption {
+  order: 2;
+}
+
+/* RTL: Arabic first (left), English second (right) */
+:global([dir="rtl"]) .arOption {
+  order: 1;
+}
+
+:global([dir="rtl"]) .enOption {
+  order: 2;
+}
+
+/* LTR: English first (left), Arabic second (right) */
+:global([dir="ltr"]) .enOption {
+  order: 1;
+}
+
+:global([dir="ltr"]) .arOption {
+  order: 2;
 }
 
 .label {
   font-weight: 700;
+  font-size: 0.875rem;
 }
 
-/* LTR adjustments */
+.slider {
+  position: absolute;
+  width: 36px;
+  height: 32px;
+  background: var(--primary);
+  border-radius: 16px;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+/* RTL mode: Arabic is on left, English on right */
+:global([dir="rtl"]) .toggle.arabic .slider {
+  transform: translateX(0);
+}
+
+:global([dir="rtl"]) .toggle.english .slider {
+  transform: translateX(-36px);
+}
+
+/* LTR mode: English is on left, Arabic on right */
+:global([dir="ltr"]) .toggle.english .slider {
+  transform: translateX(0);
+}
+
+:global([dir="ltr"]) .toggle.arabic .slider {
+  transform: translateX(36px);
+}
+
 :global([dir="ltr"]) .toggle {
   font-family: 'Inter', sans-serif;
 }

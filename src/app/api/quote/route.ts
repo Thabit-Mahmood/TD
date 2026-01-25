@@ -4,6 +4,7 @@ import { sanitizeInput, sanitizeEmail, sanitizePhone } from '@/lib/security/sani
 import { checkRateLimit, getRateLimitKey, RATE_LIMITS } from '@/lib/security/rate-limit';
 import { execute, queryOne } from '@/lib/db';
 import { sendQuoteConfirmation, sendQuoteAdminNotification, sendNewsletterWelcome } from '@/lib/email';
+import { sendQuoteToClickUp } from '@/lib/clickup';
 
 
 
@@ -25,7 +26,10 @@ export async function POST(request: NextRequest) {
     
     if (!rateLimit.allowed) {
       return NextResponse.json(
-        { error: 'تم تجاوز الحد المسموح. يرجى المحاولة بعد بضع دقائق.' },
+        { 
+          error: 'تم تجاوز الحد المسموح. يرجى المحاولة بعد بضع دقائق.',
+          resetIn: rateLimit.resetIn 
+        },
         { 
           status: 429,
           headers: {
@@ -66,8 +70,6 @@ export async function POST(request: NextRequest) {
       phone: sanitizePhone(data.phone),
       company: data.company ? sanitizeInput(data.company) : null,
       serviceType: sanitizeInput(data.serviceType),
-      originCity: data.originCity ? sanitizeInput(data.originCity) : null,
-      destinationCity: data.destinationCity ? sanitizeInput(data.destinationCity) : null,
       estimatedVolume: data.estimatedVolume ? sanitizeInput(data.estimatedVolume) : null,
       additionalDetails: data.additionalDetails ? sanitizeInput(data.additionalDetails) : null,
     };
@@ -79,7 +81,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Insert into database
+    // Insert into database (origin_city and destination_city kept as null for schema compatibility)
     await execute(
       `INSERT INTO quote_requests 
        (name, email, phone, company, service_type, origin_city, destination_city, estimated_volume, additional_details) 
@@ -90,8 +92,8 @@ export async function POST(request: NextRequest) {
         sanitizedData.phone,
         sanitizedData.company,
         sanitizedData.serviceType,
-        sanitizedData.originCity,
-        sanitizedData.destinationCity,
+        null,
+        null,
         sanitizedData.estimatedVolume,
         sanitizedData.additionalDetails,
       ]
@@ -115,6 +117,22 @@ export async function POST(request: NextRequest) {
     // Get language from request body
     const language = body.language === 'en' ? 'en' : 'ar';
 
+    // Send to ClickUp CRM (non-blocking)
+    try {
+      await sendQuoteToClickUp({
+        name: sanitizedData.name,
+        email: sanitizedData.email,
+        phone: sanitizedData.phone!,
+        company: sanitizedData.company || undefined,
+        serviceType: sanitizedData.serviceType,
+        estimatedVolume: sanitizedData.estimatedVolume || undefined,
+        message: sanitizedData.additionalDetails || '',
+      });
+    } catch (clickupError) {
+      console.error('ClickUp integration error:', clickupError);
+      // Don't fail the request if ClickUp fails
+    }
+
     // Send emails (non-blocking)
     try {
       // Send confirmation to customer
@@ -124,8 +142,6 @@ export async function POST(request: NextRequest) {
         phone: sanitizedData.phone!,
         company: sanitizedData.company || undefined,
         serviceType: sanitizedData.serviceType,
-        originCity: sanitizedData.originCity || undefined,
-        destinationCity: sanitizedData.destinationCity || undefined,
         estimatedVolume: sanitizedData.estimatedVolume || undefined,
         language,
       });
@@ -137,8 +153,6 @@ export async function POST(request: NextRequest) {
         phone: sanitizedData.phone!,
         company: sanitizedData.company || undefined,
         serviceType: sanitizedData.serviceType,
-        originCity: sanitizedData.originCity || undefined,
-        destinationCity: sanitizedData.destinationCity || undefined,
         estimatedVolume: sanitizedData.estimatedVolume || undefined,
         additionalDetails: sanitizedData.additionalDetails || undefined,
       });

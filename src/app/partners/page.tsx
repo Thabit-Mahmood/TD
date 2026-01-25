@@ -45,7 +45,7 @@ export default function PartnersPage() {
   ];
 
   const stats = [
-    { value: '99.2%', label: t('partners.stats.onTime') },
+    { value: '93%', label: t('partners.stats.onTime') },
     { value: '24/7', label: t('partners.stats.support') },
     { value: '+1000', label: t('partners.stats.partners') },
     { value: '+50', label: t('partners.stats.cities') },
@@ -172,7 +172,7 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Stats Section - TEMPORARILY HIDDEN until client finalizes numbers
       <section className={styles.statsSection}>
         <div className="container">
           <div className={styles.statsGrid}>
@@ -185,6 +185,7 @@ export default function PartnersPage() {
           </div>
         </div>
       </section>
+      */}
 
       {/* Benefits Section */}
       <section className={styles.benefitsSection}>

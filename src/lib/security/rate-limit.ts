@@ -23,9 +23,9 @@ export interface RateLimitConfig {
 
 export const RATE_LIMITS = {
   api: { windowMs: 60000, maxRequests: 100 },
-  auth: { windowMs: 900000, maxRequests: 5 },  // 15 min, 5 attempts
-  tracking: { windowMs: 60000, maxRequests: 30 },
-  contact: { windowMs: 3600000, maxRequests: 10 },  // 1 hour, 10 submissions
+  auth: { windowMs: 900000, maxRequests: 10 },  // 15 min, 10 attempts
+  tracking: { windowMs: 60000, maxRequests: 50 },
+  contact: { windowMs: 3600000, maxRequests: 30 },  // 1 hour, 30 submissions
 } as const;
 
 export function checkRateLimit(

@@ -1,63 +1,73 @@
 'use client';
 
 import Link from 'next/link';
-import { FiSmartphone, FiSettings, FiMail, FiBarChart, FiCheckCircle, FiActivity } from 'react-icons/fi';
+import { FiPackage, FiBox, FiTruck, FiSettings, FiCheckCircle, FiDatabase } from 'react-icons/fi';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import FAQ from '@/components/ui/FAQ';
 import { useLanguage } from '@/lib/i18n';
 import styles from '../last-mile/page.module.css';
 
-export default function TechnologyPage() {
+export default function FulfillmentPage() {
   const { t, tArray, language } = useLanguage();
 
   const features = [
     {
-      icon: FiSmartphone,
-      title: t('services.technology.features.gps.title'),
-      description: t('services.technology.features.gps.description'),
+      icon: FiBox,
+      title: t('services.fulfillment.features.storage.title'),
+      description: t('services.fulfillment.features.storage.description'),
+    },
+    {
+      icon: FiDatabase,
+      title: t('services.fulfillment.features.inventory.title'),
+      description: t('services.fulfillment.features.inventory.description'),
+    },
+    {
+      icon: FiTruck,
+      title: t('services.fulfillment.features.packaging.title'),
+      description: t('services.fulfillment.features.packaging.description'),
     },
     {
       icon: FiSettings,
-      title: t('services.technology.features.api.title'),
-      description: t('services.technology.features.api.description'),
+      title: t('services.fulfillment.features.shipping.title'),
+      description: t('services.fulfillment.features.shipping.description'),
     },
     {
-      icon: FiMail,
-      title: t('services.technology.features.notifications.title'),
-      description: t('services.technology.features.notifications.description'),
+      icon: FiPackage,
+      title: t('services.fulfillment.features.reports.title'),
+      description: t('services.fulfillment.features.reports.description'),
     },
     {
-      icon: FiBarChart,
-      title: t('services.technology.features.analytics.title'),
-      description: t('services.technology.features.analytics.description'),
+      icon: FiCheckCircle,
+      title: t('services.fulfillment.features.support.title'),
+      description: t('services.fulfillment.features.support.description'),
     },
   ];
 
-  const benefits = tArray('services.technology.benefits');
+  const benefits = tArray('services.fulfillment.benefits');
 
   const faqItems = [
     {
-      question: t('services.technology.faq.q1'),
-      answer: t('services.technology.faq.a1'),
+      question: t('services.fulfillment.faq.q1'),
+      answer: t('services.fulfillment.faq.a1'),
     },
     {
-      question: t('services.technology.faq.q2'),
-      answer: t('services.technology.faq.a2'),
+      question: t('services.fulfillment.faq.q2'),
+      answer: t('services.fulfillment.faq.a2'),
     },
     {
-      question: t('services.technology.faq.q3'),
-      answer: t('services.technology.faq.a3'),
+      question: t('services.fulfillment.faq.q3'),
+      answer: t('services.fulfillment.faq.a3'),
     },
     {
-      question: t('services.technology.faq.q4'),
-      answer: t('services.technology.faq.a4'),
+      question: t('services.fulfillment.faq.q4'),
+      answer: t('services.fulfillment.faq.a4'),
     },
   ];
 
   const serviceSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    serviceType: language === 'ar' ? 'ميزات التكنولوجيا اللوجستية' : 'Logistics Technology Features',
+    serviceType: language === 'ar' ? 'خدمة إدارة المخزون والشحن' : 'Fulfillment Services',
     provider: {
       '@type': 'Organization',
       name: language === 'ar' ? 'تي دي للخدمات اللوجستية' : 'TD Logistics',
@@ -67,7 +77,7 @@ export default function TechnologyPage() {
       '@type': 'Country',
       name: language === 'ar' ? 'المملكة العربية السعودية' : 'Saudi Arabia',
     },
-    description: t('services.technology.description'),
+    description: t('services.fulfillment.description'),
   };
 
   return (
@@ -79,7 +89,7 @@ export default function TechnologyPage() {
       <Breadcrumbs 
         items={[
           { label: t('services.ourServices'), href: '/services' },
-          { label: t('services.technology.title') }
+          { label: t('services.fulfillment.title') }
         ]} 
       />
       
@@ -88,10 +98,10 @@ export default function TechnologyPage() {
           <div className={styles.heroContent}>
             <div className={styles.heroText}>
               <div className={styles.iconWrapper}>
-                <FiActivity />
+                <FiPackage />
               </div>
-              <h1>{t('services.technology.title')}</h1>
-              <p>{t('services.technology.description')}</p>
+              <h1>{t('services.fulfillment.title')}</h1>
+              <p>{t('services.fulfillment.description')}</p>
               <div className={styles.heroActions}>
                 <Link href="/quote" className="btn btn-primary btn-lg">
                   {t('services.getQuote')}
@@ -103,7 +113,7 @@ export default function TechnologyPage() {
             </div>
             <div className={styles.heroImage}>
               <div className={styles.imagePlaceholder}>
-                <FiActivity size={80} />
+                <FiPackage size={80} />
               </div>
             </div>
           </div>
@@ -133,8 +143,8 @@ export default function TechnologyPage() {
         <div className="container">
           <div className={styles.benefitsContent}>
             <div className={styles.benefitsText}>
-              <h2>{t('services.technology.whyChoose')}</h2>
-              <p>{t('services.technology.whyChooseDesc')}</p>
+              <h2>{t('services.fulfillment.whyChoose')}</h2>
+              <p>{t('services.fulfillment.whyChooseDesc')}</p>
               <div className={styles.benefitsList}>
                 {benefits.map((benefit, index) => (
                   <div key={index} className={styles.benefitItem}>
@@ -146,21 +156,20 @@ export default function TechnologyPage() {
             </div>
             <div className={styles.benefitsImage}>
               <div className={styles.imagePlaceholder}>
-                <FiBarChart size={60} />
+                <FiSettings size={60} />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
       <FAQ items={faqItems} />
 
       <section className={styles.ctaSection}>
         <div className="container">
           <div className={styles.ctaContent}>
-            <h2>{t('services.technology.ctaTitle')}</h2>
-            <p>{t('services.technology.ctaDesc')}</p>
+            <h2>{t('services.fulfillment.ctaTitle')}</h2>
+            <p>{t('services.fulfillment.ctaDesc')}</p>
             <div className={styles.ctaActions}>
               <Link href="/quote" className="btn btn-primary btn-lg">
                 {t('services.requestQuoteNow')}

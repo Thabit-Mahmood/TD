@@ -10,6 +10,10 @@ import {
 import { useLanguage } from '@/lib/i18n/LanguageContext';
 import styles from './page.module.css';
 
+// Local storage key for tracking history
+const TRACKING_HISTORY_KEY = 'tdl_tracking_history';
+const MAX_HISTORY_ITEMS = 10;
+
 interface TrackingEvent {
   name: string;
   arabicName: string;
@@ -168,6 +172,36 @@ export default function TrackingPage() {
   const [error, setError] = useState('');
   const [showDetails, setShowDetails] = useState(false);
   const [showFullTimeline, setShowFullTimeline] = useState(false);
+  const [trackingHistory, setTrackingHistory] = useState<string[]>([]);
+
+  // Load tracking history from localStorage
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(TRACKING_HISTORY_KEY);
+      if (saved) {
+        setTrackingHistory(JSON.parse(saved));
+      }
+    } catch (e) {
+      console.error('Failed to load tracking history:', e);
+    }
+  }, []);
+
+  // Save tracking number to history
+  const saveToHistory = (number: string) => {
+    try {
+      const sanitized = number.trim().toUpperCase();
+      if (!sanitized) return;
+      
+      setTrackingHistory(prev => {
+        const filtered = prev.filter(n => n !== sanitized);
+        const updated = [sanitized, ...filtered].slice(0, MAX_HISTORY_ITEMS);
+        localStorage.setItem(TRACKING_HISTORY_KEY, JSON.stringify(updated));
+        return updated;
+      });
+    } catch (e) {
+      console.error('Failed to save tracking history:', e);
+    }
+  };
 
   useEffect(() => {
     const barcode = searchParams.get('barcode');
@@ -205,6 +239,7 @@ export default function TrackingPage() {
       }
 
       setTrackingData(data);
+      saveToHistory(sanitized); // Save successful tracking number to history
     } catch (err) {
       setError(err instanceof Error ? err.message : t('tracking.errors.searchError'));
     } finally {
@@ -433,7 +468,17 @@ export default function TrackingPage() {
                   className={styles.searchInput}
                   maxLength={30}
                   dir="ltr"
+                  list="tracking-history"
+                  autoComplete="on"
+                  name="tracking-number"
                 />
+                {trackingHistory.length > 0 && (
+                  <datalist id="tracking-history">
+                    {trackingHistory.map((num, idx) => (
+                      <option key={idx} value={num} />
+                    ))}
+                  </datalist>
+                )}
               </div>
               <button 
                 type="submit" 

@@ -1,9 +1,23 @@
 'use client';
 
-import { useState } from 'react';
-import { FiBriefcase, FiMapPin, FiClock, FiSend, FiCheckCircle, FiUser, FiMail, FiPhone, FiFileText } from 'react-icons/fi';
+import { useState, useCallback } from 'react';
+import { FiBriefcase, FiMapPin, FiClock, FiSend, FiCheckCircle, FiUser, FiMail, FiPhone, FiFileText, FiAlertCircle } from 'react-icons/fi';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
 import styles from './page.module.css';
+
+// Validation helpers
+const validateEmail = (email: string): boolean => {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+};
+
+const validatePhone = (phone: string): boolean => {
+  const cleaned = phone.replace(/[\s\-()]/g, '');
+  return /^[\d+]{8,15}$/.test(cleaned);
+};
+
+const sanitizePhone = (value: string): string => {
+  return value.replace(/[^\d\s+\-()]/g, '');
+};
 
 export default function CareersPage() {
   const { t, language } = useLanguage();
@@ -16,23 +30,91 @@ export default function CareersPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [error, setError] = useState('');
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
+  const [serverError, setServerError] = useState('');
+
+  const positions = [
+    { id: 'driver', label: t('careers.positions.driver') },
+    { id: 'customerService', label: t('careers.positions.customerService') },
+    { id: 'warehouse', label: t('careers.positions.warehouse') },
+    { id: 'operations', label: t('careers.positions.operations') },
+    { id: 'sales', label: t('careers.positions.sales') },
+    { id: 'it', label: t('careers.positions.it') },
+    { id: 'other', label: t('careers.positions.other') },
+  ];
+
+  // Real-time validation
+  const validateField = useCallback((name: string, value: string): string => {
+    switch (name) {
+      case 'name':
+        if (!value.trim()) return t('validation.nameRequired');
+        if (value.trim().length < 2) return t('validation.nameMinLength');
+        return '';
+      case 'email':
+        if (!value.trim()) return t('validation.emailRequired');
+        if (!validateEmail(value)) return t('validation.emailInvalid');
+        return '';
+      case 'phone':
+        if (!value.trim()) return t('validation.phoneRequired');
+        if (!validatePhone(value)) return t('validation.phoneInvalid');
+        return '';
+      case 'position':
+        if (!value) return t('careers.form.selectPosition');
+        return '';
+      default:
+        return '';
+    }
+  }, [t]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    setError('');
+    const { name, value } = e.target;
+    let sanitizedValue = value;
+    
+    if (name === 'phone') {
+      sanitizedValue = sanitizePhone(value);
+    }
+    
+    setFormData(prev => ({ ...prev, [name]: sanitizedValue }));
+    setServerError('');
+    
+    if (touched[name]) {
+      const error = validateField(name, sanitizedValue);
+      setErrors(prev => ({ ...prev, [name]: error }));
+    }
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setTouched(prev => ({ ...prev, [name]: true }));
+    const error = validateField(name, value);
+    setErrors(prev => ({ ...prev, [name]: error }));
+  };
+
+  const validateForm = (): boolean => {
+    const newErrors: Record<string, string> = {};
+    const fields = ['name', 'email', 'phone', 'position'];
+    
+    fields.forEach(field => {
+      const error = validateField(field, formData[field as keyof typeof formData]);
+      if (error) newErrors[field] = error;
+    });
+
+    setErrors(newErrors);
+    setTouched({ name: true, email: true, phone: true, position: true });
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.name || !formData.email || !formData.phone || !formData.position) {
-      setError(t('careers.form.fillRequired'));
-      return;
-    }
+    // Prevent double submission
+    if (isSubmitting) return;
+    
+    if (!validateForm()) return;
 
     setIsSubmitting(true);
-    setError('');
+    setServerError('');
 
     try {
       const response = await fetch('/api/careers', {
@@ -44,27 +126,34 @@ export default function CareersPage() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || t('careers.form.error'));
+        if (response.status === 429) {
+          const resetIn = data.resetIn ? Math.ceil(data.resetIn / 60000) : 60;
+          setServerError(language === 'ar' 
+            ? `لقد تجاوزت الحد المسموح من الطلبات. يرجى المحاولة بعد ${resetIn} دقيقة.`
+            : `Too many requests. Please try again in ${resetIn} minutes.`
+          );
+        } else {
+          setServerError(data.error || t('careers.form.error'));
+        }
+        return;
       }
 
       setIsSuccess(true);
       setFormData({ name: '', email: '', phone: '', position: '', message: '' });
-    } catch (err) {
-      setError(err instanceof Error ? err.message : t('careers.form.error'));
+      setTouched({});
+      setErrors({});
+    } catch {
+      setServerError(t('careers.form.error'));
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const positions = [
-    { id: 'driver', label: t('careers.positions.driver') },
-    { id: 'customerService', label: t('careers.positions.customerService') },
-    { id: 'warehouse', label: t('careers.positions.warehouse') },
-    { id: 'operations', label: t('careers.positions.operations') },
-    { id: 'sales', label: t('careers.positions.sales') },
-    { id: 'it', label: t('careers.positions.it') },
-    { id: 'other', label: t('careers.positions.other') },
-  ];
+  const getInputClassName = (fieldName: string): string => {
+    const hasError = touched[fieldName] && errors[fieldName];
+    const isValid = touched[fieldName] && !errors[fieldName] && formData[fieldName as keyof typeof formData];
+    return `${styles.input} ${hasError ? styles.inputError : ''} ${isValid ? styles.inputValid : ''}`;
+  };
 
   if (isSuccess) {
     return (
@@ -148,9 +237,17 @@ export default function CareersPage() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     placeholder={t('careers.form.namePlaceholder')}
-                    required
+                    className={getInputClassName('name')}
+                    maxLength={100}
+                    disabled={isSubmitting}
                   />
+                  {touched.name && errors.name && (
+                    <span className={styles.errorMessage}>
+                      <FiAlertCircle /> {errors.name}
+                    </span>
+                  )}
                 </div>
 
                 <div className={styles.formGroup}>
@@ -163,9 +260,18 @@ export default function CareersPage() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     placeholder={t('careers.form.emailPlaceholder')}
-                    required
+                    className={getInputClassName('email')}
+                    maxLength={255}
+                    dir="ltr"
+                    disabled={isSubmitting}
                   />
+                  {touched.email && errors.email && (
+                    <span className={styles.errorMessage}>
+                      <FiAlertCircle /> {errors.email}
+                    </span>
+                  )}
                 </div>
 
                 <div className={styles.formGroup}>
@@ -178,10 +284,18 @@ export default function CareersPage() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     placeholder={t('careers.form.phonePlaceholder')}
+                    className={getInputClassName('phone')}
+                    maxLength={15}
                     dir="ltr"
-                    required
+                    disabled={isSubmitting}
                   />
+                  {touched.phone && errors.phone && (
+                    <span className={styles.errorMessage}>
+                      <FiAlertCircle /> {errors.phone}
+                    </span>
+                  )}
                 </div>
 
                 <div className={styles.formGroup}>
@@ -193,13 +307,20 @@ export default function CareersPage() {
                     name="position"
                     value={formData.position}
                     onChange={handleChange}
-                    required
+                    onBlur={handleBlur}
+                    className={getInputClassName('position')}
+                    disabled={isSubmitting}
                   >
                     <option value="">{t('careers.form.selectPosition')}</option>
                     {positions.map((pos) => (
                       <option key={pos.id} value={pos.id}>{pos.label}</option>
                     ))}
                   </select>
+                  {touched.position && errors.position && (
+                    <span className={styles.errorMessage}>
+                      <FiAlertCircle /> {errors.position}
+                    </span>
+                  )}
                 </div>
 
                 <div className={styles.formGroup}>
@@ -213,10 +334,16 @@ export default function CareersPage() {
                     onChange={handleChange}
                     placeholder={t('careers.form.messagePlaceholder')}
                     rows={4}
+                    maxLength={2000}
+                    disabled={isSubmitting}
                   />
                 </div>
 
-                {error && <div className={styles.error}>{error}</div>}
+                {serverError && (
+                  <div className={styles.error}>
+                    <FiAlertCircle /> {serverError}
+                  </div>
+                )}
 
                 <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
                   {isSubmitting ? (

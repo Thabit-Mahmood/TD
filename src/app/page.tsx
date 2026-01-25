@@ -10,8 +10,8 @@ import HomeFAQ from '@/components/home/HomeFAQ';
 import CTA from '@/components/home/CTA';
 
 export const metadata = {
-  title: 'تي دي للخدمات اللوجستية | شريكك الموثوق في الشحن والتوصيل',
-  description: 'خدمات لوجستية متكاملة في السعودية. توصيل سريع، تتبع مباشر، دفع عند الاستلام. معدل توصيل 99.2% في الوقت المحدد. نغطي الرياض، جدة، الدمام وجميع مدن المملكة.',
+  title: 'تي دي للخدمات اللوجستية | شريكك الموثوق في الخدمات اللوجستية',
+  description: 'خدمات لوجستية متكاملة في السعودية. توصيل سريع، تتبع مباشر، دفع عند الاستلام. معدل توصيل 93%+ في الوقت المحدد. نغطي الرياض، جدة، الدمام وجميع مدن المملكة.',
   alternates: {
     canonical: 'https://tdlogistics.sa',
   },
@@ -26,7 +26,7 @@ export default function Home() {
     alternateName: 'TD Logistics',
     url: 'https://tdlogistics.sa',
     logo: 'https://tdlogistics.sa/logo.png',
-    description: 'شريكك الموثوق في الشحن والتوصيل في المملكة العربية السعودية',
+    description: 'شريكك الموثوق في الخدمات اللوجستية في المملكة العربية السعودية',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'طريق الملك فهد، حي العليا',
@@ -174,7 +174,7 @@ export default function Home() {
         name: 'ما هو معدل التوصيل في الوقت المحدد؟',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'نحافظ على معدل توصيل في الوقت المحدد بنسبة 99.2%، وهو من أعلى المعدلات في صناعة الخدمات اللوجستية في السعودية.',
+          text: 'نحافظ على معدل توصيل في الوقت المحدد بنسبة 93%، وهو من أعلى المعدلات في صناعة الخدمات اللوجستية في السعودية.',
         },
       },
       {

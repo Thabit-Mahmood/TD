@@ -1,10 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { FiSearch, FiPackage, FiTruck, FiCheckCircle, FiClock, FiAlertCircle, FiBox, FiMapPin, FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
 import styles from './Hero.module.css';
+
+const TRACKING_HISTORY_KEY = 'td_tracking_history';
+const MAX_HISTORY_ITEMS = 10;
 
 interface TrackingEvent {
   name: string;
@@ -75,10 +78,34 @@ export default function Hero() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [showResults, setShowResults] = useState(false);
+  const [trackingHistory, setTrackingHistory] = useState<string[]>([]);
 
   const milestones = getMilestoneLabels(t);
 
-  const handleTrack = async (e: React.FormEvent) => {
+  // Load tracking history from localStorage
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(TRACKING_HISTORY_KEY);
+      if (saved) {
+        setTrackingHistory(JSON.parse(saved));
+      }
+    } catch {
+      // Ignore localStorage errors
+    }
+  }, []);
+
+  // Save tracking number to history
+  const saveToHistory = useCallback((barcode: string) => {
+    try {
+      const updated = [barcode, ...trackingHistory.filter(item => item !== barcode)].slice(0, MAX_HISTORY_ITEMS);
+      setTrackingHistory(updated);
+      localStorage.setItem(TRACKING_HISTORY_KEY, JSON.stringify(updated));
+    } catch {
+      // Ignore localStorage errors
+    }
+  }, [trackingHistory]);
+
+  const handleTrack = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!trackingNumber.trim()) {
@@ -108,23 +135,25 @@ export default function Hero() {
 
       setTrackingData(data);
       setShowResults(true);
+      // Save successful tracking number to history
+      saveToHistory(sanitized);
     } catch (err) {
       setError(err instanceof Error ? err.message : t('tracking.errors.searchError'));
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [trackingNumber, saveToHistory, t]);
 
   // Get current milestone stage
-  const getCurrentMilestone = (status: string): MilestoneStage => {
+  const getCurrentMilestone = useCallback((status: string): MilestoneStage => {
     return statusToMilestone[status] || MilestoneStage.RECEIVED;
-  };
+  }, []);
 
   // Get progress percentage
-  const getProgressPercentage = (status: string): number => {
+  const getProgressPercentage = useCallback((status: string): number => {
     const stage = getCurrentMilestone(status);
     return Math.round((stage / 4) * 100);
-  };
+  }, [getCurrentMilestone]);
 
   return (
     <section className={styles.hero}>
@@ -264,8 +293,8 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Stats */}
-        <div className={styles.stats}>
+        {/* Stats - Temporarily Hidden */}
+        {/* <div className={styles.stats}>
           <div className={styles.statItem}>
             <span className={styles.statNumber}>+500K</span>
             <span className={styles.statLabel}>{t('home.stats.deliveries')}</span>
@@ -282,7 +311,7 @@ export default function Hero() {
             <span className={styles.statNumber}>99%</span>
             <span className={styles.statLabel}>{t('home.stats.onTime')}</span>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

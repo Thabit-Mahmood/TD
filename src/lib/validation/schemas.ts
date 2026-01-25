@@ -4,19 +4,19 @@ import { z } from 'zod';
 export const contactSchema = z.object({
   name: z.string()
     .min(2, 'الاسم يجب أن يكون حرفين على الأقل')
-    .max(100, 'الاسم طويل جداً')
-    .regex(/^[\u0600-\u06FFa-zA-Z\s]+$/, 'الاسم يحتوي على أحرف غير صالحة'),
+    .max(100, 'الاسم طويل جداً'),
   email: z.string()
     .email('البريد الإلكتروني غير صالح')
     .max(255, 'البريد الإلكتروني طويل جداً'),
   phone: z.string()
-    .regex(/^\+?[0-9]{9,15}$/, 'رقم الهاتف غير صالح')
-    .optional(),
+    .max(20, 'رقم الهاتف طويل جداً')
+    .optional()
+    .or(z.literal('')),
   company: z.string()
     .max(200, 'اسم الشركة طويل جداً')
     .optional(),
   subject: z.string()
-    .min(5, 'الموضوع يجب أن يكون 5 أحرف على الأقل')
+    .min(3, 'الموضوع يجب أن يكون 3 أحرف على الأقل')
     .max(200, 'الموضوع طويل جداً'),
   message: z.string()
     .min(10, 'الرسالة يجب أن تكون 10 أحرف على الأقل')
@@ -33,18 +33,13 @@ export const quoteSchema = z.object({
   email: z.string()
     .email('البريد الإلكتروني غير صالح'),
   phone: z.string()
-    .regex(/^\+?[0-9]{9,15}$/, 'رقم الهاتف غير صالح'),
+    .min(9, 'رقم الهاتف قصير جداً')
+    .max(20, 'رقم الهاتف طويل جداً'),
   company: z.string()
     .max(200, 'اسم الشركة طويل جداً')
     .optional(),
   serviceType: z.string()
     .min(1, 'يرجى اختيار نوع الخدمة'),
-  originCity: z.string()
-    .max(100, 'اسم المدينة طويل جداً')
-    .optional(),
-  destinationCity: z.string()
-    .max(100, 'اسم المدينة طويل جداً')
-    .optional(),
   estimatedVolume: z.string()
     .max(100, 'الحجم المتوقع طويل جداً')
     .optional(),

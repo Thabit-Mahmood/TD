@@ -36,12 +36,15 @@ export default function QaseemSection() {
             <p className={styles.description}>{t('qaseem.description')}</p>
             
             <div className={styles.cities}>
-              <span className={styles.cityTag}>{t('qaseem.cities.buraidah')}</span>
               <span className={styles.cityTag}>{t('qaseem.cities.unaizah')}</span>
+              <span className={styles.cityTag}>{t('qaseem.cities.buraidah')}</span>
               <span className={styles.cityTag}>{t('qaseem.cities.alRass')}</span>
               <span className={styles.cityTag}>{t('qaseem.cities.alBukayriyah')}</span>
               <span className={styles.cityTag}>{t('qaseem.cities.alBadaya')}</span>
               <span className={styles.cityTag}>{t('qaseem.cities.riyadhAlKhabra')}</span>
+              <span className={styles.cityTag}>{t('qaseem.cities.almajmaah')}</span>
+              <span className={styles.cityTag}>{t('qaseem.cities.alghat')}</span>
+              <span className={styles.cityTag}>{t('qaseem.cities.alzulfi')}</span>
             </div>
             
             <div className={styles.features}>

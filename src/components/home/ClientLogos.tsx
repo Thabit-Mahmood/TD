@@ -73,7 +73,7 @@ export default function ClientLogos() {
             {brands.map((brand) => (
               <div key={brand.id} className={styles.item}>
                 {brand.logo_url ? (
-                  <img src={brand.logo_url} alt={brand.name} className={styles.logo} />
+                  <img src={brand.logo_url} alt={brand.name} className={styles.logo} width={210} height={70} loading="lazy" />
                 ) : (
                   <span className={styles.name}>{brand.name}</span>
                 )}
@@ -86,7 +86,7 @@ export default function ClientLogos() {
               {brands.map((brand) => (
                 <div key={brand.id} className={styles.item}>
                   {brand.logo_url ? (
-                    <img src={brand.logo_url} alt={brand.name} className={styles.logo} />
+                    <img src={brand.logo_url} alt={brand.name} className={styles.logo} width={210} height={70} loading="lazy" />
                   ) : (
                     <span className={styles.name}>{brand.name}</span>
                   )}
@@ -97,7 +97,7 @@ export default function ClientLogos() {
               {brands.map((brand) => (
                 <div key={brand.id} className={styles.item}>
                   {brand.logo_url ? (
-                    <img src={brand.logo_url} alt={brand.name} className={styles.logo} />
+                    <img src={brand.logo_url} alt={brand.name} className={styles.logo} width={210} height={70} loading="lazy" />
                   ) : (
                     <span className={styles.name}>{brand.name}</span>
                   )}

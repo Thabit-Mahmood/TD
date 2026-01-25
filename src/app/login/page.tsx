@@ -28,6 +28,9 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Prevent double submission
+    if (isSubmitting) return;
+    
     if (!formData.email || !formData.password) {
       setError(t('login.fillAllFields'));
       return;

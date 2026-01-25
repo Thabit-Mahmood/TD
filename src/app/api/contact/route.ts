@@ -4,6 +4,7 @@ import { sanitizeInput, sanitizeEmail, sanitizePhone } from '@/lib/security/sani
 import { checkRateLimit, getRateLimitKey, RATE_LIMITS } from '@/lib/security/rate-limit';
 import { execute, queryOne } from '@/lib/db';
 import { sendContactConfirmation, sendContactAdminNotification, sendNewsletterWelcome } from '@/lib/email';
+import { sendContactToClickUp } from '@/lib/clickup';
 
 
 
@@ -26,7 +27,10 @@ export async function POST(request: NextRequest) {
     
     if (!rateLimit.allowed) {
       return NextResponse.json(
-        { error: 'تم تجاوز الحد المسموح. يرجى المحاولة بعد بضع دقائق.' },
+        { 
+          error: 'تم تجاوز الحد المسموح. يرجى المحاولة بعد بضع دقائق.',
+          resetIn: rateLimit.resetIn 
+        },
         { 
           status: 429,
           headers: {
@@ -118,6 +122,22 @@ export async function POST(request: NextRequest) {
 
     // Get language from request body
     const language = body.language === 'en' ? 'en' : 'ar';
+
+    // Send to ClickUp CRM (non-blocking)
+    try {
+      await sendContactToClickUp({
+        name: sanitizedData.name,
+        email: sanitizedData.email,
+        phone: sanitizedData.phone || '',
+        company: sanitizedData.company || undefined,
+        subject: sanitizedData.subject,
+        message: sanitizedData.message,
+        type: sanitizedData.type || 'general',
+      });
+    } catch (clickupError) {
+      console.error('ClickUp integration error:', clickupError);
+      // Don't fail the request if ClickUp fails
+    }
 
     // Send emails (non-blocking)
     try {

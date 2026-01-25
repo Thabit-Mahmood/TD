@@ -16,20 +16,20 @@ export default function HomeFAQ() {
       answer: t('faq.items.tracking.answer'),
     },
     {
-      question: t('faq.items.cod.question'),
-      answer: t('faq.items.cod.answer'),
+      question: t('faq.items.storage.question'),
+      answer: t('faq.items.storage.answer'),
     },
     {
-      question: t('faq.items.onTime.question'),
-      answer: t('faq.items.onTime.answer'),
+      question: t('faq.items.fulfillment.question'),
+      answer: t('faq.items.fulfillment.answer'),
     },
     {
-      question: t('faq.items.quote.question'),
-      answer: t('faq.items.quote.answer'),
+      question: t('faq.items.coverage_delivery.question'),
+      answer: t('faq.items.coverage_delivery.answer'),
     },
     {
-      question: t('faq.items.integration.question'),
-      answer: t('faq.items.integration.answer'),
+      question: t('faq.items.inventory_tracking.question'),
+      answer: t('faq.items.inventory_tracking.answer'),
     },
   ];
 

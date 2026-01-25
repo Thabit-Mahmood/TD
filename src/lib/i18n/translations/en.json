@@ -2,7 +2,7 @@
   "seo": {
     "home": {
       "title": "TD Logistics | Your Trusted Partner in Shipping & Delivery",
-      "description": "Integrated logistics services in Saudi Arabia. Fast delivery, real-time tracking, cash on delivery. 99.2% on-time delivery rate."
+      "description": "Integrated logistics services in Saudi Arabia. Fast delivery, real-time tracking, cash on delivery. 93% on-time delivery rate."
     },
     "about": {
       "title": "About Us | TD Logistics",
@@ -18,7 +18,7 @@
     },
     "contact": {
       "title": "Contact Us | TD Logistics",
-      "description": "Contact us for the best shipping and delivery services in Saudi Arabia."
+      "description": "Contact us for the best logistics services in Saudi Arabia."
     },
     "careers": {
       "title": "Careers | TD Logistics",
@@ -74,13 +74,14 @@
     "faq": "FAQ"
   },
   "header": {
-    "phone": "9200 15499",
+    "phone": "920015499",
+    "phoneDisplay": "9200 15499",
     "email": "info@tdlogistics.co",
     "logoMain": "TD",
     "logoSub": "Logistics"
   },
   "footer": {
-    "description": "Your trusted partner in shipping and delivery. We provide integrated logistics services with the highest standards of quality and safety.",
+    "description": "Your trusted partner in logistics services. We provide integrated logistics services with the highest standards of quality and safety.",
     "quickLinks": "Quick Links",
     "services": "Our Services",
     "contactUs": "Contact Us",
@@ -126,7 +127,7 @@
       "trackingDesc": "Track your shipments in real-time",
       "items": {
         "lastMile": {
-          "title": "Last Mile Delivery",
+          "title": "Package Delivery",
           "description": "Fast and reliable delivery to your customers' doorstep across the Kingdom with real-time tracking and flexible delivery options."
         },
         "ecommerce": {
@@ -135,11 +136,11 @@
         },
         "customized": {
           "title": "Customized Delivery",
-          "description": "Logistics solutions tailored specifically to your business needs, from storage to specialized handling requirements."
+          "description": "Flexible and customized delivery solutions tailored to your business needs. From pickup to drop-off, everything is adjusted to suit your needs."
         },
-        "technology": {
-          "title": "Technology Features",
-          "description": "Advanced tracking systems, API integration, and real-time analytics to give you complete visibility and control over your shipments."
+        "fulfillment": {
+          "title": "Fulfillment Services",
+          "description": "Experience end-to-end fulfillment with our integrated storage and precision order management solutions. We handle the entire logistical journey from our dedicated warehouses, ensuring seamless, high-quality delivery to your customers."
         }
       }
     },
@@ -156,7 +157,7 @@
       "technologyDesc": "Modern tracking and management systems",
       "features": {
         "onTime": {
-          "title": "99.2% On-Time Delivery Rate",
+          "title": "93% On-Time Delivery Rate",
           "description": "Reliable delivery performance across all major cities in Saudi Arabia with real-time tracking and proactive communication."
         },
         "secure": {
@@ -178,7 +179,7 @@
     },
     "cta": {
       "title": "Ready to Grow Your Business?",
-      "subtitle": "Join thousands of customers who trust us to deliver their shipments. Get a customized quote for your needs today.",
+      "subtitle": "Join our customers who trust us to deliver their shipments. Get a customized quote for your needs today.",
       "button": "Contact Us",
       "getQuote": "Get a Quote",
       "callNow": "Call Us Now"
@@ -232,13 +233,13 @@
   "about": {
     "hero": {
       "title": "About Us",
-      "subtitle": "Your trusted partner in shipping and delivery across Saudi Arabia"
+      "subtitle": "Your trusted partner in logistics services across Saudi Arabia"
     },
     "story": {
       "title": "Our Story",
-      "paragraph1": "TD Logistics was founded with the goal of providing integrated logistics solutions that meet the needs of the growing Saudi market. We believe that reliable logistics services are the backbone of successful e-commerce and business operations.",
+      "paragraph1": "We believe that reliable and efficient logistics services are the key driver of business success. That's why we are committed to providing safe and on-time delivery services, powered by the latest real-time tracking technology to ensure your shipments reach from store to end customer with professionalism that exceeds expectations.",
       "paragraph2": "Since our launch, we have successfully built an extensive network covering more than 50 cities across the Kingdom, with a steadfast commitment to delivering high-quality services and exceptional customer experience. We continuously invest in technology and infrastructure to ensure the best possible service.",
-      "paragraph3": "Today, we are proud to serve over 1,000 clients and successfully deliver more than 500,000 shipments, with an on-time delivery rate of 99.2%. We are committed to continued growth and innovation to be the first choice for logistics services in the Kingdom."
+      "paragraph3": "Today, we are proud to serve over 1,000 clients and successfully deliver more than 500,000 shipments, with an on-time delivery rate of 93%+. We are committed to continued growth and innovation to be the first choice for logistics services in the Kingdom."
     },
     "mission": {
       "title": "Our Mission",
@@ -283,7 +284,6 @@
     "shippingDetails": "Shipping Details",
     "services": {
       "delivery": "Express Delivery",
-      "storage": "Storage & Warehousing",
       "fulfillment": "Fulfillment Services",
       "returns": "Returns Management"
     },
@@ -327,7 +327,7 @@
       "title2": "in Saudi Arabia",
       "subtitle": "Transform your e-commerce operations with TD's comprehensive solutions. From last-mile delivery to COD collection, we handle the complexity while you focus on growing your business.",
       "features": {
-        "onTime": "99.2% On-Time Delivery Rate",
+        "onTime": "93% On-Time Delivery Rate",
         "support": "24/7 Customer Support in Arabic & English",
         "cod": "Full COD Collection & Returns Management"
       },
@@ -512,7 +512,7 @@
       },
       "benefits": [
         "Comprehensive coverage of all major cities in Saudi Arabia",
-        "99.2% successful delivery rate",
+        "93% successful delivery rate",
         "Automatic customer notifications via SMS and email",
         "Multiple delivery attempts with proactive communication",
         "Easy rescheduling options for customers",
@@ -617,48 +617,56 @@
         "a4": "Yes, we provide flexible storage options with advanced inventory management, including temperature-controlled storage for sensitive products."
       }
     },
-    "technology": {
-      "title": "Technology Features",
-      "description": "Advanced tracking systems, API integration, and real-time analytics to give you complete visibility and control over your shipments.",
-      "whyChoose": "Why Choose TD Technology?",
-      "whyChooseDesc": "Our advanced technology platform gives you the tools you need to manage your logistics operations efficiently.",
-      "ctaTitle": "Ready to upgrade your logistics operations with technology?",
-      "ctaDesc": "Discover how our technology platform can transform your logistics operations.",
+    "fulfillment": {
+      "title": "Fulfillment Services",
+      "description": "Experience end-to-end fulfillment with our integrated storage and precision order management solutions. We handle the entire logistical journey from our dedicated warehouses, ensuring seamless, high-quality delivery to your customers.",
+      "whyChoose": "Why Choose TD Fulfillment Services?",
+      "whyChooseDesc": "Our comprehensive fulfillment solution combines warehousing, inventory management, and shipping into one seamless service designed for e-commerce success.",
+      "ctaTitle": "Ready to streamline your fulfillment operations?",
+      "ctaDesc": "Let us handle your storage, packaging, and shipping while you focus on growing your business.",
       "features": {
-        "gps": {
-          "title": "Real-Time GPS Tracking and Updates",
-          "description": "Live tracking for all your shipments with automatic updates"
+        "storage": {
+          "title": "Integrated Storage Solutions",
+          "description": "Host your inventory in our equipped warehouses within Riyadh city. We provide secure and flexible storage spaces that meet your business needs, ensuring the preservation of your goods' safety as our top priority."
         },
-        "api": {
-          "title": "RESTful API for Seamless Integration",
-          "description": "Easy connection with your existing systems"
+        "inventory": {
+          "title": "Operations and Order Management",
+          "description": "We handle order management and preparation professionally directly from our warehouses. Thanks to the high flexibility in our systems, we ensure quick adjustment of our capabilities to match your shipment volume and customer expectations."
         },
-        "notifications": {
-          "title": "Automatic SMS and Email Notifications",
-          "description": "Keep your customers informed at every step"
+        "packaging": {
+          "title": "Shipping and Final Delivery",
+          "description": "We guarantee the arrival of your goods from our warehouses to your customer's door anywhere in the Kingdom with accuracy and efficiency. We provide various delivery options including same-day or next-day delivery with live tracking and complete insurance through OTP system."
         },
-        "analytics": {
-          "title": "Business Intelligence and Reporting Tools",
-          "description": "Actionable insights to improve your operations"
+        "shipping": {
+          "title": "Dedicated Account Manager for Your Business",
+          "description": "We provide you with a dedicated account manager specifically for your business to help you achieve your commercial goals."
+        },
+        "reports": {
+          "title": "Monthly Reports",
+          "description": "We provide detailed monthly reports aimed at ensuring efficiency and professionalism."
+        },
+        "support": {
+          "title": "Professional Customer Service",
+          "description": "We strive to provide professional and innovative customer services, caring about meeting your needs and providing a unique experience."
         }
       },
       "benefits": [
-        "Real-time tracking for all shipments with GPS updates",
-        "Comprehensive API integration with complete documentation",
-        "Automatic customer notifications via multiple channels",
-        "Customized dashboards and reporting tools",
-        "Advanced analytics for performance improvement",
-        "Mobile app for drivers and customers"
+        "End-to-end fulfillment from storage to delivery",
+        "Reduce operational costs with shared warehousing",
+        "Scale your business without infrastructure investment",
+        "Real-time inventory visibility and reporting",
+        "Seamless integration with e-commerce platforms",
+        "Professional handling and quality control"
       ],
       "faq": {
-        "q1": "How does the real-time tracking system work?",
-        "a1": "We use advanced GPS technology to track all shipments in real-time. You can see your shipment's exact location, delivery status, and expected arrival time through the dashboard or API.",
-        "q2": "Do you provide API documentation?",
-        "a2": "Yes, we provide comprehensive API documentation with code examples, integration guide, and dedicated technical support to help you integrate with your systems.",
-        "q3": "What type of reports can I get?",
-        "a3": "We provide comprehensive reports including delivery performance, financial analytics, COD reports, success rates, and customized analytics based on your needs.",
-        "q4": "Can I send customized notifications to my customers?",
-        "a4": "Yes, you can customize the notifications your customers receive via SMS and email, including branding and customized messages."
+        "q1": "Does TD provide storage space for my products, or is the service limited to delivery?",
+        "a1": "Yes, TD provides integrated logistical solutions that include hosting your goods in our dedicated warehouses. We handle the entire storage process, allowing you to manage your inventory without the need for your own warehouse, while ensuring the highest safety standards to maintain the quality of your shipments.",
+        "q2": "How are my e-commerce store orders handled once they are stored in your warehouses?",
+        "a2": "Once your goods are stored, TD manages your orders with precision and professionalism. We handle the full fulfillment process, which includes picking, packing, and preparing the shipment as soon as an order is received, then shipping it directly to the end consumer to ensure a seamless shopping experience.",
+        "q3": "What is the geographical coverage for the delivery service after the shipment leaves the warehouse?",
+        "a3": "TD is committed to delivering your shipments to all regions within the Kingdom of Saudi Arabia. Regardless of your customers' geographical location, we guarantee precise and efficient delivery with various options, including same-day or next-day delivery.",
+        "q4": "How can I track my inventory levels and the status of shipments sent to my customers?",
+        "a4": "The company utilizes advanced technologies to track and monitor parcels, providing a Live Tracking system that gives you full visibility of the shipment's journey from the warehouse to the customer's door. Additionally, we provide detailed monthly reports to ensure operational efficiency and to help you monitor the performance of your sales and inventory professionally."
       }
     },
     "list": {
@@ -686,13 +694,14 @@
       },
       "fulfillment": {
         "title": "Fulfillment Services",
-        "description": "Complete inventory management, packaging, and shipping for your e-commerce business.",
+        "description": "End-to-end fulfillment with integrated storage and precision order management. We handle the entire logistical journey from our dedicated warehouses.",
         "features": [
-          "Product receiving and storage",
-          "Professional packaging",
-          "Fast order processing",
+          "Secure warehousing and storage",
+          "Advanced inventory management",
+          "Professional packaging and labeling",
+          "Fast order processing and shipping",
           "E-commerce platform integration",
-          "Returns management"
+          "Complete returns management"
         ]
       },
       "cod": {
@@ -746,6 +755,8 @@
     "createAccount": "Create a new account",
     "fillAllFields": "Please fill in all fields",
     "error": "An error occurred during login",
+    "invalidCredentials": "Invalid email or password",
+    "accountLocked": "Account is locked. Please try again later",
     "showPassword": "Show password",
     "hidePassword": "Hide password"
   },
@@ -897,7 +908,7 @@
   "dashboard": {
     "title": "Dashboard",
     "subtitle": "Manage website content and customer reviews",
-    "settings": "Settings",
+    "settingsLabel": "Settings",
     "refresh": "Refresh",
     "blogPosts": "Blog Posts",
     "customerReviews": "Customer Reviews",
@@ -1101,21 +1112,21 @@
         "question": "How can I track my shipment?",
         "answer": "You can track your shipment in real-time through our website using the tracking number. We also provide automatic notifications via SMS and email to keep you updated on your shipment status."
       },
-      "cod": {
-        "question": "Do you offer cash on delivery service?",
-        "answer": "Yes, we offer full cash on delivery collection service with secure fund transfer within 48 business hours and comprehensive financial reports."
+      "storage": {
+        "question": "Does TD provide storage space for my products, or is the service limited to delivery?",
+        "answer": "Yes, TD provides integrated logistical solutions that include hosting your goods in our dedicated warehouses. We handle the entire storage process, allowing you to manage your inventory without the need for your own warehouse, while ensuring the highest safety standards to maintain the quality of your shipments."
       },
-      "onTime": {
-        "question": "What is your on-time delivery rate?",
-        "answer": "We maintain an on-time delivery rate of 99.2%, which is one of the highest rates in the logistics industry in Saudi Arabia."
+      "fulfillment": {
+        "question": "How are my e-commerce store orders handled once they are stored in your warehouses?",
+        "answer": "Once your goods are stored, TD manages your orders with precision and professionalism. We handle the full fulfillment process, which includes picking, packing, and preparing the shipment as soon as an order is received, then shipping it directly to the end consumer to ensure a seamless shopping experience."
       },
-      "quote": {
-        "question": "How can I get a quote?",
-        "answer": "You can request a customized quote through our website or by contacting our sales team. We respond to all requests within 24 business hours."
+      "coverage_delivery": {
+        "question": "What is the geographical coverage for the delivery service after the shipment leaves the warehouse?",
+        "answer": "TD is committed to delivering your shipments to all regions within the Kingdom of Saudi Arabia. Regardless of your customers' geographical location, we guarantee precise and efficient delivery with various options, including same-day or next-day delivery."
       },
-      "integration": {
-        "question": "Can I integrate with my online store?",
-        "answer": "Yes, we offer comprehensive API integration with all major e-commerce platforms such as Shopify, WooCommerce, Magento, and Zid."
+      "inventory_tracking": {
+        "question": "How can I track my inventory levels and the status of shipments sent to my customers?",
+        "answer": "The company utilizes advanced technologies to track and monitor parcels, providing a Live Tracking system that gives you full visibility of the shipment's journey from the warehouse to the customer's door. Additionally, we provide detailed monthly reports to ensure operational efficiency and to help you monitor the performance of your sales and inventory professionally."
       }
     }
   },
@@ -1170,25 +1181,28 @@
   "qaseem": {
     "title": "Optimal Coverage for AL-Qaseem",
     "subtitle": "Expand your business to Qaseem province with us",
-    "description": "We are the only trusted & reliable logistics in Qaseem",
-    "feature1": "Daily trips to Qaseem 24/7 coverage",
+    "description": "Your trusted partner in Al-Qassim, providing professional and certified logistics coverage to keep your business moving",
+    "feature1": "Daily trips throughout the week",
     "feature2": "Full Coverage of all Qaseem cities",
-    "feature3": "Same Day Delivery & Express Delivery",
-    "weAre": "We are the",
-    "inclusivePartner": "Inclusive Partner",
-    "inQaseemRegion": "in Qaseem Region",
+    "feature3": "Express Delivery",
+    "weAre": "A strategic partnership making us",
+    "inclusivePartner": "The Certified Logistics Agent",
+    "inQaseemRegion": "for Amazon in Qaseem Region",
     "cities": {
-      "buraidah": "Buraidah",
       "unaizah": "Unaizah",
+      "buraidah": "Buraidah",
       "alRass": "Al-Rass",
       "alBukayriyah": "Al-Bukayriyah",
       "alBadaya": "Al-Badaya",
-      "riyadhAlKhabra": "Riyadh Al-Khabra"
+      "riyadhAlKhabra": "Riyadh Al-Khabra",
+      "almajmaah": "Al-Majmaah",
+      "alghat": "Al-Ghat",
+      "alzulfi": "Al-Zulfi"
     }
   },
   "coverage": {
     "title": "Full Coverage in all Cities in Saudi",
-    "subtitle": "Daily trips to meet your business needs",
+    "subtitle": "Scheduled daily trips to ensure your business runs without interruption",
     "clients": "clients",
     "successDelivery": "Success Delivery",
     "cities": "Cities"
@@ -1225,5 +1239,11 @@
     "passwordMinLength": "Password must be at least 6 characters",
     "passwordMismatch": "Passwords do not match",
     "error": "An error occurred"
+  },
+  "notFound": {
+    "title": "Sorry, Page Not Found",
+    "description": "The page you're looking for doesn't exist or has been moved. You can return to the homepage or browse the helpful links below.",
+    "goHome": "Go to Homepage",
+    "suggestionsTitle": "Helpful Links"
   }
 }

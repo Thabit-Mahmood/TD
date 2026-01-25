@@ -27,14 +27,12 @@ export default function Footer() {
 
   const services = language === 'ar' ? [
     { href: '/services#delivery', label: 'التوصيل السريع' },
-    { href: '/services#storage', label: 'التخزين والمستودعات' },
-    { href: '/services#fulfillment', label: 'خدمات الفلفلمنت' },
+    { href: '/services/fulfillment', label: 'خدمة إدارة المخزون والشحن' },
     { href: '/services#cod', label: 'الدفع عند الاستلام' },
     { href: '/services#returns', label: 'إدارة المرتجعات' },
   ] : [
     { href: '/services#delivery', label: 'Express Delivery' },
-    { href: '/services#storage', label: 'Storage & Warehousing' },
-    { href: '/services#fulfillment', label: 'Fulfillment Services' },
+    { href: '/services/fulfillment', label: 'Fulfillment Services' },
     { href: '/services#cod', label: 'Cash on Delivery' },
     { href: '/services#returns', label: 'Returns Management' },
   ];
@@ -108,7 +106,7 @@ export default function Footer() {
               </li>
               <li>
                 <FiPhone />
-                <a href="tel:920015499">{t('header.phone')}</a>
+                <a href="tel:920015499" dir="ltr" className={styles.phoneLink}>{t('header.phoneDisplay')}</a>
               </li>
               <li>
                 <FiMail />

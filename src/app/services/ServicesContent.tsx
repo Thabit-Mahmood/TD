@@ -1,21 +1,21 @@
 'use client';
 
 import Link from 'next/link';
-import { FiTruck, FiPackage, FiRefreshCw, FiDollarSign, FiBox, FiShield, FiCheck, FiArrowLeft, FiArrowRight } from 'react-icons/fi';
+import Image from 'next/image';
+import { FiTruck, FiPackage, FiRefreshCw, FiDollarSign, FiShield, FiCheck, FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 import { useLanguage } from '@/lib/i18n';
 import CTA from '@/components/home/CTA';
 import styles from './page.module.css';
 
 const serviceIcons = {
   delivery: FiTruck,
-  storage: FiBox,
   fulfillment: FiPackage,
   cod: FiDollarSign,
   returns: FiRefreshCw,
   insurance: FiShield,
 };
 
-const serviceIds = ['delivery', 'storage', 'fulfillment', 'cod', 'returns', 'insurance'] as const;
+const serviceIds = ['delivery', 'fulfillment', 'cod', 'returns', 'insurance'] as const;
 
 export default function ServicesContent() {
   const { t, tArray, isRTL } = useLanguage();
@@ -63,15 +63,16 @@ export default function ServicesContent() {
                   </Link>
                 </div>
                 <div className={styles.serviceImage}>
-                  <img 
+                  <Image 
                     src={`/${serviceId === 'delivery' ? 'express_delivery.jpg' : 
-                          serviceId === 'storage' ? 'Storage & Warehousing.jpg' :
                           serviceId === 'fulfillment' ? 'Fulfillment Services.jpg' :
                           serviceId === 'cod' ? 'Cash on Delivery.jpg' :
                           serviceId === 'returns' ? 'Returns Management.jpg' :
                           'Shipment Insurance.jpg'}`}
                     alt={t(`services.list.${serviceId}.title`)}
                     className={styles.serviceImg}
+                    width={600}
+                    height={400}
                   />
                 </div>
               </div>

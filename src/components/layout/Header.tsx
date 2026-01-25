@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { FiMenu, FiX, FiPhone, FiMail } from 'react-icons/fi';
 import { useLanguage } from '@/lib/i18n';
@@ -10,8 +11,11 @@ import styles from './Header.module.css';
 
 export default function Header() {
   const { t, isRTL } = useLanguage();
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const lastScrollY = useRef(0);
 
   const navLinks = [
     { href: '/', label: t('nav.home') },
@@ -23,11 +27,27 @@ export default function Header() {
     { href: '/contact', label: t('nav.support') },
   ];
 
+  const isActiveLink = (href: string) => {
+    if (href === '/') return pathname === '/';
+    return pathname.startsWith(href);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const currentScrollY = window.scrollY;
+      
+      // Show/hide based on scroll direction
+      if (currentScrollY < lastScrollY.current || currentScrollY < 100) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setIsVisible(false);
+      }
+      
+      setIsScrolled(currentScrollY > 20);
+      lastScrollY.current = currentScrollY;
     };
-    window.addEventListener('scroll', handleScroll);
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -50,8 +70,8 @@ export default function Header() {
         <div className="container">
           <div className={styles.topBarContent}>
             <div className={styles.topBarContact}>
-              <a href="tel:920015499">
-                <FiPhone /> {t('header.phone')}
+              <a href="tel:920015499" dir="ltr" className={styles.phoneLink}>
+                <FiPhone /> <span>{t('header.phoneDisplay')}</span>
               </a>
               <a href="mailto:info@tdlogistics.co">
                 <FiMail /> {t('header.email')}
@@ -67,7 +87,7 @@ export default function Header() {
       </div>
 
       {/* Main Header */}
-      <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
+      <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''} ${!isVisible ? styles.hidden : ''}`}>
         <div className="container">
           <div className={styles.headerContent}>
             {/* Logo */}
@@ -85,7 +105,12 @@ export default function Header() {
             {/* Desktop Navigation */}
             <nav className={styles.nav}>
               {navLinks.map((link) => (
-                <Link key={link.href} href={link.href} className={styles.navLink} prefetch={true}>
+                <Link 
+                  key={link.href} 
+                  href={link.href} 
+                  className={`${styles.navLink} ${isActiveLink(link.href) ? styles.active : ''}`} 
+                  prefetch={true}
+                >
                   {link.label}
                 </Link>
               ))}
@@ -137,7 +162,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={styles.mobileNavLink}
+                className={`${styles.mobileNavLink} ${isActiveLink(link.href) ? styles.active : ''}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.label}
@@ -157,6 +182,9 @@ export default function Header() {
           </nav>
         </div>
       </header>
+      
+      {/* Spacer for fixed header */}
+      <div className={styles.headerSpacer} />
     </>
   );
 }

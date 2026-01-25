@@ -65,12 +65,11 @@ export async function query<T>(sql: string, params: DbParam[] = []): Promise<T[]
   const columns = result.results.columns;
   const rows = result.results.rows || [];
   
-  return rows.map((row: any) => {
+  return rows.map((row: any[]) => {
     const obj: any = {};
     columns.forEach((col: string, i: number) => {
-      // Handle different value formats from Turso
-      const value = row[i];
-      obj[col] = value?.value !== undefined ? value.value : value;
+      // Turso HTTP API returns rows as arrays of values
+      obj[col] = row[i];
     });
     return obj as T;
   });

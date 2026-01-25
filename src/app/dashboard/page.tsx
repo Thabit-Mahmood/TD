@@ -91,7 +91,7 @@ export default function DashboardPage() {
           <div style={{ display: 'flex', gap: '0.75rem' }}>
             <Link href="/dashboard/settings" className={styles.refreshBtn}>
               <FiSettings />
-              {t('dashboard.settings')}
+              {t('dashboard.settingsLabel')}
             </Link>
             <button onClick={fetchData} className={styles.refreshBtn} disabled={loading}>
               <FiRefreshCw className={loading ? styles.spinning : ''} />

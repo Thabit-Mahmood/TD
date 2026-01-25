@@ -147,13 +147,18 @@
   color: var(--primary-light);
 }
 
+.phoneLink {
+  direction: ltr !important;
+  unicode-bidi: embed;
+}
+
 .footerBottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 0;
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .footerBottomLinks {
@@ -162,7 +167,7 @@
 }
 
 .footerBottomLinks a {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.85);
   transition: color 0.2s;
 }
 

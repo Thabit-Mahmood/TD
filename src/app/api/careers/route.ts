@@ -4,13 +4,14 @@ import { sanitizeInput, sanitizeEmail, sanitizePhone } from '@/lib/security/sani
 import { checkRateLimit, getRateLimitKey, RATE_LIMITS } from '@/lib/security/rate-limit';
 import { execute } from '@/lib/db';
 import nodemailer from 'nodemailer';
+import { sendCareersToClickUp } from '@/lib/clickup';
 
 
 
 const careersSchema = z.object({
   name: z.string().min(2).max(100),
   email: z.string().email().max(255),
-  phone: z.string().min(9).max(15),
+  phone: z.string().min(9).max(20),
   position: z.string().min(1).max(100),
   message: z.string().max(2000).optional(),
   language: z.enum(['ar', 'en']).optional(),
@@ -43,7 +44,10 @@ export async function POST(request: NextRequest) {
     
     if (!rateLimit.allowed) {
       return NextResponse.json(
-        { error: 'تم تجاوز الحد المسموح. يرجى المحاولة بعد بضع دقائق.' },
+        { 
+          error: 'تم تجاوز الحد المسموح. يرجى المحاولة بعد بضع دقائق.',
+          resetIn: rateLimit.resetIn 
+        },
         { 
           status: 429,
           headers: {
@@ -107,6 +111,20 @@ export async function POST(request: NextRequest) {
 
     const language = body.language === 'en' ? 'en' : 'ar';
     const isArabic = language === 'ar';
+
+    // Send to ClickUp CRM (non-blocking)
+    try {
+      await sendCareersToClickUp({
+        name: sanitizedData.name,
+        email: sanitizedData.email,
+        phone: sanitizedData.phone!,
+        position: sanitizedData.position,
+        message: sanitizedData.message || '',
+      });
+    } catch (clickupError) {
+      console.error('ClickUp integration error:', clickupError);
+      // Don't fail the request if ClickUp fails
+    }
 
     // Send confirmation email to applicant
     try {

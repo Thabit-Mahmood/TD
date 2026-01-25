@@ -25,9 +25,22 @@ export function middleware(request: NextRequest) {
   // Add security headers
   response.headers.set('X-DNS-Prefetch-Control', 'on');
   response.headers.set('X-XSS-Protection', '1; mode=block');
-  response.headers.set('X-Frame-Options', 'SAMEORIGIN');
   response.headers.set('X-Content-Type-Options', 'nosniff');
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  
+  // Content Security Policy - allowing necessary resources including Google Maps
+  const csp = [
+    "default-src 'self'",
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com https://maps.googleapis.com https://maps.gstatic.com https://*.google.com",
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://maps.googleapis.com https://*.google.com",
+    "font-src 'self' https://fonts.gstatic.com",
+    "img-src 'self' data: blob: https: https://maps.googleapis.com https://maps.gstatic.com https://*.googleapis.com https://*.gstatic.com https://*.google.com",
+    "connect-src 'self' https://api.clickup.com https://fonts.googleapis.com https://fonts.gstatic.com https://maps.googleapis.com https://*.google.com",
+    "frame-src 'self' https://www.google.com https://*.google.com https://maps.google.com https://google.com",
+    "frame-ancestors 'self'",
+  ].join('; ');
+  response.headers.set('Content-Security-Policy', csp);
   
   // Check if route is protected
   const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route));

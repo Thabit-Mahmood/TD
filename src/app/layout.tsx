@@ -14,10 +14,10 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: 'تي دي للخدمات اللوجستية | شريكك الموثوق في الشحن والتوصيل',
+    default: 'تي دي للخدمات اللوجستية | شريكك الموثوق في الخدمات اللوجستية',
     template: '%s | تي دي للخدمات اللوجستية',
   },
-  description: 'شريكك الموثوق في الشحن والتوصيل. نقدم خدمات لوجستية متكاملة بأعلى معايير الجودة والأمان في المملكة العربية السعودية. توصيل سريع، تتبع مباشر، دفع عند الاستلام.',
+  description: 'شريكك الموثوق في الخدمات اللوجستية. نقدم خدمات لوجستية متكاملة بأعلى معايير الجودة والأمان في المملكة العربية السعودية. توصيل سريع، تتبع مباشر، دفع عند الاستلام.',
   keywords: [
     'شحن سريع السعودية',
     'توصيل الرياض',
@@ -36,6 +36,13 @@ export const metadata: Metadata = {
   creator: 'TD Logistics',
   publisher: 'TD Logistics',
   metadataBase: new URL('https://tdlogistics.sa'),
+  icons: {
+    icon: [
+      { url: '/tabicon.png', type: 'image/png', sizes: '32x32' },
+    ],
+    shortcut: '/tabicon.png',
+    apple: '/tabicon.png',
+  },
   alternates: {
     canonical: '/',
     languages: {
@@ -43,8 +50,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'تي دي للخدمات اللوجستية | شريكك الموثوق في الشحن والتوصيل',
-    description: 'خدمات لوجستية متكاملة في السعودية. توصيل سريع، تتبع مباشر، دفع عند الاستلام. معدل توصيل 99.2% في الوقت المحدد.',
+    title: 'تي دي للخدمات اللوجستية | شريكك الموثوق في الخدمات اللوجستية',
+    description: 'خدمات لوجستية متكاملة في السعودية. توصيل سريع، تتبع مباشر، دفع عند الاستلام. معدل توصيل 93%+ في الوقت المحدد.',
     type: 'website',
     locale: 'ar_SA',
     url: 'https://tdlogistics.sa',
@@ -61,7 +68,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'تي دي للخدمات اللوجستية',
-    description: 'شريكك الموثوق في الشحن والتوصيل في السعودية',
+    description: 'شريكك الموثوق في الخدمات اللوجستية في السعودية',
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -89,8 +96,31 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning>
       <head>
+        <link rel="icon" href="/tabicon.png" type="image/png" />
+        <link rel="shortcut icon" href="/tabicon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/tabicon.png" />
+        <link rel="manifest" href="/manifest.json" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://maps.googleapis.com" />
+        <link rel="dns-prefetch" href="https://maps.gstatic.com" />
+        <link 
+          href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" 
+          rel="stylesheet"
+        />
+        <link 
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" 
+          rel="stylesheet"
+        />
+        <link rel="dns-prefetch" href="https://apisv2.logestechs.com" />
+        <link rel="preload" href="/logo.png" as="image" type="image/png" />
+        <meta name="theme-color" content="#1a365d" />
+        <style dangerouslySetInnerHTML={{__html: `
+          *{margin:0;padding:0;box-sizing:border-box}
+          html{scroll-behavior:smooth;overflow-x:hidden;width:100%;max-width:100vw}
+          body{overflow-x:hidden;width:100%;max-width:100vw;font-family:'Cairo',sans-serif;background-color:#fff;color:#111827;direction:rtl;text-align:right;line-height:1.7;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+          #__next,main{overflow-x:hidden;width:100%;max-width:100vw}
+        `}} />
       </head>
       <body suppressHydrationWarning>
         <LanguageProvider>

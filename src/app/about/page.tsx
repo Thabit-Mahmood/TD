@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
 import { FiTruck, FiTarget, FiAward, FiUsers, FiCheckCircle } from 'react-icons/fi';
 import Testimonials from '@/components/home/Testimonials';
@@ -82,13 +83,13 @@ export default function AboutPage() {
       <section className={styles.imageDivider}>
         <div className={styles.imageGrid}>
           <div className={styles.imageItem}>
-            <img src="/aboutus_1.webp" alt="Operations" className={styles.aboutImg} />
+            <Image src="/aboutus_1.webp" alt="Operations" className={styles.aboutImg} width={400} height={300} />
           </div>
           <div className={styles.imageItem}>
-            <img src="/aboutus_2.jpg" alt="Our Team" className={styles.aboutImg} />
+            <Image src="/aboutus_2.jpg" alt="Our Team" className={styles.aboutImg} width={400} height={300} />
           </div>
           <div className={styles.imageItem}>
-            <img src="/aboutus_3.jpg" alt="Delivery Excellence" className={styles.aboutImg} />
+            <Image src="/aboutus_3.jpg" alt="Delivery Excellence" className={styles.aboutImg} width={400} height={300} />
           </div>
         </div>
       </section>
@@ -115,7 +116,7 @@ export default function AboutPage() {
       {/* Testimonials Section */}
       <Testimonials />
 
-      {/* Stats */}
+      {/* Stats - TEMPORARILY HIDDEN until client finalizes numbers
       <section className={styles.stats}>
         <div className="container">
           <div className={styles.statsGrid}>
@@ -138,6 +139,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      */}
 
       {/* CTA Section */}
       <CTA />
