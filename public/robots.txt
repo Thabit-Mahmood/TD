@@ -1,0 +1,37 @@
+# https://www.robotstxt.org/robotstxt.html
+# robots.txt for TD Logistics
+
+User-agent: *
+Allow: /
+Disallow: /dashboard/
+Disallow: /api/
+Disallow: /login
+Disallow: /_next/
+Disallow: /admin/
+Crawl-delay: 1
+
+User-agent: Googlebot
+Allow: /
+Disallow: /dashboard/
+Disallow: /api/
+Disallow: /admin/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /dashboard/
+Disallow: /api/
+Disallow: /admin/
+
+User-agent: DuckDuckBot
+Allow: /
+Disallow: /dashboard/
+Disallow: /api/
+Disallow: /admin/
+
+User-agent: YandexBot
+Allow: /
+Disallow: /dashboard/
+Disallow: /api/
+Disallow: /admin/
+
+Sitemap: https://tdlogistics.sa/sitemap.xml
