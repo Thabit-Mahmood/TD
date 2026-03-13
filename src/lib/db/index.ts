@@ -5,11 +5,16 @@ type DbParam = string | number | boolean | null;
 
 // Execute SQL via Turso HTTP API
 async function executeSql(sql: string, args: DbParam[] = []): Promise<any> {
-  const tursoUrl = process.env.TURSO_DATABASE_URL;
-  const tursoToken = process.env.TURSO_AUTH_TOKEN;
+  // Try to get from environment, with fallback values
+  let tursoUrl = process.env.TURSO_DATABASE_URL;
+  let tursoToken = process.env.TURSO_AUTH_TOKEN;
   
-  if (!tursoUrl || !tursoToken) {
-    throw new Error('TURSO_DATABASE_URL and TURSO_AUTH_TOKEN must be set');
+  // Fallback to hardcoded values if env vars not available (for Cloudflare Workers)
+  if (!tursoUrl) {
+    tursoUrl = 'libsql://td-logistics-tdlogistics.aws-ap-south-1.turso.io';
+  }
+  if (!tursoToken) {
+    tursoToken = 'eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3Njc3NTgxMjYsImlkIjoiMDkzMGIyMGUtYTRkNi00ZWQ2LTgzZmUtMTFjNTRjNzQ2Y2M5IiwicmlkIjoiNGYxZjMxZTItMmQwNS00MGNhLTg5ZWEtMTQ1YTFjOWNkMzQ0In0.6FCpdmtsg-0m65aSXr8_zsd2m9ffVxCxj7uQm5L5AbYxMBbfFLNXMkEabH9vN54FrMdyPdl8i3ECKPUBQnw7AQ';
   }
 
   // Convert libsql:// URL to https://
