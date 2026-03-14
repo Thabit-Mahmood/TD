@@ -32,12 +32,12 @@ export function middleware(request: NextRequest) {
   // Content Security Policy - allowing necessary resources including Google Maps and Analytics
   const csp = [
     "default-src 'self'",
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com https://maps.googleapis.com https://maps.gstatic.com https://*.google.com https://www.googletagmanager.com https://www.google-analytics.com https://googletagmanager.com https://cdn.jsdelivr.net",
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com https://maps.googleapis.com https://maps.gstatic.com https://*.google.com https://www.googletagmanager.com https://www.google-analytics.com https://googletagmanager.com https://cdn.jsdelivr.net https://googleads.g.doubleclick.net https://www.googleadservices.com",
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://maps.googleapis.com https://*.google.com https://cdn.jsdelivr.net",
-    "font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com https://cdn.jsdelivr.net",
-    "img-src 'self' data: blob: https: https://maps.googleapis.com https://maps.gstatic.com https://*.googleapis.com https://*.gstatic.com https://*.google.com https://www.google-analytics.com https://www.googletagmanager.com",
-    "connect-src 'self' https://api.clickup.com https://fonts.googleapis.com https://fonts.gstatic.com https://maps.googleapis.com https://*.google.com https://www.google-analytics.com https://www.googletagmanager.com https://googletagmanager.com https://td-logistics-tdlogistics.aws-ap-south-1.turso.io",
-    "frame-src 'self' https://www.google.com https://*.google.com https://maps.google.com https://google.com",
+    "font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com data: blob:",
+    "img-src 'self' data: blob: https: https://maps.googleapis.com https://maps.gstatic.com https://*.googleapis.com https://*.gstatic.com https://*.google.com https://www.google-analytics.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://www.googleadservices.com",
+    "connect-src 'self' https://api.clickup.com https://fonts.googleapis.com https://fonts.gstatic.com https://maps.googleapis.com https://*.google.com https://www.google-analytics.com https://www.googletagmanager.com https://googletagmanager.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://td-logistics-tdlogistics.aws-ap-south-1.turso.io",
+    "frame-src 'self' https://www.google.com https://*.google.com https://maps.google.com https://google.com https://googleads.g.doubleclick.net",
     "frame-ancestors 'self'",
   ].join('; ');
   response.headers.set('Content-Security-Policy', csp);
