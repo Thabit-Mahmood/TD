@@ -8,7 +8,7 @@ export async function GET(
     const resolvedParams = await params;
     const filePath = resolvedParams.path.join('/');
     
-    // Map common image extensions to MIME types
+    // Map common file extensions to MIME types
     const mimeTypes: Record<string, string> = {
       'png': 'image/png',
       'jpg': 'image/jpeg',
@@ -20,32 +20,26 @@ export async function GET(
       'txt': 'text/plain',
       'xml': 'application/xml',
       'json': 'application/json',
+      'css': 'text/css',
+      'js': 'application/javascript',
     };
 
     const ext = filePath.split('.').pop()?.toLowerCase() || '';
     const mimeType = mimeTypes[ext] || 'application/octet-stream';
 
-    // Try to fetch from public folder via the ASSETS binding
-    const assetResponse = await fetch(new URL(`/${filePath}`, request.url));
+    // Construct the full path to the public file
+    const fullPath = `/${filePath}`;
     
-    if (!assetResponse.ok) {
-      return NextResponse.json(
-        { error: 'File not found' },
-        { status: 404 }
-      );
-    }
-
-    const buffer = await assetResponse.arrayBuffer();
-    
-    return new NextResponse(buffer, {
-      status: 200,
+    // Return the file with proper caching headers
+    return new NextResponse(null, {
+      status: 307,
       headers: {
-        'Content-Type': mimeType,
+        'Location': fullPath,
         'Cache-Control': 'public, max-age=31536000, immutable',
       },
     });
   } catch (error) {
-    console.error('Static file error:', error);
+    console.error('Public file error:', error);
     return NextResponse.json(
       { error: 'Failed to serve file' },
       { status: 500 }
